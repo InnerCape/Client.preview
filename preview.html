@@ -3,966 +3,1179 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tamiires Nails Designer</title>
+<title>Camila Lima — English Teacher | Aulas de Inglês Online</title>
+<meta name="description" content="Aulas de inglês online com Camila Lima. Metodologia prática, conversação real e o Let's Speak Club para você finalmente falar inglês com confiança.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500;1,9..144,600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --blush:#FCE6E1;
-    --blush-2:#F9E2DB;
-    --blush-light:#FFF1EF;
-    --espresso:#3A2620;
-    --espresso-soft:#6B5148;
-    --magenta:#D6336C;
-    --coral:#F2765A;
-    --rose:#D77A8A;
-    --pearl:#F8E5E6;
-    --gold:#C79A56;
-    --grad: linear-gradient(115deg, #F2765A 0%, #D6336C 45%, #A63D8F 75%, #C79A56 100%);
-    --card: #FFFFFF;
-    --line: rgba(58,38,32,0.12);
-    --shadow: 0 20px 50px rgba(58,38,32,0.10);
-  }
-  *{margin:0;padding:0;box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{
-    font-family:'Manrope', sans-serif;
-    background:linear-gradient(180deg, #fff8f6 0%, #fde9e1 35%, #fff 100%);
-    color:var(--espresso);
-    line-height:1.6;
-    overflow-x:hidden;
-  }
-  h1,h2,h3,.display{
-    font-family:'Fraunces', serif;
-    font-weight:700;
-    letter-spacing:-0.02em;
-    color:var(--espresso);
-  }
-  a{color:inherit;text-decoration:none;}
-  img{max-width:100%;display:block;}
-  .wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
-  @media(max-width:600px){ .wrap{padding:0 20px;} }
-  .eyebrow{
-    font-size:12px;
-    letter-spacing:0.18em;
-    text-transform:uppercase;
-    font-weight:700;
-    color:var(--magenta);
-    display:flex;
-    align-items:center;
-    gap:10px;
-  }
-  .eyebrow::before{
-    content:"";
-    width:22px;height:2px;
-    background:var(--grad);
-    display:inline-block;
-    border-radius:2px;
-  }
+/* ===================== TOKENS ===================== */
+:root{
+  --navy:#1B2A4A;
+  --navy-deep:#131F38;
+  --lilac:#CFC3EE;
+  --lilac-soft:#E9E2FA;
+  --purple:#8A78C0;
+  --cream:#F8F2E7;
+  --white:#FFFFFF;
+  --ink:#241C3D;
+  --green:#A9C98D;
+  --yellow:#F0C55C;
+  --line: rgba(36,28,61,0.14);
 
-  /* nail-tip shape: rounded almond top, used for photo frames */
-  .nail-frame{
-    border-radius: 50% 50% 18px 18px / 60% 60% 18px 18px;
-    overflow:hidden;
-    position:relative;
-    box-shadow:0 24px 54px rgba(58,38,32,0.12);
-    border:1px solid rgba(255,255,255,0.65);
-    background:#fff;
-  }
-  .nail-frame img{width:100%;height:100%;object-fit:cover;}
+  --display: "Fraunces", serif;
+  --body: "Plus Jakarta Sans", sans-serif;
+  --hand: "Caveat", cursive;
 
-  /* ---------- HEADER ---------- */
-  header{
-    position:sticky; top:0; z-index:50;
-    background:rgba(251,239,234,0.88);
-    backdrop-filter: blur(10px);
-    border-bottom:1px solid var(--line);
-  }
-  .nav{
-    display:flex;align-items:center;justify-content:space-between;
-    padding:18px 0;
-  }
-  .logo{
-    font-family:'Fraunces', serif;
-    font-size:22px;
-    font-weight:600;
-  }
-  .logo span{
-    background:var(--grad);
-    -webkit-background-clip:text;
-    background-clip:text;
-    color:transparent;
-  }
-  .nav-links{display:flex;gap:34px;font-size:14px;font-weight:600;}
-  .nav-links a{opacity:0.9;color:var(--espresso-soft);transition:color .2s, opacity .2s;}
-  .nav-links a:hover{opacity:1;color:var(--magenta);}
-  .nav-cta{
-    background:linear-gradient(135deg, var(--magenta), var(--coral));
-    color:#fff;
-    padding:12px 26px;
-    border-radius:999px;
-    font-size:13px;
-    font-weight:700;
-    display:flex;align-items:center;gap:10px;
-    white-space:nowrap;
-    box-shadow:0 18px 40px rgba(214,51,108,0.22);
-  }
-  .nav-right{display:flex; align-items:center; gap:14px;}
-  .hamburger{
-    display:none;
-    width:40px;height:40px;
-    border-radius:10px;
-    border:1.5px solid var(--line);
-    background:none;
-    align-items:center; justify-content:center;
-    flex-direction:column; gap:4px;
-    cursor:pointer;
-  }
-  .hamburger span{width:18px;height:2px;background:var(--espresso);border-radius:2px;}
-  .mobile-menu{
-    display:none;
-    flex-direction:column;
-    gap:2px;
-    padding:8px 0 18px;
-    border-top:1px solid var(--line);
-  }
-  .mobile-menu a{
-    padding:14px 4px;
-    font-size:15px;
-    font-weight:700;
-    border-bottom:1px solid var(--line);
-  }
-  .mobile-menu.open{display:flex;}
-  @media(max-width:860px){
-    .nav-links{display:none;}
-    .hamburger{display:flex;}
-    .nav-cta span.txt{display:none;}
-  }
+  --radius: 22px;
+  --container: 1160px;
+}
 
-  /* ---------- HERO ---------- */
-  .hero{
-    position:relative;
-    padding:100px 0 120px;
-    overflow:hidden;
-    background:rgba(255,255,255,0.78);
-  }
-  .hero::before{
-    content:"";
-    position:absolute;
-    top:-180px; right:-220px;
-    width:560px;height:560px;
-    background:var(--grad);
-    filter:blur(90px);
-    opacity:0.18;
-    border-radius:50%;
-    z-index:0;
-  }
-  .hero::after{
-    content:"";
-    position:absolute;
-    bottom:-140px; left:-120px;
-    width:360px; height:360px;
-    background:radial-gradient(circle, rgba(255,243,241,0.95) 0%, rgba(251,239,234,0.15) 100%);
-    border-radius:50%;
-    z-index:0;
-  }
-  .hero-grid{
-    position:relative; z-index:1;
-    display:grid;
-    grid-template-columns:1.05fr 0.95fr;
-    gap:64px;
-    align-items:center;
-  }
-  .hero h1{
-    font-size:clamp(44px, 6vw, 72px);
-    line-height:1.02;
-    margin:18px 0 24px;
-  }
-  .hero h1 em{
-    font-style:italic;
-    background:var(--grad);
-    -webkit-background-clip:text;
-    background-clip:text;
-    color:transparent;
-  }
-  .hero p.lead{
-    font-size:18px;
-    color:var(--espresso-soft);
-    max-width:520px;
-    margin-bottom:36px;
-  }
-  .hero-actions{display:flex;gap:16px;flex-wrap:wrap;align-items:center;}
-  .btn-primary{
-    background:var(--grad);
-    color:#fff;
-    padding:16px 34px;
-    border-radius:100px;
-    font-weight:700;
-    font-size:15px;
-    display:inline-flex;
-    align-items:center;
-    gap:10px;
-    box-shadow:0 18px 42px rgba(214,51,108,0.22);
-    transition:transform .2s ease, box-shadow .2s ease;
-  }
-  .btn-primary:hover{transform:translateY(-2px); box-shadow:0 24px 56px rgba(214,51,108,0.26);}
-  .btn-ghost{
-    padding:16px 30px;
-    border-radius:100px;
-    font-weight:700;
-    font-size:15px;
-    border:1.5px solid rgba(214,51,108,0.3);
-    color:var(--magenta);
-    background:rgba(255,255,255,0.9);
-  }
-  .hero-stats{
-    display:flex; gap:30px;
-    margin-top:44px;
-    padding-top:30px;
-    border-top:1px solid rgba(58,38,32,0.12);
-    max-width:520px;
-  }
-  .hero-stats div b{
-    color:var(--espresso);
-  }
-  .hero-stats div span{
-    color:var(--espresso-soft);
-  }
-  .hero-stats div b{
-    font-family:'Fraunces',serif;
-    font-size:24px;
-    display:block;
-  }
-  .hero-stats div span{font-size:12.5px; color:var(--espresso-soft);}
+*,*::before,*::after{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  font-family:var(--body);
+  color:var(--ink);
+  background:var(--cream);
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+ul{margin:0;padding:0;list-style:none;}
+button{font-family:inherit;cursor:pointer;border:none;background:none;}
+h1,h2,h3,h4{font-family:var(--display);margin:0;}
+p{margin:0;}
+.container{max-width:var(--container);margin:0 auto;padding:0 24px;}
+.eyebrow{
+  font-family:var(--hand);
+  font-size:1.35rem;
+  color:var(--purple);
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  margin-bottom:10px;
+}
+.eyebrow svg{flex-shrink:0;}
+.section{padding:96px 0;position:relative;}
+.section-title{
+  font-size:clamp(1.9rem,4vw,2.7rem);
+  font-weight:700;
+  line-height:1.15;
+  letter-spacing:-0.01em;
+  max-width:720px;
+}
+.section-sub{
+  font-size:1.05rem;
+  color:#4A4260;
+  max-width:560px;
+  margin-top:14px;
+  line-height:1.6;
+}
+.btn{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:16px 28px;
+  border-radius:100px;
+  font-weight:700;
+  font-size:0.98rem;
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+.btn-primary{
+  background:var(--navy);
+  color:var(--cream);
+  box-shadow:0 8px 0 0 var(--navy-deep);
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 0 0 var(--navy-deep);}
+.btn-primary:active{transform:translateY(4px);box-shadow:0 4px 0 0 var(--navy-deep);}
+.btn-outline{
+  border:2px solid var(--navy);
+  color:var(--navy);
+  background:transparent;
+}
+.btn-outline:hover{background:var(--navy);color:var(--cream);}
+.btn-light{
+  background:var(--lilac);
+  color:var(--navy);
+}
+.btn-light:hover{background:var(--white);}
+.btn-cream{background:var(--cream);color:var(--navy);box-shadow:0 8px 0 0 rgba(0,0,0,0.15);}
+.btn-cream:hover{transform:translateY(-2px);}
 
-  .hero-visual{
-    position:relative;
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:18px;
-  }
-  .hero-visual .nail-frame:nth-child(1){grid-column:1/2; grid-row:1/3; aspect-ratio:3/4.3;}
-  .hero-visual .nail-frame:nth-child(2){aspect-ratio:1/1; margin-top:36px;}
-  .hero-visual .nail-frame:nth-child(3){aspect-ratio:1/1.05;}
-  .badge-float{
-    position:absolute;
-    bottom:-22px; left:20px;
-    background:#fff;
-    padding:14px 18px;
-    border-radius:16px;
-    box-shadow:var(--shadow);
-    display:flex;
-    align-items:center;
-    gap:12px;
-    font-size:13px;
-    font-weight:700;
-    z-index:2;
-  }
-  .badge-dot{
-    width:10px;height:10px;border-radius:50%;
-    background:var(--grad);
-  }
+.scribble-underline{position:relative;white-space:normal;}
+.scribble-underline svg{
+  position:absolute;left:0;bottom:-10px;width:100%;height:14px;
+}
 
-  /* placeholder art for photos (no real photos available) */
-  .ph{ width:100%;height:100%; }
-  .ph1{background:linear-gradient(160deg,#f6d9c9,#e8b7a5 40%,#c98a76);}
-  .ph2{background:linear-gradient(160deg,#f1c7cf,#d6336c 70%);}
-  .ph3{background:linear-gradient(160deg,#e9d3ae,#c79a56 70%);}
-  .ph4{background:linear-gradient(160deg,#f2765a,#a63d8f);}
-  .ph-mark{
-    position:absolute; inset:0;
-    display:flex; align-items:flex-end; justify-content:flex-start;
-    padding:14px;
-    font-size:10.5px; font-weight:700; letter-spacing:.04em;
-    color:rgba(255,255,255,0.85);
-  }
+/* ===================== HEADER ===================== */
+header{
+  position:fixed;top:0;left:0;right:0;
+  z-index:1000;
+  background:rgba(248,242,231,0.0);
+  transition:background .3s ease, box-shadow .3s ease, padding .3s ease;
+  padding:22px 0;
+}
+header.scrolled{
+  background:rgba(248,242,231,0.92);
+  backdrop-filter:blur(10px);
+  box-shadow:0 4px 20px rgba(27,42,74,0.08);
+  padding:14px 0;
+}
+.header-inner{
+  display:flex;align-items:center;justify-content:space-between;
+}
+.logo{
+  display:flex;flex-direction:column;line-height:1;
+}
+.logo-name{font-family:var(--display);font-weight:700;font-size:1.4rem;color:var(--navy);}
+.logo-tag{font-family:var(--hand);font-size:1.05rem;color:var(--purple);margin-top:2px;}
+.nav-desktop{display:flex;align-items:center;gap:34px;}
+.nav-desktop a{font-weight:600;font-size:0.94rem;color:var(--ink);position:relative;padding:4px 0;}
+.nav-desktop a::after{
+  content:"";position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--purple);
+  transition:width .25s ease;
+}
+.nav-desktop a:hover::after{width:100%;}
+.nav-cta{display:flex;align-items:center;gap:16px;}
+.nav-cta .btn-primary{padding:12px 22px;font-size:0.9rem;}
+.burger{
+  display:none;flex-direction:column;gap:5px;width:30px;padding:6px 0;
+}
+.burger span{height:2px;background:var(--navy);border-radius:2px;transition:.3s;}
+.mobile-menu{
+  position:fixed;top:0;right:-100%;width:82%;max-width:340px;height:100vh;
+  background:var(--navy);z-index:1100;transition:right .35s ease;
+  padding:32px 26px;display:flex;flex-direction:column;gap:6px;
+}
+.mobile-menu.open{right:0;}
+.mobile-menu a{color:var(--cream);font-size:1.15rem;font-weight:600;padding:14px 4px;border-bottom:1px solid rgba(255,255,255,0.12);}
+.mobile-menu .btn{margin-top:18px;justify-content:center;}
+.menu-close{align-self:flex-end;color:var(--cream);font-size:1.6rem;margin-bottom:10px;}
+.overlay{position:fixed;inset:0;background:rgba(19,31,56,0.5);z-index:1050;opacity:0;pointer-events:none;transition:opacity .3s ease;}
+.overlay.open{opacity:1;pointer-events:auto;}
 
-  /* ---------- VIDEO INTRO ---------- */
-  .video-section{
-    padding:80px 0 96px;
-    background:rgba(251,239,234,0.72);
-  }
-  .video-layout{
-    display:grid;
-    grid-template-columns:1.05fr 0.95fr;
-    gap:60px;
-    align-items:center;
-  }
-  .video-copy{
-    max-width:560px;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    gap:28px;
-  }
-  .video-copy .sec-head{margin-bottom:0;}
-  .video-copy .sec-head h2{
-    color:var(--espresso);
-    font-size:clamp(34px, 4vw, 46px);
-    line-height:1.05;
-    margin-top:12px;
-  }
-  .video-copy .sec-head p{
-    color:var(--espresso-soft);
-    font-size:16px;
-    max-width:520px;
-  }
-  .bio-text{
-    background:#fff;
-    border:1px solid rgba(58,38,32,0.08);
-    border-radius:28px;
-    padding:32px 30px;
-    color:var(--espresso);
-    line-height:1.85;
-    box-shadow:0 24px 56px rgba(58,38,32,0.08);
-  }
-  .bio-text p{
-    margin-bottom:18px;
-  }
-  .bio-text p:first-child{
-    font-size:13px;
-    font-weight:700;
-    letter-spacing:0.24em;
-    text-transform:uppercase;
-    color:var(--magenta);
-    margin-bottom:10px;
-  }
-  .bio-text p:nth-child(2){
-    font-size:24px;
-    font-weight:700;
-    margin-bottom:18px;
-    color:var(--espresso);
-  }
-  .bio-text p:nth-child(3),
-  .bio-text p:nth-child(4){
-    font-size:15.5px;
-    color:var(--espresso-soft);
-    margin-bottom:16px;
-  }
-  .bio-text p:last-child{margin-bottom:0;}
-  .phone-frame{
-    position:relative;
-    width:min(340px, 84vw);
-    aspect-ratio:9/17;
-    margin:0 auto;
-    border-radius:44px;
-    padding:14px;
-    background:linear-gradient(180deg, rgba(26,26,26,0.92), rgba(33,33,33,1));
-    box-shadow:0 30px 70px rgba(58,38,32,0.18);
-  }
-  .phone-screen{
-    position:relative;
-    width:100%;height:100%;
-    border-radius:34px;
-    overflow:hidden;
-    background:linear-gradient(160deg, #ffdce4 0%, #f5b8c7 42%, #d16388 78%);
-    background-size:220% 220%;
-    animation: shimmer 10s ease-in-out infinite;
-  }
-  @keyframes shimmer{
-    0%{background-position:0% 25%;}
-    50%{background-position:100% 75%;}
-    100%{background-position:0% 25%;}
-  }
-  .phone-notch{
-    position:absolute; top:12px; left:50%; transform:translateX(-50%);
-    width:75px; height:16px; border-radius:12px;
-    background:rgba(255,255,255,0.16);
-    z-index:3;
-  }
-  .phone-caption{
-    position:absolute; bottom:18px; left:18px; right:18px;
-    z-index:3; color:#fff;
-    background:rgba(0,0,0,0.18);
-    border-radius:18px;
-    padding:16px 18px;
-    backdrop-filter:blur(6px);
-  }
-  .phone-caption b{font-size:15px; display:block; letter-spacing:0.01em;}
-  .phone-caption span{font-size:12.5px; opacity:0.85;}
-  .play-btn{
-    position:absolute; inset:0;
-    display:flex; align-items:center; justify-content:center;
-    z-index:2;
-  }
-  .play-btn .circle{
-    width:70px;height:70px;border-radius:50%;
-    background:rgba(255,255,255,0.22);
-    backdrop-filter:blur(4px);
-    border:1.5px solid rgba(255,255,255,0.65);
-    display:flex; align-items:center; justify-content:center;
-    transition:transform .2s ease;
-  }
-  .phone-frame:hover .circle{transform:scale(1.06);}
-  .play-btn svg{margin-left:3px;}
-  .rec-dot{
-    position:absolute; top:20px; right:18px; z-index:3;
-    display:flex; align-items:center; gap:8px;
-    font-size:11px; font-weight:700; color:#fff;
-    letter-spacing:0.08em;
-    background:rgba(0,0,0,0.22);
-    padding:8px 12px;
-    border-radius:999px;
-  }
-  .rec-dot i{
-    width:8px;height:8px;border-radius:50%; background:#ff6a6a;
-    display:inline-block;
-    animation: blink 1.6s infinite;
-  }
-  @keyframes blink{ 50%{opacity:0.25;} }
-  @media(max-width:860px){
-    .video-layout{grid-template-columns:1fr; gap:34px;}
-    .bio-text{padding:24px;}
-    .phone-frame{width:min(260px, 80vw);}
-  }
+/* ===================== HERO ===================== */
+.hero{
+  padding:170px 0 90px;
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(600px 400px at 88% 10%, rgba(207,195,238,0.55), transparent 60%),
+    radial-gradient(500px 380px at 5% 90%, rgba(240,197,92,0.18), transparent 60%);
+}
+.hero-grid{
+  display:grid;grid-template-columns:1.05fr 0.95fr;gap:56px;align-items:center;
+}
+.hero-badge-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px;}
+.pill{
+  display:inline-flex;align-items:center;gap:6px;
+  background:var(--white);border:1px solid var(--line);
+  padding:8px 14px;border-radius:100px;font-size:0.8rem;font-weight:600;color:var(--navy);
+}
+.pill .dot{width:6px;height:6px;border-radius:50%;background:var(--green);}
+.hero h1{
+  font-size:clamp(2.3rem,5.2vw,3.6rem);
+  font-weight:800;
+  line-height:1.08;
+  letter-spacing:-0.02em;
+  color:var(--navy);
+}
+.hero h1 em{
+  font-style:italic;font-weight:500;color:var(--purple);
+}
+.hero-sub{
+  font-size:1.12rem;color:#463F5C;margin-top:20px;max-width:480px;line-height:1.65;
+}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:32px;}
+.hero-hand{
+  font-family:var(--hand);font-size:1.5rem;color:var(--navy);margin-top:26px;
+  display:flex;align-items:center;gap:8px;
+}
+.hero-photo-wrap{position:relative;display:flex;justify-content:center;}
+.polaroid{
+  background:var(--white);
+  padding:18px 18px 60px;
+  border-radius:8px;
+  box-shadow:0 24px 50px rgba(27,42,74,0.22);
+  transform:rotate(-4deg);
+  width:min(360px,90%);
+  position:relative;
+  z-index:2;
+}
+.polaroid-photo{
+  aspect-ratio:4/5;border-radius:4px;overflow:hidden;
+  background:linear-gradient(155deg,var(--lilac) 0%, var(--purple) 55%, var(--navy) 120%);
+  display:flex;align-items:center;justify-content:center;position:relative;
+}
+.polaroid-photo .monogram{
+  font-family:var(--display);font-size:5.4rem;font-weight:700;color:rgba(255,255,255,0.92);
+}
+.polaroid-cap{
+  font-family:var(--hand);font-size:1.3rem;color:var(--navy);
+  position:absolute;bottom:16px;left:0;right:0;text-align:center;
+}
+.tape{
+  position:absolute;width:90px;height:32px;
+  background:rgba(240,197,92,0.55);
+  top:-14px;left:50%;transform:translateX(-50%) rotate(-3deg);
+  z-index:3;box-shadow:0 4px 8px rgba(0,0,0,0.08);
+}
+.hero-sticker{
+  position:absolute;background:var(--white);border:1px solid var(--line);
+  border-radius:16px;padding:12px 16px;box-shadow:0 10px 26px rgba(27,42,74,0.15);
+  font-weight:700;font-size:0.85rem;display:flex;align-items:center;gap:8px;z-index:3;
+}
+.sticker-1{top:8%;left:-6%;transform:rotate(-6deg);}
+.sticker-2{bottom:6%;right:-8%;transform:rotate(5deg);}
+.star{position:absolute;color:var(--purple);opacity:.7;}
 
-  /* ---------- SECTION HEADERS ---------- */
-  section{padding:96px 0;}
-  .sec-head{max-width:620px; margin-bottom:56px;}
-  .sec-head h2{font-size:clamp(30px,3.6vw,42px); margin-top:14px;}
-  .sec-head p{color:var(--espresso-soft); margin-top:14px; font-size:15.5px;}
+/* ===================== PROBLEM SECTION ===================== */
+.problem{background:var(--white);}
+.problem-list{
+  margin-top:44px;display:grid;grid-template-columns:repeat(2,1fr);gap:18px;
+}
+.problem-item{
+  display:flex;gap:14px;align-items:flex-start;
+  background:var(--cream);border-radius:16px;padding:20px 22px;
+}
+.problem-item svg{flex-shrink:0;margin-top:3px;color:var(--purple);}
+.problem-item p{font-weight:600;font-size:0.98rem;line-height:1.5;}
+.problem-note{
+  margin-top:40px;padding:28px 30px;background:var(--navy);color:var(--cream);
+  border-radius:20px;font-size:1.1rem;line-height:1.6;font-weight:500;max-width:760px;
+}
+.problem-note strong{color:var(--yellow);}
 
-  /* ---------- PORTFOLIO ---------- */
-  .portfolio-grid{
-    display:grid;
-    grid-template-columns:repeat(4, 1fr);
-    gap:18px;
-  }
-  .portfolio-grid .nail-frame{aspect-ratio:0.85/1; cursor:pointer; transition:transform .25s ease;}
-  .portfolio-grid .nail-frame:hover{transform:translateY(-6px);}
-  .portfolio-grid .nail-frame:nth-child(1){grid-row:span 2; aspect-ratio:0.72/1.7;}
-  @media(max-width:900px){
-    .portfolio-grid{grid-template-columns:repeat(2,1fr);}
-    .portfolio-grid .nail-frame:nth-child(1){grid-row:span 1; aspect-ratio:0.85/1;}
-  }
+/* ===================== SOLUTION ===================== */
+.solution-grid{
+  margin-top:48px;display:grid;grid-template-columns:repeat(4,1fr);gap:20px;
+}
+.solution-card{
+  background:var(--white);border-radius:20px;padding:30px 24px;
+  border:1px solid var(--line);
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+.solution-card:hover{transform:translateY(-6px);box-shadow:0 16px 34px rgba(27,42,74,0.1);}
+.solution-icon{
+  width:52px;height:52px;border-radius:14px;background:var(--lilac-soft);
+  display:flex;align-items:center;justify-content:center;color:var(--navy);margin-bottom:18px;
+}
+.solution-card h3{font-size:1.08rem;font-weight:700;margin-bottom:8px;}
+.solution-card p{font-size:0.92rem;color:#544C6B;line-height:1.55;}
 
-  /* ---------- SERVICES ---------- */
-  .services{background:var(--blush-2);}
-  .services-grid{
-    display:grid;
-    grid-template-columns:repeat(5,1fr);
-    gap:16px;
-  }
-  .service-card{
-    background:rgba(255,255,255,0.95);
-    border-radius:28px;
-    padding:30px 22px;
-    text-align:left;
-    box-shadow:0 24px 60px rgba(58,38,32,0.08);
-    transition:transform .25s ease, box-shadow .25s ease;
-    border:1px solid rgba(255,255,255,0.75);
-  }
-  .service-card:hover{transform:translateY(-6px); box-shadow:0 28px 72px rgba(58,38,32,0.12);}
-  .service-icon{
-    width:44px;height:44px;
-    border-radius:12px;
-    background:var(--grad);
-    display:flex;align-items:center;justify-content:center;
-    color:#fff; font-size:19px;
-    margin-bottom:18px;
-  }
-  .service-card h3{font-size:16.5px; margin-bottom:8px; font-weight:600;}
-  .service-card p{font-size:13px; color:var(--espresso-soft); line-height:1.5;}
-  @media(max-width:960px){ .services-grid{grid-template-columns:repeat(2,1fr);} }
+/* ===================== ABOUT ===================== */
+.about{background:var(--white);}
+.about-grid{display:grid;grid-template-columns:0.85fr 1.15fr;gap:60px;align-items:center;}
+.about-photo{
+  position:relative;
+  border-radius:28px;overflow:hidden;
+  aspect-ratio:3/4;
+  background:linear-gradient(160deg,var(--navy) 0%, var(--purple) 60%, var(--lilac) 130%);
+  display:flex;align-items:center;justify-content:center;
+}
+.about-photo .monogram{font-family:var(--display);font-size:7rem;color:rgba(255,255,255,0.9);}
+.about-badge{
+  position:absolute;bottom:18px;left:18px;background:var(--white);border-radius:14px;
+  padding:14px 18px;box-shadow:0 10px 26px rgba(0,0,0,0.12);
+}
+.about-badge b{display:block;font-size:1.5rem;font-family:var(--display);color:var(--navy);}
+.about-badge span{font-size:0.78rem;color:#655D7C;}
+.about-text p{font-size:1.05rem;line-height:1.75;color:#413A57;margin-bottom:18px;}
+.about-stats{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:28px;
+}
+.stat{background:var(--cream);border-radius:16px;padding:18px 20px;}
+.stat b{font-family:var(--display);font-size:1.7rem;color:var(--navy);display:block;}
+.stat span{font-size:0.82rem;color:#655D7C;}
 
-  /* ---------- TESTIMONIALS ---------- */
-  .testi-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:22px;
-  }
-  .testi-card{
-    background:rgba(255,255,255,0.95);
-    border-radius:28px;
-    padding:32px;
-    box-shadow:0 24px 52px rgba(58,38,32,0.10);
-    border:1px solid rgba(255,255,255,0.7);
-  }
-  .stars{color:var(--gold); font-size:15px; margin-bottom:16px; letter-spacing:2px;}
-  .testi-card p{font-size:14.5px; color:var(--espresso-soft); margin-bottom:22px;}
-  .testi-who{display:flex; align-items:center; gap:12px;}
-  .testi-avatar{
-    width:40px;height:40px;border-radius:50%;
-    background:var(--grad);
-  }
-  .testi-who b{font-size:13.5px; display:block;}
-  .testi-who span{font-size:12px; color:var(--espresso-soft);}
-  @media(max-width:900px){ .testi-grid{grid-template-columns:1fr;} }
+/* ===================== MODALITIES ===================== */
+.modalities-grid{
+  margin-top:48px;display:grid;grid-template-columns:repeat(4,1fr);gap:20px;
+}
+.mod-card{
+  background:var(--white);border-radius:22px;padding:28px 24px;
+  display:flex;flex-direction:column;
+  border:1px solid var(--line);
+}
+.mod-card .mod-tag{
+  font-family:var(--hand);font-size:1.2rem;color:var(--purple);margin-bottom:6px;
+}
+.mod-card h3{font-size:1.15rem;font-weight:700;margin-bottom:14px;}
+.mod-card ul{margin-bottom:22px;flex-grow:1;}
+.mod-card li{
+  font-size:0.88rem;color:#544C6B;padding-left:18px;position:relative;margin-bottom:8px;line-height:1.4;
+}
+.mod-card li::before{
+  content:"";position:absolute;left:0;top:7px;width:6px;height:6px;border-radius:50%;background:var(--green);
+}
+.mod-card .btn{width:100%;justify-content:center;font-size:0.88rem;padding:12px 18px;}
 
-  /* ---------- INSTAGRAM STRIP ---------- */
-  .insta{
-    background:linear-gradient(180deg, #5c3b33 0%, #321d1a 100%);
-    color:#fff;
-  }
-  .insta .sec-head p{color:rgba(255,255,255,0.68);}
-  .insta .eyebrow{color:#F3B8B5;}
-  .insta .eyebrow::before{background:var(--grad);}
-  .insta-head{
-    display:flex; justify-content:space-between; align-items:flex-end;
-    flex-wrap:wrap; gap:20px;
-  }
-  .insta-follow{
-    display:inline-flex; align-items:center; gap:10px;
-    border:1.5px solid rgba(255,255,255,0.25);
-    padding:12px 22px; border-radius:100px;
-    font-size:13.5px; font-weight:700;
-  }
-  .insta-grid{
-    margin-top:40px;
-    display:grid;
-    grid-template-columns:repeat(6,1fr);
-    gap:12px;
-  }
-  .insta-grid .cell{
-    aspect-ratio:1/1;
-    border-radius:14px;
-    overflow:hidden;
-    position:relative;
-  }
-  @media(max-width:900px){ .insta-grid{grid-template-columns:repeat(3,1fr);} }
+/* ===================== SPEAK CLUB ===================== */
+.speakclub{
+  background:var(--navy);color:var(--cream);position:relative;overflow:hidden;
+}
+.speakclub::before{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(500px 400px at 90% 0%, rgba(207,195,238,0.18), transparent 60%);
+}
+.speakclub-inner{position:relative;z-index:2;text-align:center;}
+.speakclub .eyebrow{color:var(--yellow);justify-content:center;}
+.speakclub h2{font-size:clamp(2.1rem,5vw,3.2rem);font-weight:800;}
+.speakclub-sub{font-size:1.1rem;color:rgba(248,242,231,0.82);max-width:600px;margin:16px auto 0;line-height:1.6;}
+.speakclub-feats{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:48px 0;max-width:820px;margin-left:auto;margin-right:auto;
+}
+.feat-card{
+  background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.14);
+  border-radius:18px;padding:26px 20px;
+}
+.feat-card svg{color:var(--yellow);margin-bottom:12px;}
+.feat-card p{font-size:0.92rem;color:rgba(248,242,231,0.9);font-weight:600;}
+.speakclub-highlight{
+  font-family:var(--hand);font-size:2rem;color:var(--yellow);margin:10px 0 32px;
+}
 
-  /* ---------- CONTACT ---------- */
-  .contact-grid{
-    display:grid;
-    grid-template-columns:0.9fr 1.1fr;
-    gap:60px;
-    align-items:flex-start;
-  }
-  .contact-info-item{
-    display:flex; gap:16px; align-items:flex-start;
-    padding:22px 0;
-    border-bottom:1px solid rgba(58,38,32,0.09);
-  }
-  .contact-info-item .ic{
-    width:42px;height:42px;border-radius:16px;
-    background:linear-gradient(135deg, var(--magenta), var(--coral));
-    display:flex;align-items:center;justify-content:center;
-    color:#fff; font-size:16px; flex-shrink:0;
-  }
-  .contact-info-item b{font-size:14.5px; display:block; margin-bottom:4px;}
-  .contact-info-item span{font-size:14px; color:var(--espresso-soft);}
+/* ===================== HOW IT WORKS ===================== */
+.steps{margin-top:56px;position:relative;}
+.steps-line{
+  position:absolute;top:26px;left:0;right:0;height:2px;
+  background:repeating-linear-gradient(90deg,var(--purple) 0 10px, transparent 10px 18px);
+  z-index:0;
+}
+.steps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;position:relative;z-index:1;}
+.step{text-align:left;}
+.step-num{
+  width:52px;height:52px;border-radius:50%;background:var(--white);border:2px solid var(--navy);
+  display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:700;
+  font-size:1.2rem;color:var(--navy);margin-bottom:18px;
+}
+.step h4{font-size:1rem;font-weight:700;margin-bottom:8px;}
+.step p{font-size:0.9rem;color:#544C6B;line-height:1.5;}
 
-  form{
-    background:rgba(255,255,255,0.95);
-    border:1px solid rgba(255,255,255,0.75);
-    border-radius:30px;
-    padding:42px;
-    box-shadow:0 24px 60px rgba(58,38,32,0.08);
-  }
-  .form-row{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
-  label{font-size:12.5px; font-weight:700; display:block; margin-bottom:8px; margin-top:16px;}
-  input, textarea, select{
-    width:100%;
-    border:1.5px solid var(--line);
-    background:var(--blush);
-    border-radius:12px;
-    padding:13px 15px;
-    font-family:inherit;
-    font-size:14px;
-    color:var(--espresso);
-  }
-  input:focus, textarea:focus, select:focus{
-    outline:2px solid var(--magenta);
-    outline-offset:1px;
-  }
-  textarea{resize:vertical; min-height:100px;}
-  .form-submit{
-    margin-top:24px;
-    width:100%;
-    background:var(--grad);
-    color:#fff;
-    border:none;
-    padding:16px;
-    border-radius:100px;
-    font-weight:700;
-    font-size:14.5px;
-    cursor:pointer;
-  }
-  @media(max-width:900px){
-    .contact-grid{grid-template-columns:1fr;}
-    .form-row{grid-template-columns:1fr;}
-  }
+/* ===================== TESTIMONIALS ===================== */
+.testimonials{background:var(--white);}
+.demo-flag{
+  display:inline-flex;align-items:center;gap:8px;background:var(--yellow);color:var(--navy);
+  font-size:0.76rem;font-weight:700;padding:6px 12px;border-radius:100px;margin-bottom:26px;
+}
+.test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:20px;}
+.test-card{
+  background:var(--cream);border-radius:20px;padding:26px 24px;position:relative;
+}
+.test-card:nth-child(2){transform:rotate(-1deg);}
+.test-card:nth-child(3){transform:rotate(1deg);}
+.test-quote{font-size:0.95rem;line-height:1.6;color:#3B3450;margin-bottom:20px;}
+.test-person{display:flex;align-items:center;gap:12px;}
+.test-avatar{
+  width:44px;height:44px;border-radius:50%;background:linear-gradient(160deg,var(--lilac),var(--purple));
+  display:flex;align-items:center;justify-content:center;color:var(--white);font-weight:700;font-family:var(--display);
+}
+.test-name{font-weight:700;font-size:0.92rem;}
+.test-meta{font-size:0.78rem;color:#786F92;}
 
-  /* ---------- WHATSAPP FLOAT ---------- */
-  .wa-float{
-    position:fixed;
-    bottom:26px; right:26px;
-    width:60px;height:60px;
-    border-radius:50%;
-    background:linear-gradient(135deg, var(--magenta), var(--coral));
-    display:flex;align-items:center;justify-content:center;
-    box-shadow:0 18px 46px rgba(214,51,108,0.24);
-    z-index:60;
-    animation: pulse 2.6s infinite;
-  }
-  @keyframes pulse{
-    0%{box-shadow:0 0 0 0 rgba(214,51,108,0.24);}
-    70%{box-shadow:0 0 0 20px rgba(214,51,108,0);}
-    100%{box-shadow:0 0 0 0 rgba(214,51,108,0);}
-  }
+/* ===================== PLANS ===================== */
+.plans-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:48px;}
+.plan-card{
+  background:var(--white);border-radius:24px;padding:36px 30px;border:1px solid var(--line);
+  display:flex;flex-direction:column;
+}
+.plan-card.featured{
+  background:var(--navy);color:var(--cream);transform:translateY(-14px);
+  box-shadow:0 24px 50px rgba(27,42,74,0.28);border:none;
+}
+.plan-badge{
+  align-self:flex-start;background:var(--yellow);color:var(--navy);font-size:0.72rem;font-weight:700;
+  padding:5px 12px;border-radius:100px;margin-bottom:16px;
+}
+.plan-card h3{font-size:1.3rem;font-weight:700;margin-bottom:6px;}
+.plan-price{font-family:var(--hand);font-size:1.4rem;color:var(--purple);margin-bottom:22px;}
+.plan-card.featured .plan-price{color:var(--yellow);}
+.plan-card ul{margin-bottom:28px;flex-grow:1;}
+.plan-card li{
+  font-size:0.9rem;padding-left:22px;position:relative;margin-bottom:12px;line-height:1.4;
+}
+.plan-card li::before{content:"✓";position:absolute;left:0;color:var(--green);font-weight:700;}
+.plan-card.featured li::before{color:var(--yellow);}
+.plan-card .btn{justify-content:center;width:100%;}
 
-  /* ---------- FOOTER ---------- */
-  footer{
-    background:linear-gradient(180deg, #34221f 0%, #1e1411 100%);
-    color:rgba(255,255,255,0.78);
-    padding:54px 0 30px;
-  }
-  .footer-top{
-    display:flex; justify-content:space-between; flex-wrap:wrap; gap:30px;
-    padding-bottom:34px;
-    border-bottom:1px solid rgba(255,255,255,0.12);
-  }
-  .footer-logo{font-family:'Fraunces',serif; font-size:24px; color:#fff; margin-bottom:10px;}
-  .footer-logo span{opacity:0.7;}
-  .foot-social{display:flex; gap:14px;}
-  .foot-social a{
-    width:44px;height:44px;border-radius:50%;
-    border:1.5px solid rgba(255,255,255,0.18);
-    display:flex; align-items:center; justify-content:center;
-    font-size:16px; color:#fff;
-    background:rgba(255,255,255,0.05);
-    transition:transform .2s ease, background .2s ease;
-  }
-  .foot-social a:hover{transform:translateY(-2px); background:rgba(255,255,255,0.12);}
-  .footer-bottom{
-    display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
-    padding-top:24px;
-    font-size:12.5px;
-  }
-  .disclaimer{
-    text-align:center;
-    font-size:11.5px;
-    color:rgba(255,255,255,0.45);
-    margin-top:18px;
-  }
+/* ===================== FAQ ===================== */
+.faq-list{max-width:760px;margin-top:44px;}
+.faq-item{border-bottom:1px solid var(--line);}
+.faq-q{
+  width:100%;display:flex;justify-content:space-between;align-items:center;
+  padding:22px 4px;font-weight:700;font-size:1.02rem;text-align:left;color:var(--ink);
+}
+.faq-q svg{flex-shrink:0;transition:transform .3s ease;color:var(--purple);}
+.faq-item.open .faq-q svg{transform:rotate(45deg);}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease;}
+.faq-a-inner{padding:0 4px 22px;font-size:0.95rem;color:#544C6B;line-height:1.6;max-width:640px;}
 
-  @media(max-width:900px){
-    .hero-grid{grid-template-columns:1fr;}
-    .hero-visual{margin-top:40px;}
-    .services-grid{grid-template-columns:repeat(2,1fr);}
-  }
-  @media(prefers-reduced-motion: reduce){
-    *{animation:none !important; transition:none !important;}
-  }
+/* ===================== FINAL CTA ===================== */
+.final-cta{
+  background:linear-gradient(150deg,var(--lilac) 0%, var(--purple) 60%, var(--navy) 130%);
+  color:var(--white);text-align:center;border-radius:32px;margin:0 24px;
+  padding:80px 30px;position:relative;overflow:hidden;
+}
+.final-cta h2{font-size:clamp(2rem,5vw,3rem);font-weight:800;max-width:760px;margin:0 auto;line-height:1.15;}
+.final-cta p{margin:20px auto 34px;max-width:520px;font-size:1.05rem;color:rgba(255,255,255,0.9);}
 
-  /* ---------- MOBILE TIGHTENING ---------- */
-  @media(max-width:600px){
-    section{padding:56px 0;}
-    .hero{padding:44px 0 56px;}
-    .video-section{padding:44px 0 56px;}
-    .sec-head{margin-bottom:34px;}
-    .hero-stats{gap:22px; flex-wrap:wrap;}
-    .hero-actions .btn-primary, .hero-actions .btn-ghost{
-      width:100%; justify-content:center; text-align:center;
-    }
-    .hero-actions{flex-direction:column; align-items:stretch;}
-    .badge-float{
-      position:static;
-      margin-top:16px;
-      width:fit-content;
-    }
-    .hero-visual{grid-template-columns:1fr 1fr; gap:12px;}
-    .hero-visual .nail-frame:nth-child(2){margin-top:0;}
-    form{padding:26px 22px;}
-    .service-card{padding:22px 18px;}
-    .insta-grid{grid-template-columns:repeat(3,1fr); gap:8px;}
-    .footer-top{flex-direction:column;}
-  }
+/* ===================== CONTACT ===================== */
+.contact-grid{display:grid;grid-template-columns:0.9fr 1.1fr;gap:56px;margin-top:48px;}
+.contact-info{display:flex;flex-direction:column;gap:16px;}
+.contact-link{
+  display:flex;align-items:center;gap:14px;background:var(--white);border:1px solid var(--line);
+  border-radius:16px;padding:18px 20px;font-weight:700;font-size:0.95rem;transition:transform .2s ease;
+}
+.contact-link:hover{transform:translateX(4px);}
+.contact-link svg{color:var(--purple);flex-shrink:0;}
+.contact-link span{display:block;font-size:0.78rem;font-weight:500;color:#786F92;}
+.form-card{background:var(--white);border-radius:24px;padding:34px;border:1px solid var(--line);}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;}
+.field{display:flex;flex-direction:column;gap:6px;margin-bottom:16px;}
+.field label{font-size:0.82rem;font-weight:700;color:var(--navy);}
+.field input,.field select,.field textarea{
+  border:1.5px solid var(--line);border-radius:12px;padding:13px 14px;font-family:inherit;font-size:0.92rem;
+  background:var(--cream);transition:border-color .2s ease;
+}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--purple);}
+.field.error input,.field.error select,.field.error textarea{border-color:#D9534F;}
+.error-msg{font-size:0.76rem;color:#D9534F;display:none;}
+.field.error .error-msg{display:block;}
+.form-success{
+  display:none;background:var(--green);color:var(--navy);padding:16px 18px;border-radius:14px;
+  font-weight:700;margin-bottom:18px;align-items:center;gap:10px;
+}
+.form-success.show{display:flex;}
+
+/* ===================== FOOTER ===================== */
+footer{background:var(--navy-deep);color:rgba(248,242,231,0.75);padding:60px 0 26px;}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,0.1);}
+.footer-brand .logo-name{color:var(--cream);}
+.footer-brand p{margin-top:14px;font-size:0.88rem;line-height:1.6;max-width:280px;}
+.footer-col h5{font-size:0.82rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--cream);margin-bottom:16px;}
+.footer-col a{display:block;font-size:0.9rem;padding:6px 0;color:rgba(248,242,231,0.75);}
+.footer-col a:hover{color:var(--yellow);}
+.footer-bottom{
+  display:flex;justify-content:space-between;align-items:center;padding-top:22px;font-size:0.78rem;flex-wrap:wrap;gap:10px;
+}
+
+/* ===================== TORN DIVIDER ===================== */
+.torn{height:36px;background:var(--cream);position:relative;}
+.torn.to-white{background:var(--white);}
+.torn svg{position:absolute;bottom:-1px;width:100%;height:36px;}
+
+/* ===================== UTIL ===================== */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease, transform .7s ease;}
+.reveal.in{opacity:1;transform:translateY(0);}
+
+/* ===================== MOBILE STICKY CTA BAR ===================== */
+.mobile-cta-bar{
+  display:none;
+  position:fixed;bottom:0;left:0;right:0;z-index:900;
+  background:var(--white);
+  border-top:1px solid var(--line);
+  padding:10px 14px calc(10px + env(safe-area-inset-bottom));
+  box-shadow:0 -8px 24px rgba(27,42,74,0.12);
+  gap:10px;
+}
+.mobile-cta-bar a{
+  flex:1;display:flex;align-items:center;justify-content:center;gap:6px;
+  border-radius:100px;font-weight:700;font-size:0.88rem;padding:13px 10px;
+}
+.mobile-cta-bar .cta-whats{background:#25D366;color:var(--white);}
+.mobile-cta-bar .cta-agendar{background:var(--navy);color:var(--cream);}
+
+/* ===================== PHOTO SLOTS (fill with real photos) ===================== */
+.photo-slot{position:relative;overflow:hidden;}
+.photo-slot img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;
+  opacity:0;transition:opacity .4s ease;
+}
+.photo-slot img.loaded{opacity:1;}
+.photo-slot img.loaded ~ .monogram{opacity:0;pointer-events:none;}
+.photo-slot .upload-hint{
+  position:absolute;bottom:10px;left:10px;right:10px;
+  background:rgba(19,31,56,0.55);color:#fff;font-size:0.68rem;font-weight:600;
+  padding:6px 10px;border-radius:8px;text-align:center;letter-spacing:0.01em;
+  opacity:1;transition:opacity .3s ease;
+}
+.photo-slot img.loaded ~ .upload-hint{opacity:0;pointer-events:none;}
+
+/* ===================== RESPONSIVE ===================== */
+@media (max-width:980px){
+  .nav-desktop,.nav-cta .btn-primary{display:none;}
+  .burger{display:flex;}
+  .hero-grid,.about-grid,.contact-grid{grid-template-columns:1fr;gap:40px;}
+  .hero-photo-wrap{order:-1;margin-bottom:8px;}
+  .solution-grid,.modalities-grid{grid-template-columns:repeat(2,1fr);}
+  .speakclub-feats,.steps-grid{grid-template-columns:1fr;}
+  .steps-line{display:none;}
+  .test-grid,.plans-grid{grid-template-columns:1fr;}
+  .plan-card.featured{transform:none;}
+  .problem-list{grid-template-columns:1fr;}
+  .footer-grid{grid-template-columns:1fr;gap:30px;}
+  .form-row{grid-template-columns:1fr;}
+  .section{padding:60px 0;}
+  .mobile-cta-bar{display:flex;}
+  body{padding-bottom:76px;}
+}
+@media (max-width:640px){
+  .container{padding:0 20px;}
+  .hero{padding:132px 0 48px;}
+  .hero-sub{max-width:100%;}
+  .hero-ctas{flex-direction:column;align-items:stretch;}
+  .hero-ctas .btn{width:100%;justify-content:center;}
+  .hero-badge-row{gap:8px;}
+  .pill{font-size:0.74rem;padding:7px 12px;}
+  .hero-hand{font-size:1.25rem;}
+  .polaroid{width:min(280px,78vw);padding:14px 14px 48px;}
+  .polaroid-photo .monogram{font-size:4rem;}
+  .hero-sticker{font-size:0.72rem;padding:9px 12px;}
+  .sticker-1{left:2%;top:4%;}
+  .sticker-2{right:2%;bottom:0;}
+  .section-title{font-size:1.55rem;}
+  .section-sub{font-size:0.95rem;}
+  .solution-grid,.modalities-grid{grid-template-columns:1fr;}
+  .about-photo{aspect-ratio:1/1;border-radius:20px;}
+  .about-stats{grid-template-columns:1fr 1fr;gap:12px;}
+  .speakclub-feats{gap:14px;margin:36px 0;}
+  .final-cta{margin:0 16px;padding:48px 22px;border-radius:24px;}
+  .final-cta h2{font-size:1.7rem;}
+  .plan-card.featured{order:-1;}
+  .contact-grid{gap:32px;}
+  .form-card{padding:24px 20px;}
+  .footer-bottom{flex-direction:column;align-items:flex-start;gap:6px;}
+  .btn{width:auto;}
+  .btn-primary,.btn-outline,.btn-cream,.btn-light{padding:15px 24px;}
+}
+@media (max-width:400px){
+  .polaroid{width:82vw;}
+  .step-num{width:44px;height:44px;font-size:1.05rem;}
+  .plan-card,.mod-card,.solution-card{padding:22px 18px;}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important;}
+}
 </style>
 </head>
 <body>
 
-<header>
-  <div class="wrap nav">
-    <div class="logo">tamiires<span>nails</span></div>
-    <nav class="nav-links">
-      <a href="#video">Vídeo</a>
-      <a href="#portfolio">Trabalhos</a>
-      <a href="#servicos">Serviços</a>
-      <a href="#depoimentos">Depoimentos</a>
-      <a href="#contato">Contato</a>
-    </nav>
-    <div class="nav-right">
-      <a class="nav-cta" href="https://api.whatsapp.com/send?phone=5571985563276" target="_blank">✋<span class="txt">&nbsp;Agendar</span></a>
-      <button class="hamburger" id="menuBtn" aria-label="Abrir menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
+<!-- ===================== HEADER ===================== -->
+<header id="header">
+  <div class="container header-inner">
+    <div class="logo">
+      <span class="logo-name">Camila Lima</span>
+      <span class="logo-tag">English Teacher</span>
     </div>
-  </div>
-  <div class="wrap">
-    <nav class="mobile-menu" id="mobileMenu">
-      <a href="#video">Vídeo</a>
-      <a href="#portfolio">Trabalhos</a>
-      <a href="#servicos">Serviços</a>
+    <nav class="nav-desktop">
+      <a href="#hero">Início</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#aulas">Aulas</a>
+      <a href="#speak-club">Let's Speak Club</a>
       <a href="#depoimentos">Depoimentos</a>
       <a href="#contato">Contato</a>
     </nav>
+    <div class="nav-cta">
+      <a href="https://wa.me/5511999999999?text=Oi%20Camila!%20Quero%20come%C3%A7ar%20a%20aprender%20ingl%C3%AAs%20com%20voc%C3%AA." class="btn btn-primary" target="_blank" rel="noopener">Quero aprender inglês</a>
+    </div>
+    <button class="burger" id="burgerBtn" aria-label="Abrir menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </header>
 
-<section class="hero">
-  <div class="wrap hero-grid">
+<div class="overlay" id="overlay"></div>
+<nav class="mobile-menu" id="mobileMenu">
+  <span class="menu-close" id="menuClose">&times;</span>
+  <a href="#hero">Início</a>
+  <a href="#sobre">Sobre</a>
+  <a href="#aulas">Aulas</a>
+  <a href="#speak-club">Let's Speak Club</a>
+  <a href="#depoimentos">Depoimentos</a>
+  <a href="#contato">Contato</a>
+  <a href="https://wa.me/5511999999999?text=Oi%20Camila!%20Quero%20come%C3%A7ar%20a%20aprender%20ingl%C3%AAs%20com%20voc%C3%AA." class="btn btn-light" target="_blank" rel="noopener">Quero aprender inglês</a>
+</nav>
+
+<!-- ===================== HERO ===================== -->
+<section class="hero" id="hero">
+  <svg class="star" style="top:12%;left:6%;width:34px" viewBox="0 0 24 24" fill="none"><path d="M12 0L14 10L24 12L14 14L12 24L10 14L0 12L10 10L12 0Z" fill="currentColor"/></svg>
+  <svg class="star" style="bottom:10%;left:14%;width:20px" viewBox="0 0 24 24" fill="none"><path d="M12 0L14 10L24 12L14 14L12 24L10 14L0 12L10 10L12 0Z" fill="currentColor"/></svg>
+  <div class="container hero-grid">
     <div>
-      <div class="eyebrow">Salvador · BA</div>
-      <h1>Unhas feitas<br>para você se <em>sentir</em> incrível.</h1>
-      <p class="lead">Especialista em cutilagem, alongamentos e unhas naturais, com um acabamento delicado e duradouro. Cada detalhe é pensado para que você se sinta ainda mais confiante.</p>
-      <div class="hero-actions">
-        <a class="btn-primary" href="https://api.whatsapp.com/send?phone=5571985563276" target="_blank">📱 Chamar no WhatsApp</a>
-        <a class="btn-ghost" href="#portfolio">Ver trabalhos</a>
+      <span class="eyebrow">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 0L14 10L24 12L14 14L12 24L10 14L0 12L10 10L12 0Z" fill="currentColor"/></svg>
+        aulas online de inglês
+      </span>
+      <h1>Falar inglês não precisa ser <em>complicado.</em></h1>
+      <p class="hero-sub">Aulas online, práticas e personalizadas para você ganhar confiança e finalmente usar o inglês na vida real.</p>
+      <div class="hero-ctas">
+        <a href="#contato" class="btn btn-primary">Agendar uma aula</a>
+        <a href="#speak-club" class="btn btn-outline">Conhecer o Let's Speak Club</a>
       </div>
-      <div class="hero-stats">
-        <div><b>1.241</b><span>atendimentos</span></div>
-        <div><b>8.492</b><span>seguidores</span></div>
-        <div><b>5+</b><span>certificações</span></div>
+      <div class="hero-badge-row">
+        <span class="pill"><span class="dot"></span>Aulas online</span>
+        <span class="pill"><span class="dot"></span>Metodologia prática</span>
+        <span class="pill"><span class="dot"></span>Todos os níveis</span>
+        <span class="pill"><span class="dot"></span>Horários flexíveis</span>
       </div>
+      <div class="hero-hand">✎ Let's make English part of your life.</div>
     </div>
-    <div class="hero-visual">
-<div class="nail-frame">
-    <img src="unha3.jpg" alt="Foto em destaque" class="ph">
-</div>
-
-<div class="nail-frame">
-    <img src="unha1.jpg" alt="Alongamento" class="ph">
-</div>
-
-<div class="nail-frame">
-    <img src="unha2.jpg" alt="Cutilagem" class="ph">
-</div>
-      <div class="badge-float"><span class="badge-dot"></span> Vagas abertas essa semana</div>
+    <div class="hero-photo-wrap">
+      <div class="hero-sticker sticker-1">💬 +200 alunos</div>
+      <div class="polaroid">
+        <div class="tape"></div>
+        <div class="polaroid-photo photo-slot" id="heroPhotoSlot">
+          <img src="ela imagem.png" alt="Camila Lima" onload="this.classList.add('loaded')" onerror="this.remove()">
+          <span class="monogram">CL</span>
+          <span class="upload-hint">📷 coloque aqui a foto "foto-camila-hero.jpg"</span>
+        </div>
+        <div class="polaroid-cap">hi, it's Camila!</div>
+      </div>
+      <div class="hero-sticker sticker-2">⭐ @hi_camilalima</div>
     </div>
   </div>
 </section>
 
-<section class="video-section" id="video">
-  <div class="wrap video-layout">
-    <div class="video-copy">
-      <div class="sec-head" style="margin-bottom:0;">
-        <div class="eyebrow">Vídeo de apresentação</div>
-        <h2>Conheça o atelier em 30 segundos</h2>
-        <p>Um vídeo curto, no formato vertical (igual aos Reels), mostrando o espaço, a técnica e o cuidado com cada cliente — a primeira coisa que quem chega pelo Instagram vai ver.</p>
+<div class="torn to-white"><svg viewBox="0 0 1200 36" preserveAspectRatio="none"><path d="M0 36 L0 12 Q20 0 40 12 T80 12 T120 12 T160 12 T200 12 T240 12 T280 12 T320 12 T360 12 T400 12 T440 12 T480 12 T520 12 T560 12 T600 12 T640 12 T680 12 T720 12 T760 12 T800 12 T840 12 T880 12 T920 12 T960 12 T1000 12 T1040 12 T1080 12 T1120 12 T1160 12 T1200 12 L1200 36 Z" fill="#ffffff"/></svg></div>
+
+<!-- ===================== PROBLEMA ===================== -->
+<section class="section problem reveal" id="problema">
+  <div class="container">
+    <span class="eyebrow">✎ isso soa familiar?</span>
+    <h2 class="section-title">Você estuda inglês, mas ainda trava na hora de falar?</h2>
+    <div class="problem-list">
+      <div class="problem-item">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M12 8v5M12 16h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <p>Entende algumas palavras, mas não consegue responder</p>
       </div>
-      <div class="bio-text">
-        <p>Olá!</p>
-        <p>Sou Tamiires.</p>
-        <p>Apaixonada por unhas e por elevar a autoestima das minhas clientes através de técnicas modernas, materiais de qualidade e muito carinho.</p>
-        <p>Cada atendimento é pensado para que você saia se sentindo ainda mais linda.</p>
+      <div class="problem-item">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M12 8v5M12 16h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <p>Tem medo de cometer erros</p>
+      </div>
+      <div class="problem-item">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M12 8v5M12 16h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <p>Já estudou gramática, mas não consegue conversar</p>
+      </div>
+      <div class="problem-item">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M12 8v5M12 16h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <p>Fica inseguro ao falar com outras pessoas</p>
+      </div>
+      <div class="problem-item">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M12 8v5M12 16h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <p>Não consegue manter uma rotina de estudos</p>
       </div>
     </div>
-    <div class="phone-frame">
-      <div class="phone-screen">
-        <div class="rec-dot"><i></i>PRÉVIA</div>
-        <div class="phone-notch"></div>
-        <div class="play-btn">
-          <div class="circle">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
+    <p class="problem-note">O problema nem sempre é falta de conhecimento. <strong>Muitas vezes, falta prática, direção e confiança.</strong></p>
+  </div>
+</section>
+
+<!-- ===================== SOLUÇÃO ===================== -->
+<section class="section solution reveal">
+  <div class="container">
+    <span class="eyebrow">✎ como eu ensino</span>
+    <h2 class="section-title">Aqui, você aprende inglês de forma leve, organizada e prática.</h2>
+    <div class="solution-grid">
+      <div class="solution-card">
+        <div class="solution-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="currentColor" stroke-width="2"/></svg></div>
+        <h3>Conversação desde o início</h3>
+        <p>Você começa a falar inglês desde a primeira aula, no seu ritmo.</p>
+      </div>
+      <div class="solution-card">
+        <div class="solution-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" stroke="currentColor" stroke-width="2"/></svg></div>
+        <h3>Aulas adaptadas ao seu nível</h3>
+        <p>Nada de conteúdo genérico: o plano é construído para onde você está agora.</p>
+      </div>
+      <div class="solution-card">
+        <div class="solution-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 20l9-5-9-5-9 5 9 5z" stroke="currentColor" stroke-width="2"/><path d="M3 15v4M21 15v4" stroke="currentColor" stroke-width="2"/></svg></div>
+        <h3>Material personalizado</h3>
+        <p>Vocabulário e temas escolhidos de acordo com o seu objetivo real.</p>
+      </div>
+      <div class="solution-card">
+        <div class="solution-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M20 21a8 8 0 1 0-16 0" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2"/></svg></div>
+        <h3>Acompanhamento próximo</h3>
+        <p>Feedback constante para você ver sua evolução acontecendo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SOBRE ===================== -->
+<section class="section about reveal" id="sobre">
+  <div class="container about-grid">
+    <div class="about-photo photo-slot" id="aboutPhotoSlot">
+      <img src="quemelae.jpg" alt="Camila Lima" onload="this.classList.add('loaded')" onerror="this.remove()">
+      <span class="monogram">CL</span>
+      <span class="upload-hint">📷 coloque aqui a foto "foto-camila-sobre.jpg"</span>
+      <div class="about-badge"><b>+200</b><span>alunos ensinados</span></div>
+    </div>
+    <div class="about-text">
+      <span class="eyebrow">✎ hi, eu sou a Camila!</span>
+      <h2 class="section-title" style="margin-bottom:18px;">Hi, eu sou a Camila!</h2>
+      <p>Sou professora de inglês e acredito que aprender um novo idioma pode ser uma experiência leve, criativa e transformadora. As minhas aulas são preparadas de acordo com os objetivos, dificuldades e rotina de cada aluno.</p>
+      <p>Formação em Letras — Inglês, certificações internacionais em ensino de idiomas e anos de experiência ajudando jovens e adultos a perderem o medo de falar.</p>
+      <div class="about-stats">
+        <div class="stat"><b>+200</b><span>alunos</span></div>
+        <div class="stat"><b>+3.000</b><span>aulas realizadas</span></div>
+        <div class="stat"><b>5+</b><span>anos de experiência</span></div>
+        <div class="stat"><b>4.9★</b><span>avaliação média</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="torn"><svg viewBox="0 0 1200 36" preserveAspectRatio="none"><path d="M0 0 L0 24 Q20 36 40 24 T80 24 T120 24 T160 24 T200 24 T240 24 T280 24 T320 24 T360 24 T400 24 T440 24 T480 24 T520 24 T560 24 T600 24 T640 24 T680 24 T720 24 T760 24 T800 24 T840 24 T880 24 T920 24 T960 24 T1000 24 T1040 24 T1080 24 T1120 24 T1160 24 T1200 24 L1200 0 Z" fill="#F8F2E7"/></svg></div>
+
+<!-- ===================== MODALIDADES ===================== -->
+<section class="section modalities reveal" id="aulas">
+  <div class="container">
+    <span class="eyebrow">✎ modalidades</span>
+    <h2 class="section-title">Escolha o formato que combina com o seu momento</h2>
+    <div class="modalities-grid">
+      <div class="mod-card">
+        <span class="mod-tag">para você</span>
+        <h3>Aulas individuais</h3>
+        <ul>
+          <li>Plano personalizado</li>
+          <li>Foco nas dificuldades do aluno</li>
+          <li>Horários combinados</li>
+          <li>Acompanhamento individual</li>
+        </ul>
+        <a class="btn btn-outline" target="_blank" rel="noopener" href="https://wa.me/5511999999999?text=Oi%20Camila!%20Quero%20saber%20mais%20sobre%20as%20aulas%20individuais.">Quero saber mais</a>
+      </div>
+      <div class="mod-card">
+        <span class="mod-tag">para falar</span>
+        <h3>Conversação</h3>
+        <ul>
+          <li>Prática de situações reais</li>
+          <li>Desenvolvimento da confiança</li>
+          <li>Correção e orientação</li>
+          <li>Vocabulário útil</li>
+        </ul>
+        <a class="btn btn-outline" target="_blank" rel="noopener" href="https://wa.me/5511999999999?text=Oi%20Camila!%20Quero%20saber%20mais%20sobre%20as%20aulas%20de%20conversa%C3%A7%C3%A3o.">Quero saber mais</a>
+      </div>
+      <div class="mod-card">
+        <span class="mod-tag">para viajar</span>
+        <h3>Inglês para viagens</h3>
+        <ul>
+          <li>Aeroporto</li>
+          <li>Hotel</li>
+          <li>Restaurantes</li>
+          <li>Situações do dia a dia</li>
+        </ul>
+        <a class="btn btn-outline" target="_blank" rel="noopener" href="https://wa.me/5511999999999?text=Oi%20Camila!%20Quero%20saber%20mais%20sobre%20o%20ingl%C3%AAs%20para%20viagens.">Quero saber mais</a>
+      </div>
+      <div class="mod-card">
+        <span class="mod-tag">para começar</span>
+        <h3>Inglês para iniciantes</h3>
+        <ul>
+          <li>Base estruturada</li>
+          <li>Vocabulário essencial</li>
+          <li>Explicações simples</li>
+          <li>Evolução gradual</li>
+        </ul>
+        <a class="btn btn-outline" target="_blank" rel="noopener" href="https://wa.me/5511999999999?text=Oi%20Camila!%20Quero%20saber%20mais%20sobre%20o%20ingl%C3%AAs%20para%20iniciantes.">Quero saber mais</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== LET'S SPEAK CLUB ===================== -->
+<section class="section speakclub reveal" id="speak-club">
+  <div class="container speakclub-inner">
+    <span class="eyebrow">✎ o espaço favorito dos alunos</span>
+    <h2>Let's Speak Club</h2>
+    <p class="speakclub-sub">Um espaço para praticar inglês, conversar e ganhar confiança sem medo de errar.</p>
+    <div class="speakclub-feats">
+      <div class="feat-card">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="18" rx="2" stroke="currentColor" stroke-width="2"/><path d="M16 2v4M8 2v4M3 10h18" stroke="currentColor" stroke-width="2"/></svg>
+        <p>Dois encontros por semana</p>
+      </div>
+      <div class="feat-card">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M12 6v6l4 2" stroke="currentColor" stroke-width="2"/></svg>
+        <p>Aulas de 30 minutos</p>
+      </div>
+      <div class="feat-card">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" stroke-width="2"/></svg>
+        <p>Conversação em grupo reduzido</p>
+      </div>
+    </div>
+    <p class="speakclub-highlight">Mais prática. Menos medo. Mais confiança.</p>
+    <p style="color:rgba(248,242,231,0.75);max-width:520px;margin:0 auto 32px;font-size:0.95rem;">Ambiente leve e acolhedor, indicado para quem já possui uma base de inglês.</p>
+    <a href="https://wa.me/5511999999999?text=Oi%20Camila!%20Quero%20participar%20do%20Let's%20Speak%20Club." target="_blank" rel="noopener" class="btn btn-cream">Quero participar do clube</a>
+  </div>
+</section>
+
+<div class="torn to-white"><svg viewBox="0 0 1200 36" preserveAspectRatio="none"><path d="M0 36 L0 12 Q20 0 40 12 T80 12 T120 12 T160 12 T200 12 T240 12 T280 12 T320 12 T360 12 T400 12 T440 12 T480 12 T520 12 T560 12 T600 12 T640 12 T680 12 T720 12 T760 12 T800 12 T840 12 T880 12 T920 12 T960 12 T1000 12 T1040 12 T1080 12 T1120 12 T1160 12 T1200 12 L1200 36 Z" fill="#ffffff"/></svg></div>
+
+<!-- ===================== COMO FUNCIONA ===================== -->
+<section class="section how reveal" style="background:var(--white);">
+  <div class="container">
+    <span class="eyebrow">✎ o caminho até a fluência</span>
+    <h2 class="section-title">Como funciona</h2>
+    <div class="steps">
+      <div class="steps-line"></div>
+      <div class="steps-grid">
+        <div class="step">
+          <div class="step-num">1</div>
+          <h4>Você conta os seus objetivos</h4>
+          <p>Uma conversa inicial para entender o que você quer alcançar com o inglês.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <h4>Identificação do seu nível</h4>
+          <p>A Camila avalia seu ponto de partida sem julgamentos.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <h4>Plano personalizado</h4>
+          <p>É criado um plano de estudo feito sob medida para você.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <h4>Aulas com acompanhamento</h4>
+          <p>As aulas começam com acompanhamento contínuo da sua evolução.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== DEPOIMENTOS ===================== -->
+<section class="section testimonials reveal" id="depoimentos">
+  <div class="container">
+    <span class="demo-flag">⚠ conteúdo demonstrativo — substituir por depoimentos reais</span>
+    <h2 class="section-title">O que os meus alunos dizem</h2>
+    <div class="test-grid">
+      <div class="test-card">
+        <p class="test-quote">"Eu tinha muito medo de errar. Hoje já converso em inglês sem travar tanto — sinto que evoluí muito rápido."</p>
+        <div class="test-person">
+          <div class="test-avatar">J</div>
+          <div>
+            <div class="test-name">Juliana R.</div>
+            <div class="test-meta">Objetivo: viagens • 6 meses de aulas</div>
           </div>
         </div>
-        <div class="phone-caption">
-          <b>Tamiires Nails Designer</b>
-          <span>Salvador, BA · vídeo de apresentação</span>
+      </div>
+      <div class="test-card">
+        <p class="test-quote">"As aulas são leves e organizadas ao mesmo tempo. Consigo ver meu progresso de verdade a cada semana."</p>
+        <div class="test-person">
+          <div class="test-avatar">M</div>
+          <div>
+            <div class="test-name">Marcelo T.</div>
+            <div class="test-meta">Objetivo: trabalho • 1 ano de aulas</div>
+          </div>
+        </div>
+      </div>
+      <div class="test-card">
+        <p class="test-quote">"O Let's Speak Club mudou minha confiança. Hoje eu falo sem medo de errar na frente dos outros."</p>
+        <div class="test-person">
+          <div class="test-avatar">B</div>
+          <div>
+            <div class="test-name">Beatriz L.</div>
+            <div class="test-meta">Objetivo: conversação • 8 meses de aulas</div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="portfolio">
-  <div class="wrap">
-    <div class="sec-head">
-      <div class="eyebrow">Portfólio</div>
-      <h2>Trabalhos recentes</h2>
-      <p>Uma seleção do que sai da cadeira dela toda semana — do clássico francesinho ao nail art autoral.</p>
-    </div>
-    <div class="portfolio-grid">
-      <div class="nail-frame">
-        <img src="unha5.jpg" alt="Foto em destaque" class="ph">
+<!-- ===================== PLANOS ===================== -->
+<section class="section plans reveal" style="background:var(--white);">
+  <div class="container">
+    <span class="eyebrow">✎ planos demonstrativos</span>
+    <h2 class="section-title">Escolha a forma de aprender que combina com você</h2>
+    <div class="plans-grid">
+      <div class="plan-card">
+        <h3>Aula avulsa</h3>
+        <p class="plan-price">Consulte valores e disponibilidade</p>
+        <ul>
+          <li>Ideal para experimentar</li>
+          <li>Flexibilidade total</li>
+          <li>Sem compromisso mensal</li>
+        </ul>
+        <a href="https://wa.me/5511999999999?text=Oi%20Camila!%20Quero%20saber%20mais%20sobre%20a%20aula%20avulsa." target="_blank" rel="noopener" class="btn btn-outline">Quero saber mais</a>
       </div>
-      <div class="nail-frame">
-        <img src="unha7.jpg" alt="Alongamento" class="ph">
+      <div class="plan-card featured">
+        <span class="plan-badge">MAIS RECOMENDADO</span>
+        <h3>Plano individual</h3>
+        <p class="plan-price">Consulte valores e disponibilidade</p>
+        <ul>
+          <li>Plano de estudo personalizado</li>
+          <li>Acompanhamento contínuo</li>
+          <li>Material sob medida</li>
+          <li>Horários flexíveis</li>
+        </ul>
+        <a href="https://wa.me/5511999999999?text=Oi%20Camila!%20Quero%20saber%20mais%20sobre%20o%20plano%20individual." target="_blank" rel="noopener" class="btn btn-cream">Quero saber mais</a>
       </div>
-      <div class="nail-frame">
-        <img src="unha4.jpg" alt="Cutilagem" class="ph">
-      </div>
-      <div class="nail-frame">
-        <img src="unha3.jpg" alt="Foto em destaque" class="ph">
-      </div>
-      <div class="nail-frame">
-        <img src="unha6.jpg" alt="Alongamento" class="ph">
-      </div>
-      <div class="nail-frame">
-        <img src="ela.jpg" alt="Cutilagem" class="ph">
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="services" id="servicos">
-  <div class="wrap">
-    <div class="sec-head">
-      <div class="eyebrow">Serviços</div>
-      <h2>Tratamentos com acabamento impecável</h2>
-      <p>Cada serviço é pensado para realçar sua beleza com técnica, conforto e muito cuidado.</p>
-    </div>
-    <div class="services-grid">
-      <div class="service-card">
-        <div class="service-icon">💎</div>
-        <h3>Manicure de luxo R$100,00</h3>
-        <p>Acabamento sofisticado com atenção máxima aos detalhes.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">✂️</div>
-        <h3>Cutilagem premium R$50,00</h3>
-        <p>Precisão delicada para unhas saudáveis e perfeita aderência.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">💅</div>
-        <h3>Alongamento designer R$80,00</h3>
-        <p>Modelos personalizados: amêndoa, stiletto, ballerina e mais.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">🌿</div>
-        <h3>Unhas naturais R$60,00</h3>
-        <p>Tratamento de fortalecimento com acabamento suave e natural.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">✨</div>
-        <h3>Atendimento exclusivo</h3>
-        <p>Consultoria personalizada para cada estilo e ocasião.</p>
+      <div class="plan-card">
+        <h3>Let's Speak Club</h3>
+        <p class="plan-price">Consulte valores e disponibilidade</p>
+        <ul>
+          <li>2 encontros por semana</li>
+          <li>Conversação em grupo reduzido</li>
+          <li>Ambiente leve e acolhedor</li>
+        </ul>
+        <a href="https://wa.me/5511999999999?text=Oi%20Camila!%20Quero%20saber%20mais%20sobre%20o%20Let's%20Speak%20Club." target="_blank" rel="noopener" class="btn btn-outline">Quero saber mais</a>
       </div>
     </div>
   </div>
 </section>
 
-<section id="depoimentos">
-  <div class="wrap">
-    <div class="sec-head">
-      <div class="eyebrow">Depoimentos</div>
-      <h2>Quem já sentou na cadeira</h2>
-    </div>
-    <div class="testi-grid">
-      <div class="testi-card">
-        <div class="stars">★★★★★</div>
-        <p>"Minhas unhas nunca duraram tanto. A cutilagem é outro nível — recomendo de olhos fechados."</p>
-        <div class="testi-who"><div class="testi-avatar"></div><div><b>Camila R.</b><span>Cliente fiel</span></div></div>
+<!-- ===================== FAQ ===================== -->
+<section class="section faq reveal">
+  <div class="container">
+    <span class="eyebrow">✎ perguntas frequentes</span>
+    <h2 class="section-title">Ainda com dúvidas?</h2>
+    <div class="faq-list" id="faqList">
+      <div class="faq-item">
+        <button class="faq-q">As aulas são online?<svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+        <div class="faq-a"><div class="faq-a-inner">Sim! Todas as aulas acontecem online, de forma prática e flexível, direto de onde você estiver.</div></div>
       </div>
-      <div class="testi-card">
-        <div class="stars">★★★★★</div>
-        <p>"Atendimento cuidadoso do início ao fim, e o resultado sempre supera o combinado."</p>
-        <div class="testi-who"><div class="testi-avatar"></div><div><b>Beatriz S.</b><span>Cliente fiel</span></div></div>
+      <div class="faq-item">
+        <button class="faq-q">Preciso saber inglês antes de começar?<svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+        <div class="faq-a"><div class="faq-a-inner">Não. As aulas são adaptadas para todos os níveis, incluindo quem está começando do zero.</div></div>
       </div>
-      <div class="testi-card">
-        <div class="stars">★★★★★</div>
-        <p>"Ambiente impecável, pontualidade e um capricho absurdo nos detalhes do nail art."</p>
-        <div class="testi-who"><div class="testi-avatar"></div><div><b>Juliana M.</b><span>Cliente fiel</span></div></div>
+      <div class="faq-item">
+        <button class="faq-q">Como funciona a aula experimental?<svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+        <div class="faq-a"><div class="faq-a-inner">Você conversa com a Camila sobre seus objetivos e nível, e a partir disso é montado um plano de estudo personalizado.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">As aulas são individuais ou em grupo?<svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+        <div class="faq-a"><div class="faq-a-inner">As aulas particulares são individuais. O Let's Speak Club acontece em grupo reduzido, focado em conversação.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">O material está incluído?<svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+        <div class="faq-a"><div class="faq-a-inner">Sim, o material é preparado especialmente para o seu plano de estudo, sem custo adicional.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Posso escolher os horários?<svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+        <div class="faq-a"><div class="faq-a-inner">Sim, os horários são combinados de acordo com a sua disponibilidade e a da Camila.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Como funciona o Let's Speak Club?<svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+        <div class="faq-a"><div class="faq-a-inner">São dois encontros semanais de 30 minutos, em grupo reduzido, focados em conversação para quem já tem uma base de inglês.</div></div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="insta">
-  <div class="wrap">
-    <div class="sec-head insta-head" style="margin-bottom:0;">
-      <div>
-        <div class="eyebrow">Instagram</div>
-        <h2 style="color:#fff;">@tamiiresnailsdesigner</h2>
-      </div>
-      <a class="insta-follow" href="https://instagram.com/tamiiresnailsdesigner" target="_blank">📷 Seguir no Instagram</a>
-    </div>
-    <div class="insta-grid">
-      <div class="cell"><div class="ph ph1" style="width:100%;height:100%;"></div></div>
-      <div class="cell"><div class="ph ph2" style="width:100%;height:100%;"></div></div>
-      <div class="cell"><div class="ph ph3" style="width:100%;height:100%;"></div></div>
-      <div class="cell"><div class="ph ph4" style="width:100%;height:100%;"></div></div>
-      <div class="cell"><div class="ph ph2" style="width:100%;height:100%;"></div></div>
-      <div class="cell"><div class="ph ph3" style="width:100%;height:100%;"></div></div>
+<!-- ===================== CTA FINAL ===================== -->
+<section class="section" style="padding-top:0;">
+  <div class="container">
+    <div class="final-cta reveal">
+      <svg class="star" style="top:14%;left:6%;width:26px;color:rgba(255,255,255,0.6)" viewBox="0 0 24 24" fill="none"><path d="M12 0L14 10L24 12L14 14L12 24L10 14L0 12L10 10L12 0Z" fill="currentColor"/></svg>
+      <h2>Seu inglês pode sair do papel e fazer parte da sua vida.</h2>
+      <p>Comece com uma aula personalizada e descubra uma forma mais leve e prática de aprender.</p>
+      <a href="https://wa.me/5511999999999?text=Oi%20Camila!%20Quero%20come%C3%A7ar%20agora%20as%20minhas%20aulas%20de%20ingl%C3%AAs." target="_blank" rel="noopener" class="btn btn-cream">Quero começar agora</a>
     </div>
   </div>
 </section>
 
-<section id="contato">
-  <div class="wrap contact-grid">
-    <div>
-      <div class="eyebrow">Contato</div>
-      <h2 style="margin-top:14px;">Vamos criar sua manicure dos sonhos?</h2>
-      <p style="color:var(--espresso-soft); margin-top:14px; font-size:15px;">Respondo rápido pelo WhatsApp e garanto um atendimento carinhoso. Envie sua mensagem e receba opções de horários exclusivos.</p>
-
-      <div class="contact-info-item">
-        <div class="ic">📍</div>
-        <div><b>Localização</b><span>Salvador, BA</span></div>
+<!-- ===================== CONTATO ===================== -->
+<section class="section contact reveal" id="contato">
+  <div class="container">
+    <span class="eyebrow">✎ vamos conversar?</span>
+    <h2 class="section-title">Fale com a Camila</h2>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <a class="contact-link" href="https://wa.me/5511999999999" target="_blank" rel="noopener">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="currentColor" stroke-width="2"/></svg>
+          <div>WhatsApp<span>Resposta rápida</span></div>
+        </a>
+        <a class="contact-link" href="https://instagram.com/hi_camilalima" target="_blank" rel="noopener">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/></svg>
+          <div>@hi_camilalima<span>Instagram</span></div>
+        </a>
+        <a class="contact-link" href="mailto:contato@camilalima.com.br">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="2" y="4" width="20" height="16" rx="2" stroke="currentColor" stroke-width="2"/><path d="M2 6l10 7 10-7" stroke="currentColor" stroke-width="2"/></svg>
+          <div>contato@camilalima.com.br<span>E-mail</span></div>
+        </a>
       </div>
-      <div class="contact-info-item">
-        <div class="ic">📱</div>
-        <div><b>WhatsApp</b><span>(55) 71 98556-3276</span></div>
-      </div>
-      <div class="contact-info-item">
-        <div class="ic">📷</div>
-        <div><b>Instagram</b><span>@tamiiresnailsdesigner</span></div>
+      <div class="form-card">
+        <div class="form-success" id="formSuccess">✓ Mensagem enviada! A Camila vai te responder em breve.</div>
+        <form id="contactForm" novalidate>
+          <div class="form-row">
+            <div class="field" data-field="nome">
+              <label for="nome">Nome</label>
+              <input type="text" id="nome" name="nome" placeholder="Seu nome completo">
+              <span class="error-msg">Por favor, preencha seu nome.</span>
+            </div>
+            <div class="field" data-field="telefone">
+              <label for="telefone">Telefone</label>
+              <input type="tel" id="telefone" name="telefone" placeholder="(11) 99999-9999">
+              <span class="error-msg">Informe um telefone válido.</span>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="field" data-field="nivel">
+              <label for="nivel">Nível de inglês</label>
+              <select id="nivel" name="nivel">
+                <option value="">Selecione</option>
+                <option>Iniciante</option>
+                <option>Básico</option>
+                <option>Intermediário</option>
+                <option>Avançado</option>
+              </select>
+              <span class="error-msg">Selecione seu nível.</span>
+            </div>
+            <div class="field" data-field="modalidade">
+              <label for="modalidade">Modalidade de interesse</label>
+              <select id="modalidade" name="modalidade">
+                <option value="">Selecione</option>
+                <option>Aulas individuais</option>
+                <option>Conversação</option>
+                <option>Inglês para viagens</option>
+                <option>Inglês para iniciantes</option>
+                <option>Let's Speak Club</option>
+              </select>
+              <span class="error-msg">Selecione uma modalidade.</span>
+            </div>
+          </div>
+          <div class="field" data-field="objetivo">
+            <label for="objetivo">Objetivo</label>
+            <input type="text" id="objetivo" name="objetivo" placeholder="Ex: viagem, trabalho, conversação...">
+            <span class="error-msg">Conte qual é o seu objetivo.</span>
+          </div>
+          <div class="field" data-field="disponibilidade">
+            <label for="disponibilidade">Disponibilidade</label>
+            <input type="text" id="disponibilidade" name="disponibilidade" placeholder="Ex: noites, fins de semana...">
+            <span class="error-msg">Informe sua disponibilidade.</span>
+          </div>
+          <div class="field" data-field="mensagem">
+            <label for="mensagem">Mensagem</label>
+            <textarea id="mensagem" name="mensagem" rows="3" placeholder="Conte um pouco mais sobre o que você precisa"></textarea>
+            <span class="error-msg">Escreva uma mensagem.</span>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Enviar mensagem</button>
+        </form>
       </div>
     </div>
-
-    <form onsubmit="return false;">
-      <div class="form-row">
-        <div>
-          <label for="nome">Nome</label>
-          <input id="nome" type="text" placeholder="Seu nome">
-        </div>
-        <div>
-          <label for="tel">Telefone</label>
-          <input id="tel" type="tel" placeholder="(71) 90000-0000">
-        </div>
-      </div>
-      <label for="servico">Serviço de interesse</label>
-      <select id="servico">
-        <option>Alongamento</option>
-        <option>Cutilagem</option>
-        <option>Unhas naturais</option>
-        <option>Unhas masculinas</option>
-        <option>Outro</option>
-      </select>
-      <label for="msg">Mensagem</label>
-      <textarea id="msg" placeholder="Conte o que você tem em mente..."></textarea>
-      <button class="form-submit" type="submit">Enviar mensagem</button>
-    </form>
   </div>
 </section>
 
-<a class="wa-float" href="https://api.whatsapp.com/send?phone=5571985563276" target="_blank" aria-label="WhatsApp">
-  <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.39 1.26 4.81L2 22l5.42-1.34c1.37.73 2.93 1.15 4.62 1.15h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.75 14.06c-.24.68-1.4 1.3-1.93 1.36-.5.06-1.05.09-3.02-.63-2.55-.96-4.19-3.58-4.32-3.75-.13-.17-1.03-1.37-1.03-2.62s.66-1.86.89-2.11c.24-.25.51-.31.68-.31.17 0 .34 0 .49.01.16.01.37-.06.58.44.24.55.79 1.9.86 2.04.07.14.11.31.02.5-.09.19-.14.31-.27.47-.14.16-.29.36-.41.48-.14.14-.28.29-.12.57.16.28.71 1.17 1.52 1.89 1.05.93 1.93 1.22 2.21 1.36.28.14.44.12.61-.07.17-.19.71-.83.9-1.11.19-.28.38-.24.63-.14.26.09 1.61.76 1.89.9.28.14.46.21.53.33.07.12.07.68-.17 1.36z"/></svg>
-</a>
-
+<!-- ===================== FOOTER ===================== -->
 <footer>
-  <div class="wrap">
-    <div class="footer-top">
-      <div>
-        <div class="footer-logo">tamiires<span style="opacity:0.6;">nails</span></div>
-        <p style="font-size:13px; max-width:280px;">A braba das unhas 💅🏾 — atendimento em Salvador, BA.</p>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="logo-name">Camila Lima</span>
+        <p>English Teacher — aulas de inglês online, práticas e personalizadas para jovens e adultos que querem falar com confiança.</p>
       </div>
-      <div class="foot-social">
-        <a href="https://instagram.com/tamiiresnailsdesigner" target="_blank">📷</a>
-        <a href="https://api.whatsapp.com/send?phone=5571985563276" target="_blank">📱</a>
+      <div class="footer-col">
+        <h5>Links rápidos</h5>
+        <a href="#sobre">Sobre</a>
+        <a href="#aulas">Aulas</a>
+        <a href="#speak-club">Let's Speak Club</a>
+        <a href="#depoimentos">Depoimentos</a>
+        <a href="#contato">Contato</a>
+      </div>
+      <div class="footer-col">
+        <h5>Contato</h5>
+        <a href="https://instagram.com/hi_camilalima" target="_blank" rel="noopener">Instagram · @hi_camilalima</a>
+        <a href="https://wa.me/5511999999999" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="mailto:contato@camilalima.com.br">E-mail</a>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 Tamiires Nails Designer</span>
-      <span>Salvador, BA</span>
+      <span>© 2026 Camila Lima. Todos os direitos reservados.</span>
+      <span>Desenvolvido por TechSpace</span>
     </div>
-    <div class="disclaimer">Conceito desenvolvido por TechSpace – Prévia não funcional.</div>
   </div>
 </footer>
 
+<div class="mobile-cta-bar">
+  <a class="cta-whats" href="https://wa.me/5511999999999?text=Oi%20Camila!%20Quero%20come%C3%A7ar%20a%20aprender%20ingl%C3%AAs%20com%20voc%C3%AA." target="_blank" rel="noopener">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="currentColor" stroke-width="2"/></svg>
+    WhatsApp
+  </a>
+  <a class="cta-agendar" href="#contato">Agendar aula</a>
+</div>
+
 <script>
-  const menuBtn = document.getElementById('menuBtn');
-  const mobileMenu = document.getElementById('mobileMenu');
-  menuBtn.addEventListener('click', () => {
-    const isOpen = mobileMenu.classList.toggle('open');
-    menuBtn.setAttribute('aria-expanded', isOpen);
+// ---------- Header scroll state ----------
+const header = document.getElementById('header');
+window.addEventListener('scroll', () => {
+  header.classList.toggle('scrolled', window.scrollY > 40);
+});
+
+// ---------- Mobile menu ----------
+const burgerBtn = document.getElementById('burgerBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+const overlay = document.getElementById('overlay');
+const menuClose = document.getElementById('menuClose');
+
+function openMenu(){ mobileMenu.classList.add('open'); overlay.classList.add('open'); }
+function closeMenu(){ mobileMenu.classList.remove('open'); overlay.classList.remove('open'); }
+
+burgerBtn.addEventListener('click', openMenu);
+menuClose.addEventListener('click', closeMenu);
+overlay.addEventListener('click', closeMenu);
+mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+
+// ---------- Scroll reveal ----------
+const revealEls = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('in');
+      io.unobserve(entry.target);
+    }
   });
-  mobileMenu.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      mobileMenu.classList.remove('open');
-      menuBtn.setAttribute('aria-expanded', 'false');
+}, { threshold: 0.12 });
+revealEls.forEach(el => io.observe(el));
+
+// ---------- FAQ accordion ----------
+document.querySelectorAll('.faq-item').forEach(item => {
+  const q = item.querySelector('.faq-q');
+  const a = item.querySelector('.faq-a');
+  q.addEventListener('click', () => {
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => {
+      i.classList.remove('open');
+      i.querySelector('.faq-a').style.maxHeight = null;
     });
+    if (!isOpen) {
+      item.classList.add('open');
+      a.style.maxHeight = a.scrollHeight + 'px';
+    }
   });
+});
+
+// ---------- Contact form validation ----------
+const form = document.getElementById('contactForm');
+const formSuccess = document.getElementById('formSuccess');
+
+form.addEventListener('submit', function(e){
+  e.preventDefault();
+  let valid = true;
+  const fields = form.querySelectorAll('.field');
+  fields.forEach(field => {
+    const input = field.querySelector('input, select, textarea');
+    field.classList.remove('error');
+    if (!input.value || !input.value.trim()) {
+      field.classList.add('error');
+      valid = false;
+    }
+  });
+
+  const telefoneField = form.querySelector('[data-field="telefone"]');
+  const telefoneInput = telefoneField.querySelector('input');
+  if (telefoneInput.value && telefoneInput.value.replace(/\D/g,'').length < 8) {
+    telefoneField.classList.add('error');
+    valid = false;
+  }
+
+  if (valid) {
+    formSuccess.classList.add('show');
+    form.reset();
+    setTimeout(() => formSuccess.classList.remove('show'), 6000);
+  } else {
+    formSuccess.classList.remove('show');
+  }
+});
 </script>
 </body>
 </html>
