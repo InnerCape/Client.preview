@@ -3,1179 +3,1105 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Camila Lima — English Teacher | Aulas de Inglês Online</title>
-<meta name="description" content="Aulas de inglês online com Camila Lima. Metodologia prática, conversação real e o Let's Speak Club para você finalmente falar inglês com confiança.">
+<title>Casa Aurora — Restaurante Brasileiro Contemporâneo | São Paulo</title>
+<meta name="description" content="Casa Aurora — cozinha brasileira contemporânea, coquetéis autorais e uma mesa feita para compartilhar. Vila Madalena, São Paulo.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-/* ===================== TOKENS ===================== */
-:root{
-  --navy:#1B2A4A;
-  --navy-deep:#131F38;
-  --lilac:#CFC3EE;
-  --lilac-soft:#E9E2FA;
-  --purple:#8A78C0;
-  --cream:#F8F2E7;
-  --white:#FFFFFF;
-  --ink:#241C3D;
-  --green:#A9C98D;
-  --yellow:#F0C55C;
-  --line: rgba(36,28,61,0.14);
+  :root{
+    --bg: #15120E;
+    --bg-panel: #1C1712;
+    --bg-panel-2: #211B14;
+    --cream: #F4ECDC;
+    --cream-dim: #C9BEA9;
+    --cream-faint: #8C8474;
+    --terracotta: #C1613B;
+    --terracotta-bright: #D97C52;
+    --gold: #CD9A50;
+    --line: rgba(244,236,220,0.12);
+    --line-bright: rgba(244,236,220,0.22);
+    --shadow: 0 30px 60px -30px rgba(0,0,0,0.6);
+    --ease: cubic-bezier(.22,.61,.36,1);
+  }
 
-  --display: "Fraunces", serif;
-  --body: "Plus Jakarta Sans", sans-serif;
-  --hand: "Caveat", cursive;
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--cream);
+    font-family:'Sora', sans-serif;
+    font-weight:400;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{display:block;max-width:100%;}
+  a{color:inherit;text-decoration:none;}
+  ul{list-style:none;}
+  button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit;}
 
-  --radius: 22px;
-  --container: 1160px;
-}
+  h1,h2,h3,h4{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    letter-spacing:-0.01em;
+    color:var(--cream);
+  }
+  .italic{font-style:italic;font-weight:400;color:var(--terracotta-bright);}
 
-*,*::before,*::after{box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{
-  margin:0;
-  font-family:var(--body);
-  color:var(--ink);
-  background:var(--cream);
-  overflow-x:hidden;
-  -webkit-font-smoothing:antialiased;
-}
-img{max-width:100%;display:block;}
-a{color:inherit;text-decoration:none;}
-ul{margin:0;padding:0;list-style:none;}
-button{font-family:inherit;cursor:pointer;border:none;background:none;}
-h1,h2,h3,h4{font-family:var(--display);margin:0;}
-p{margin:0;}
-.container{max-width:var(--container);margin:0 auto;padding:0 24px;}
-.eyebrow{
-  font-family:var(--hand);
-  font-size:1.35rem;
-  color:var(--purple);
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  margin-bottom:10px;
-}
-.eyebrow svg{flex-shrink:0;}
-.section{padding:96px 0;position:relative;}
-.section-title{
-  font-size:clamp(1.9rem,4vw,2.7rem);
-  font-weight:700;
-  line-height:1.15;
-  letter-spacing:-0.01em;
-  max-width:720px;
-}
-.section-sub{
-  font-size:1.05rem;
-  color:#4A4260;
-  max-width:560px;
-  margin-top:14px;
-  line-height:1.6;
-}
-.btn{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  padding:16px 28px;
-  border-radius:100px;
-  font-weight:700;
-  font-size:0.98rem;
-  transition:transform .25s ease, box-shadow .25s ease;
-}
-.btn-primary{
-  background:var(--navy);
-  color:var(--cream);
-  box-shadow:0 8px 0 0 var(--navy-deep);
-}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 0 0 var(--navy-deep);}
-.btn-primary:active{transform:translateY(4px);box-shadow:0 4px 0 0 var(--navy-deep);}
-.btn-outline{
-  border:2px solid var(--navy);
-  color:var(--navy);
-  background:transparent;
-}
-.btn-outline:hover{background:var(--navy);color:var(--cream);}
-.btn-light{
-  background:var(--lilac);
-  color:var(--navy);
-}
-.btn-light:hover{background:var(--white);}
-.btn-cream{background:var(--cream);color:var(--navy);box-shadow:0 8px 0 0 rgba(0,0,0,0.15);}
-.btn-cream:hover{transform:translateY(-2px);}
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    font-size:12.5px;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    color:var(--terracotta-bright);
+    font-weight:600;
+  }
+  .eyebrow::before{
+    content:'';
+    width:22px;height:1px;
+    background:var(--terracotta-bright);
+    display:inline-block;
+  }
 
-.scribble-underline{position:relative;white-space:normal;}
-.scribble-underline svg{
-  position:absolute;left:0;bottom:-10px;width:100%;height:14px;
-}
+  .wrap{
+    max-width:1240px;
+    margin:0 auto;
+    padding:0 32px;
+  }
 
-/* ===================== HEADER ===================== */
-header{
-  position:fixed;top:0;left:0;right:0;
-  z-index:1000;
-  background:rgba(248,242,231,0.0);
-  transition:background .3s ease, box-shadow .3s ease, padding .3s ease;
-  padding:22px 0;
-}
-header.scrolled{
-  background:rgba(248,242,231,0.92);
-  backdrop-filter:blur(10px);
-  box-shadow:0 4px 20px rgba(27,42,74,0.08);
-  padding:14px 0;
-}
-.header-inner{
-  display:flex;align-items:center;justify-content:space-between;
-}
-.logo{
-  display:flex;flex-direction:column;line-height:1;
-}
-.logo-name{font-family:var(--display);font-weight:700;font-size:1.4rem;color:var(--navy);}
-.logo-tag{font-family:var(--hand);font-size:1.05rem;color:var(--purple);margin-top:2px;}
-.nav-desktop{display:flex;align-items:center;gap:34px;}
-.nav-desktop a{font-weight:600;font-size:0.94rem;color:var(--ink);position:relative;padding:4px 0;}
-.nav-desktop a::after{
-  content:"";position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--purple);
-  transition:width .25s ease;
-}
-.nav-desktop a:hover::after{width:100%;}
-.nav-cta{display:flex;align-items:center;gap:16px;}
-.nav-cta .btn-primary{padding:12px 22px;font-size:0.9rem;}
-.burger{
-  display:none;flex-direction:column;gap:5px;width:30px;padding:6px 0;
-}
-.burger span{height:2px;background:var(--navy);border-radius:2px;transition:.3s;}
-.mobile-menu{
-  position:fixed;top:0;right:-100%;width:82%;max-width:340px;height:100vh;
-  background:var(--navy);z-index:1100;transition:right .35s ease;
-  padding:32px 26px;display:flex;flex-direction:column;gap:6px;
-}
-.mobile-menu.open{right:0;}
-.mobile-menu a{color:var(--cream);font-size:1.15rem;font-weight:600;padding:14px 4px;border-bottom:1px solid rgba(255,255,255,0.12);}
-.mobile-menu .btn{margin-top:18px;justify-content:center;}
-.menu-close{align-self:flex-end;color:var(--cream);font-size:1.6rem;margin-bottom:10px;}
-.overlay{position:fixed;inset:0;background:rgba(19,31,56,0.5);z-index:1050;opacity:0;pointer-events:none;transition:opacity .3s ease;}
-.overlay.open{opacity:1;pointer-events:auto;}
+  ::selection{background:var(--terracotta); color:#fff;}
 
-/* ===================== HERO ===================== */
-.hero{
-  padding:170px 0 90px;
-  position:relative;
-  overflow:hidden;
-  background:
-    radial-gradient(600px 400px at 88% 10%, rgba(207,195,238,0.55), transparent 60%),
-    radial-gradient(500px 380px at 5% 90%, rgba(240,197,92,0.18), transparent 60%);
-}
-.hero-grid{
-  display:grid;grid-template-columns:1.05fr 0.95fr;gap:56px;align-items:center;
-}
-.hero-badge-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px;}
-.pill{
-  display:inline-flex;align-items:center;gap:6px;
-  background:var(--white);border:1px solid var(--line);
-  padding:8px 14px;border-radius:100px;font-size:0.8rem;font-weight:600;color:var(--navy);
-}
-.pill .dot{width:6px;height:6px;border-radius:50%;background:var(--green);}
-.hero h1{
-  font-size:clamp(2.3rem,5.2vw,3.6rem);
-  font-weight:800;
-  line-height:1.08;
-  letter-spacing:-0.02em;
-  color:var(--navy);
-}
-.hero h1 em{
-  font-style:italic;font-weight:500;color:var(--purple);
-}
-.hero-sub{
-  font-size:1.12rem;color:#463F5C;margin-top:20px;max-width:480px;line-height:1.65;
-}
-.hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:32px;}
-.hero-hand{
-  font-family:var(--hand);font-size:1.5rem;color:var(--navy);margin-top:26px;
-  display:flex;align-items:center;gap:8px;
-}
-.hero-photo-wrap{position:relative;display:flex;justify-content:center;}
-.polaroid{
-  background:var(--white);
-  padding:18px 18px 60px;
-  border-radius:8px;
-  box-shadow:0 24px 50px rgba(27,42,74,0.22);
-  transform:rotate(-4deg);
-  width:min(360px,90%);
-  position:relative;
-  z-index:2;
-}
-.polaroid-photo{
-  aspect-ratio:4/5;border-radius:4px;overflow:hidden;
-  background:linear-gradient(155deg,var(--lilac) 0%, var(--purple) 55%, var(--navy) 120%);
-  display:flex;align-items:center;justify-content:center;position:relative;
-}
-.polaroid-photo .monogram{
-  font-family:var(--display);font-size:5.4rem;font-weight:700;color:rgba(255,255,255,0.92);
-}
-.polaroid-cap{
-  font-family:var(--hand);font-size:1.3rem;color:var(--navy);
-  position:absolute;bottom:16px;left:0;right:0;text-align:center;
-}
-.tape{
-  position:absolute;width:90px;height:32px;
-  background:rgba(240,197,92,0.55);
-  top:-14px;left:50%;transform:translateX(-50%) rotate(-3deg);
-  z-index:3;box-shadow:0 4px 8px rgba(0,0,0,0.08);
-}
-.hero-sticker{
-  position:absolute;background:var(--white);border:1px solid var(--line);
-  border-radius:16px;padding:12px 16px;box-shadow:0 10px 26px rgba(27,42,74,0.15);
-  font-weight:700;font-size:0.85rem;display:flex;align-items:center;gap:8px;z-index:3;
-}
-.sticker-1{top:8%;left:-6%;transform:rotate(-6deg);}
-.sticker-2{bottom:6%;right:-8%;transform:rotate(5deg);}
-.star{position:absolute;color:var(--purple);opacity:.7;}
+  /* subtle scroll reveal */
+  .reveal{
+    opacity:0;
+    transform:translateY(28px);
+    transition:opacity 0.9s var(--ease), transform 0.9s var(--ease);
+  }
+  .reveal.in-view{opacity:1; transform:translateY(0);}
 
-/* ===================== PROBLEM SECTION ===================== */
-.problem{background:var(--white);}
-.problem-list{
-  margin-top:44px;display:grid;grid-template-columns:repeat(2,1fr);gap:18px;
-}
-.problem-item{
-  display:flex;gap:14px;align-items:flex-start;
-  background:var(--cream);border-radius:16px;padding:20px 22px;
-}
-.problem-item svg{flex-shrink:0;margin-top:3px;color:var(--purple);}
-.problem-item p{font-weight:600;font-size:0.98rem;line-height:1.5;}
-.problem-note{
-  margin-top:40px;padding:28px 30px;background:var(--navy);color:var(--cream);
-  border-radius:20px;font-size:1.1rem;line-height:1.6;font-weight:500;max-width:760px;
-}
-.problem-note strong{color:var(--yellow);}
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1; transform:none; transition:none;}
+    *{animation:none !important;}
+  }
 
-/* ===================== SOLUTION ===================== */
-.solution-grid{
-  margin-top:48px;display:grid;grid-template-columns:repeat(4,1fr);gap:20px;
-}
-.solution-card{
-  background:var(--white);border-radius:20px;padding:30px 24px;
-  border:1px solid var(--line);
-  transition:transform .25s ease, box-shadow .25s ease;
-}
-.solution-card:hover{transform:translateY(-6px);box-shadow:0 16px 34px rgba(27,42,74,0.1);}
-.solution-icon{
-  width:52px;height:52px;border-radius:14px;background:var(--lilac-soft);
-  display:flex;align-items:center;justify-content:center;color:var(--navy);margin-bottom:18px;
-}
-.solution-card h3{font-size:1.08rem;font-weight:700;margin-bottom:8px;}
-.solution-card p{font-size:0.92rem;color:#544C6B;line-height:1.55;}
+  /* ---------- AURORA GLOW SIGNATURE ---------- */
+  .aurora-glow{
+    position:absolute;
+    pointer-events:none;
+    z-index:0;
+    filter:blur(60px);
+    opacity:0.55;
+    background:
+      radial-gradient(closest-side, rgba(201,154,80,0.55), transparent 70%),
+      radial-gradient(closest-side, rgba(193,97,59,0.5), transparent 72%);
+    animation: aurora-breathe 12s ease-in-out infinite;
+    mix-blend-mode:screen;
+  }
+  @keyframes aurora-breathe{
+    0%,100%{ transform:scale(1) translateY(0); opacity:0.45; }
+    50%{ transform:scale(1.15) translateY(-14px); opacity:0.68; }
+  }
 
-/* ===================== ABOUT ===================== */
-.about{background:var(--white);}
-.about-grid{display:grid;grid-template-columns:0.85fr 1.15fr;gap:60px;align-items:center;}
-.about-photo{
-  position:relative;
-  border-radius:28px;overflow:hidden;
-  aspect-ratio:3/4;
-  background:linear-gradient(160deg,var(--navy) 0%, var(--purple) 60%, var(--lilac) 130%);
-  display:flex;align-items:center;justify-content:center;
-}
-.about-photo .monogram{font-family:var(--display);font-size:7rem;color:rgba(255,255,255,0.9);}
-.about-badge{
-  position:absolute;bottom:18px;left:18px;background:var(--white);border-radius:14px;
-  padding:14px 18px;box-shadow:0 10px 26px rgba(0,0,0,0.12);
-}
-.about-badge b{display:block;font-size:1.5rem;font-family:var(--display);color:var(--navy);}
-.about-badge span{font-size:0.78rem;color:#655D7C;}
-.about-text p{font-size:1.05rem;line-height:1.75;color:#413A57;margin-bottom:18px;}
-.about-stats{
-  display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:28px;
-}
-.stat{background:var(--cream);border-radius:16px;padding:18px 20px;}
-.stat b{font-family:var(--display);font-size:1.7rem;color:var(--navy);display:block;}
-.stat span{font-size:0.82rem;color:#655D7C;}
+  /* ---------- HEADER ---------- */
+  header{
+    position:fixed; top:0; left:0; right:0;
+    z-index:100;
+    padding:26px 0;
+    transition:padding 0.4s var(--ease), background 0.4s var(--ease), border-color .4s var(--ease);
+    border-bottom:1px solid transparent;
+  }
+  header.scrolled{
+    padding:16px 0;
+    background:rgba(21,18,14,0.86);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--line);
+  }
+  header .wrap{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .logo{
+    font-family:'Fraunces', serif;
+    font-size:20px;
+    letter-spacing:0.14em;
+    font-weight:500;
+    color:var(--cream);
+  }
+  .logo span{color:var(--terracotta-bright); font-style:italic; font-weight:400;}
 
-/* ===================== MODALITIES ===================== */
-.modalities-grid{
-  margin-top:48px;display:grid;grid-template-columns:repeat(4,1fr);gap:20px;
-}
-.mod-card{
-  background:var(--white);border-radius:22px;padding:28px 24px;
-  display:flex;flex-direction:column;
-  border:1px solid var(--line);
-}
-.mod-card .mod-tag{
-  font-family:var(--hand);font-size:1.2rem;color:var(--purple);margin-bottom:6px;
-}
-.mod-card h3{font-size:1.15rem;font-weight:700;margin-bottom:14px;}
-.mod-card ul{margin-bottom:22px;flex-grow:1;}
-.mod-card li{
-  font-size:0.88rem;color:#544C6B;padding-left:18px;position:relative;margin-bottom:8px;line-height:1.4;
-}
-.mod-card li::before{
-  content:"";position:absolute;left:0;top:7px;width:6px;height:6px;border-radius:50%;background:var(--green);
-}
-.mod-card .btn{width:100%;justify-content:center;font-size:0.88rem;padding:12px 18px;}
+  nav.main-nav{display:flex; gap:40px;}
+  nav.main-nav a{
+    font-size:13.5px;
+    letter-spacing:0.04em;
+    color:var(--cream-dim);
+    position:relative;
+    padding:4px 0;
+    transition:color .3s;
+  }
+  nav.main-nav a::after{
+    content:'';
+    position:absolute; left:0; bottom:0;
+    width:0%; height:1px;
+    background:var(--terracotta-bright);
+    transition:width .35s var(--ease);
+  }
+  nav.main-nav a:hover{color:var(--cream);}
+  nav.main-nav a:hover::after{width:100%;}
 
-/* ===================== SPEAK CLUB ===================== */
-.speakclub{
-  background:var(--navy);color:var(--cream);position:relative;overflow:hidden;
-}
-.speakclub::before{
-  content:"";position:absolute;inset:0;
-  background:radial-gradient(500px 400px at 90% 0%, rgba(207,195,238,0.18), transparent 60%);
-}
-.speakclub-inner{position:relative;z-index:2;text-align:center;}
-.speakclub .eyebrow{color:var(--yellow);justify-content:center;}
-.speakclub h2{font-size:clamp(2.1rem,5vw,3.2rem);font-weight:800;}
-.speakclub-sub{font-size:1.1rem;color:rgba(248,242,231,0.82);max-width:600px;margin:16px auto 0;line-height:1.6;}
-.speakclub-feats{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:48px 0;max-width:820px;margin-left:auto;margin-right:auto;
-}
-.feat-card{
-  background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.14);
-  border-radius:18px;padding:26px 20px;
-}
-.feat-card svg{color:var(--yellow);margin-bottom:12px;}
-.feat-card p{font-size:0.92rem;color:rgba(248,242,231,0.9);font-weight:600;}
-.speakclub-highlight{
-  font-family:var(--hand);font-size:2rem;color:var(--yellow);margin:10px 0 32px;
-}
+  .header-actions{display:flex; align-items:center; gap:24px;}
 
-/* ===================== HOW IT WORKS ===================== */
-.steps{margin-top:56px;position:relative;}
-.steps-line{
-  position:absolute;top:26px;left:0;right:0;height:2px;
-  background:repeating-linear-gradient(90deg,var(--purple) 0 10px, transparent 10px 18px);
-  z-index:0;
-}
-.steps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;position:relative;z-index:1;}
-.step{text-align:left;}
-.step-num{
-  width:52px;height:52px;border-radius:50%;background:var(--white);border:2px solid var(--navy);
-  display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:700;
-  font-size:1.2rem;color:var(--navy);margin-bottom:18px;
-}
-.step h4{font-size:1rem;font-weight:700;margin-bottom:8px;}
-.step p{font-size:0.9rem;color:#544C6B;line-height:1.5;}
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    padding:13px 26px;
+    font-size:13px;
+    letter-spacing:0.05em;
+    font-weight:600;
+    border-radius:2px;
+    transition:transform .35s var(--ease), background .35s var(--ease), border-color .35s var(--ease), color .35s var(--ease);
+  }
+  .btn-primary{
+    background:var(--terracotta);
+    color:#FBF3E7;
+  }
+  .btn-primary:hover{ background:var(--terracotta-bright); transform:translateY(-2px); }
+  .btn-ghost{
+    border:1px solid var(--line-bright);
+    color:var(--cream);
+    background:transparent;
+  }
+  .btn-ghost:hover{ border-color:var(--terracotta-bright); color:var(--terracotta-bright); transform:translateY(-2px);}
+  .btn-block{width:100%;}
 
-/* ===================== TESTIMONIALS ===================== */
-.testimonials{background:var(--white);}
-.demo-flag{
-  display:inline-flex;align-items:center;gap:8px;background:var(--yellow);color:var(--navy);
-  font-size:0.76rem;font-weight:700;padding:6px 12px;border-radius:100px;margin-bottom:26px;
-}
-.test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:20px;}
-.test-card{
-  background:var(--cream);border-radius:20px;padding:26px 24px;position:relative;
-}
-.test-card:nth-child(2){transform:rotate(-1deg);}
-.test-card:nth-child(3){transform:rotate(1deg);}
-.test-quote{font-size:0.95rem;line-height:1.6;color:#3B3450;margin-bottom:20px;}
-.test-person{display:flex;align-items:center;gap:12px;}
-.test-avatar{
-  width:44px;height:44px;border-radius:50%;background:linear-gradient(160deg,var(--lilac),var(--purple));
-  display:flex;align-items:center;justify-content:center;color:var(--white);font-weight:700;font-family:var(--display);
-}
-.test-name{font-weight:700;font-size:0.92rem;}
-.test-meta{font-size:0.78rem;color:#786F92;}
+  .burger{
+    display:none;
+    width:26px; height:18px;
+    position:relative;
+    z-index:110;
+  }
+  .burger span{
+    position:absolute; left:0; right:0; height:1px;
+    background:var(--cream);
+    transition:transform .35s var(--ease), opacity .3s;
+  }
+  .burger span:nth-child(1){top:0;}
+  .burger span:nth-child(2){top:8px;}
+  .burger span:nth-child(3){top:16px;}
+  .burger.open span:nth-child(1){ transform:translateY(8px) rotate(45deg); }
+  .burger.open span:nth-child(2){ opacity:0; }
+  .burger.open span:nth-child(3){ transform:translateY(-8px) rotate(-45deg); }
 
-/* ===================== PLANS ===================== */
-.plans-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:48px;}
-.plan-card{
-  background:var(--white);border-radius:24px;padding:36px 30px;border:1px solid var(--line);
-  display:flex;flex-direction:column;
-}
-.plan-card.featured{
-  background:var(--navy);color:var(--cream);transform:translateY(-14px);
-  box-shadow:0 24px 50px rgba(27,42,74,0.28);border:none;
-}
-.plan-badge{
-  align-self:flex-start;background:var(--yellow);color:var(--navy);font-size:0.72rem;font-weight:700;
-  padding:5px 12px;border-radius:100px;margin-bottom:16px;
-}
-.plan-card h3{font-size:1.3rem;font-weight:700;margin-bottom:6px;}
-.plan-price{font-family:var(--hand);font-size:1.4rem;color:var(--purple);margin-bottom:22px;}
-.plan-card.featured .plan-price{color:var(--yellow);}
-.plan-card ul{margin-bottom:28px;flex-grow:1;}
-.plan-card li{
-  font-size:0.9rem;padding-left:22px;position:relative;margin-bottom:12px;line-height:1.4;
-}
-.plan-card li::before{content:"✓";position:absolute;left:0;color:var(--green);font-weight:700;}
-.plan-card.featured li::before{color:var(--yellow);}
-.plan-card .btn{justify-content:center;width:100%;}
+  .mobile-nav{
+    position:fixed; inset:0;
+    background:var(--bg);
+    z-index:99;
+    display:flex; flex-direction:column;
+    align-items:flex-start;
+    justify-content:center;
+    gap:28px;
+    padding:0 40px;
+    transform:translateY(-100%);
+    transition:transform .5s var(--ease);
+  }
+  .mobile-nav.open{transform:translateY(0);}
+  .mobile-nav a{
+    font-family:'Fraunces', serif;
+    font-size:34px;
+    font-weight:400;
+    color:var(--cream);
+  }
+  .mobile-nav .btn{margin-top:12px;}
 
-/* ===================== FAQ ===================== */
-.faq-list{max-width:760px;margin-top:44px;}
-.faq-item{border-bottom:1px solid var(--line);}
-.faq-q{
-  width:100%;display:flex;justify-content:space-between;align-items:center;
-  padding:22px 4px;font-weight:700;font-size:1.02rem;text-align:left;color:var(--ink);
-}
-.faq-q svg{flex-shrink:0;transition:transform .3s ease;color:var(--purple);}
-.faq-item.open .faq-q svg{transform:rotate(45deg);}
-.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease;}
-.faq-a-inner{padding:0 4px 22px;font-size:0.95rem;color:#544C6B;line-height:1.6;max-width:640px;}
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex;
+    align-items:flex-end;
+    overflow:hidden;
+    background:#0f0d0a;
+  }
+  .hero-bg{
+    position:absolute; inset:0;
+    background-image:url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=2000&q=80');
+    background-size:cover;
+    background-position:center 30%;
+    transform:scale(1.08);
+    animation: hero-zoom 22s ease-in-out infinite alternate;
+  }
+  @keyframes hero-zoom{
+    from{ transform:scale(1.08); }
+    to{ transform:scale(1.16); }
+  }
+  .hero-scrim{
+    position:absolute; inset:0;
+    background:
+      linear-gradient(180deg, rgba(15,13,10,0.35) 0%, rgba(15,13,10,0.35) 40%, rgba(15,13,10,0.94) 92%),
+      linear-gradient(90deg, rgba(15,13,10,0.75) 0%, rgba(15,13,10,0.15) 55%);
+  }
+  .hero .aurora-glow{
+    width:900px; height:900px;
+    top:-260px; left:-260px;
+  }
+  .hero-content{
+    position:relative; z-index:2;
+    padding-bottom:110px;
+    max-width:720px;
+  }
+  .hero-eyebrow{
+    color:var(--gold);
+    font-size:12.5px;
+    letter-spacing:0.3em;
+    text-transform:uppercase;
+    font-weight:600;
+    margin-bottom:22px;
+    display:block;
+  }
+  .hero h1{
+    font-size:clamp(42px, 7vw, 78px);
+    line-height:1.04;
+    font-weight:400;
+    margin-bottom:22px;
+  }
+  .hero p{
+    font-size:18px;
+    color:var(--cream-dim);
+    max-width:480px;
+    margin-bottom:40px;
+    font-weight:300;
+  }
+  .hero-actions{display:flex; gap:16px; flex-wrap:wrap;}
 
-/* ===================== FINAL CTA ===================== */
-.final-cta{
-  background:linear-gradient(150deg,var(--lilac) 0%, var(--purple) 60%, var(--navy) 130%);
-  color:var(--white);text-align:center;border-radius:32px;margin:0 24px;
-  padding:80px 30px;position:relative;overflow:hidden;
-}
-.final-cta h2{font-size:clamp(2rem,5vw,3rem);font-weight:800;max-width:760px;margin:0 auto;line-height:1.15;}
-.final-cta p{margin:20px auto 34px;max-width:520px;font-size:1.05rem;color:rgba(255,255,255,0.9);}
+  .scroll-cue{
+    position:absolute;
+    right:32px; bottom:36px;
+    z-index:2;
+    display:flex; flex-direction:column; align-items:center;
+    gap:10px;
+    color:var(--cream-faint);
+    font-size:11px;
+    letter-spacing:0.2em;
+  }
+  .scroll-cue .line{
+    width:1px; height:46px;
+    background:linear-gradient(180deg, var(--terracotta-bright), transparent);
+    animation:scroll-line 2.2s ease-in-out infinite;
+  }
+  @keyframes scroll-line{
+    0%{transform:scaleY(0); transform-origin:top;}
+    50%{transform:scaleY(1); transform-origin:top;}
+    50.01%{transform-origin:bottom;}
+    100%{transform:scaleY(0); transform-origin:bottom;}
+  }
 
-/* ===================== CONTACT ===================== */
-.contact-grid{display:grid;grid-template-columns:0.9fr 1.1fr;gap:56px;margin-top:48px;}
-.contact-info{display:flex;flex-direction:column;gap:16px;}
-.contact-link{
-  display:flex;align-items:center;gap:14px;background:var(--white);border:1px solid var(--line);
-  border-radius:16px;padding:18px 20px;font-weight:700;font-size:0.95rem;transition:transform .2s ease;
-}
-.contact-link:hover{transform:translateX(4px);}
-.contact-link svg{color:var(--purple);flex-shrink:0;}
-.contact-link span{display:block;font-size:0.78rem;font-weight:500;color:#786F92;}
-.form-card{background:var(--white);border-radius:24px;padding:34px;border:1px solid var(--line);}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;}
-.field{display:flex;flex-direction:column;gap:6px;margin-bottom:16px;}
-.field label{font-size:0.82rem;font-weight:700;color:var(--navy);}
-.field input,.field select,.field textarea{
-  border:1.5px solid var(--line);border-radius:12px;padding:13px 14px;font-family:inherit;font-size:0.92rem;
-  background:var(--cream);transition:border-color .2s ease;
-}
-.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--purple);}
-.field.error input,.field.error select,.field.error textarea{border-color:#D9534F;}
-.error-msg{font-size:0.76rem;color:#D9534F;display:none;}
-.field.error .error-msg{display:block;}
-.form-success{
-  display:none;background:var(--green);color:var(--navy);padding:16px 18px;border-radius:14px;
-  font-weight:700;margin-bottom:18px;align-items:center;gap:10px;
-}
-.form-success.show{display:flex;}
+  /* ---------- SECTION GENERIC ---------- */
+  section{
+    position:relative;
+    padding:140px 0;
+  }
+  @media(max-width:860px){
+    section{padding:96px 0;}
+  }
 
-/* ===================== FOOTER ===================== */
-footer{background:var(--navy-deep);color:rgba(248,242,231,0.75);padding:60px 0 26px;}
-.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,0.1);}
-.footer-brand .logo-name{color:var(--cream);}
-.footer-brand p{margin-top:14px;font-size:0.88rem;line-height:1.6;max-width:280px;}
-.footer-col h5{font-size:0.82rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--cream);margin-bottom:16px;}
-.footer-col a{display:block;font-size:0.9rem;padding:6px 0;color:rgba(248,242,231,0.75);}
-.footer-col a:hover{color:var(--yellow);}
-.footer-bottom{
-  display:flex;justify-content:space-between;align-items:center;padding-top:22px;font-size:0.78rem;flex-wrap:wrap;gap:10px;
-}
+  /* ---------- ABOUT ---------- */
+  .about{
+    background:var(--bg);
+  }
+  .about-grid{
+    display:grid;
+    grid-template-columns:0.85fr 1fr;
+    gap:80px;
+    align-items:center;
+  }
+  .about-media{
+    position:relative;
+    aspect-ratio:4/5;
+    overflow:hidden;
+    border-radius:2px;
+  }
+  .about-media img{
+    width:100%; height:100%; object-fit:cover;
+    filter:saturate(1.05);
+  }
+  .about-media::after{
+    content:'';
+    position:absolute; inset:0;
+    box-shadow: inset 0 0 0 1px var(--line);
+  }
+  .about-frame{
+    position:absolute;
+    bottom:-24px; left:-24px;
+    width:60%; aspect-ratio:1/1;
+    border:1px solid var(--terracotta);
+    z-index:-1;
+    display:none;
+  }
+  .about-text h2{
+    font-size:clamp(32px, 4vw, 46px);
+    line-height:1.18;
+    margin:18px 0 26px;
+    font-weight:400;
+  }
+  .about-text p{
+    color:var(--cream-dim);
+    font-size:16.5px;
+    max-width:460px;
+    font-weight:300;
+    margin-bottom:18px;
+  }
+  .about-stats{
+    display:flex;
+    gap:40px;
+    margin-top:38px;
+    padding-top:32px;
+    border-top:1px solid var(--line);
+  }
+  .about-stats div b{
+    display:block;
+    font-family:'Fraunces', serif;
+    font-size:30px;
+    color:var(--terracotta-bright);
+    font-weight:500;
+  }
+  .about-stats div span{
+    font-size:12px;
+    color:var(--cream-faint);
+    letter-spacing:0.05em;
+  }
 
-/* ===================== TORN DIVIDER ===================== */
-.torn{height:36px;background:var(--cream);position:relative;}
-.torn.to-white{background:var(--white);}
-.torn svg{position:absolute;bottom:-1px;width:100%;height:36px;}
+  /* ---------- MENU ---------- */
+  .menu-section{
+    background:var(--bg-panel);
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+  }
+  .menu-head{
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+    margin-bottom:64px;
+    gap:24px;
+    flex-wrap:wrap;
+  }
+  .menu-head h2{
+    font-size:clamp(32px,4vw,48px);
+    font-weight:400;
+    margin-top:16px;
+  }
+  .menu-head p{
+    color:var(--cream-dim);
+    max-width:320px;
+    font-size:15px;
+    font-weight:300;
+  }
+  .menu-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  .dish{
+    background:var(--bg-panel);
+    padding:34px 30px 32px;
+    transition:background .4s var(--ease);
+  }
+  .dish:hover{ background:var(--bg-panel-2); }
+  .dish-media{
+    aspect-ratio:5/4;
+    overflow:hidden;
+    margin-bottom:26px;
+    position:relative;
+  }
+  .dish-media img{
+    width:100%; height:100%; object-fit:cover;
+    transition:transform .8s var(--ease);
+  }
+  .dish:hover .dish-media img{ transform:scale(1.06); }
+  .dish-title-row{
+    display:flex;
+    align-items:baseline;
+    gap:8px;
+    margin-bottom:10px;
+  }
+  .dish-title-row h3{
+    font-size:19px;
+    font-weight:500;
+    white-space:nowrap;
+  }
+  .dish-leader{
+    flex:1;
+    border-bottom:1px dotted var(--line-bright);
+    height:1px;
+    transform:translateY(-4px);
+  }
+  .dish-price{
+    font-family:'Fraunces', serif;
+    font-size:17px;
+    color:var(--terracotta-bright);
+    white-space:nowrap;
+  }
+  .dish-desc{
+    color:var(--cream-faint);
+    font-size:14px;
+    font-weight:300;
+    line-height:1.55;
+  }
 
-/* ===================== UTIL ===================== */
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease, transform .7s ease;}
-.reveal.in{opacity:1;transform:translateY(0);}
+  @media(max-width:900px){
+    .menu-grid{grid-template-columns:1fr;}
+  }
 
-/* ===================== MOBILE STICKY CTA BAR ===================== */
-.mobile-cta-bar{
-  display:none;
-  position:fixed;bottom:0;left:0;right:0;z-index:900;
-  background:var(--white);
-  border-top:1px solid var(--line);
-  padding:10px 14px calc(10px + env(safe-area-inset-bottom));
-  box-shadow:0 -8px 24px rgba(27,42,74,0.12);
-  gap:10px;
-}
-.mobile-cta-bar a{
-  flex:1;display:flex;align-items:center;justify-content:center;gap:6px;
-  border-radius:100px;font-weight:700;font-size:0.88rem;padding:13px 10px;
-}
-.mobile-cta-bar .cta-whats{background:#25D366;color:var(--white);}
-.mobile-cta-bar .cta-agendar{background:var(--navy);color:var(--cream);}
+  /* ---------- EXPERIENCE ---------- */
+  .experience{
+    background:var(--bg);
+  }
+  .exp-grid{
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:0;
+    align-items:stretch;
+    border:1px solid var(--line);
+  }
+  .exp-media{
+    position:relative;
+    min-height:520px;
+    overflow:hidden;
+  }
+  .exp-media img{
+    width:100%; height:100%; object-fit:cover;
+    position:absolute; inset:0;
+  }
+  .exp-panel{
+    background:var(--bg-panel);
+    padding:64px 56px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    gap:0;
+  }
+  .exp-panel h2{
+    font-size:clamp(28px,3.4vw,38px);
+    font-weight:400;
+    margin:16px 0 40px;
+    max-width:380px;
+  }
+  .exp-item{
+    padding:26px 0;
+    border-top:1px solid var(--line);
+  }
+  .exp-item:last-child{border-bottom:1px solid var(--line);}
+  .exp-item .num{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    color:var(--terracotta-bright);
+    font-size:14px;
+    display:block;
+    margin-bottom:8px;
+  }
+  .exp-item h4{
+    font-size:19px;
+    font-weight:500;
+    margin-bottom:8px;
+  }
+  .exp-item p{
+    color:var(--cream-faint);
+    font-size:14px;
+    font-weight:300;
+    max-width:340px;
+  }
 
-/* ===================== PHOTO SLOTS (fill with real photos) ===================== */
-.photo-slot{position:relative;overflow:hidden;}
-.photo-slot img{
-  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;
-  opacity:0;transition:opacity .4s ease;
-}
-.photo-slot img.loaded{opacity:1;}
-.photo-slot img.loaded ~ .monogram{opacity:0;pointer-events:none;}
-.photo-slot .upload-hint{
-  position:absolute;bottom:10px;left:10px;right:10px;
-  background:rgba(19,31,56,0.55);color:#fff;font-size:0.68rem;font-weight:600;
-  padding:6px 10px;border-radius:8px;text-align:center;letter-spacing:0.01em;
-  opacity:1;transition:opacity .3s ease;
-}
-.photo-slot img.loaded ~ .upload-hint{opacity:0;pointer-events:none;}
+  @media(max-width:900px){
+    .exp-grid{grid-template-columns:1fr;}
+    .exp-media{min-height:340px;}
+    .exp-panel{padding:48px 28px;}
+  }
 
-/* ===================== RESPONSIVE ===================== */
-@media (max-width:980px){
-  .nav-desktop,.nav-cta .btn-primary{display:none;}
-  .burger{display:flex;}
-  .hero-grid,.about-grid,.contact-grid{grid-template-columns:1fr;gap:40px;}
-  .hero-photo-wrap{order:-1;margin-bottom:8px;}
-  .solution-grid,.modalities-grid{grid-template-columns:repeat(2,1fr);}
-  .speakclub-feats,.steps-grid{grid-template-columns:1fr;}
-  .steps-line{display:none;}
-  .test-grid,.plans-grid{grid-template-columns:1fr;}
-  .plan-card.featured{transform:none;}
-  .problem-list{grid-template-columns:1fr;}
-  .footer-grid{grid-template-columns:1fr;gap:30px;}
-  .form-row{grid-template-columns:1fr;}
-  .section{padding:60px 0;}
-  .mobile-cta-bar{display:flex;}
-  body{padding-bottom:76px;}
-}
-@media (max-width:640px){
-  .container{padding:0 20px;}
-  .hero{padding:132px 0 48px;}
-  .hero-sub{max-width:100%;}
-  .hero-ctas{flex-direction:column;align-items:stretch;}
-  .hero-ctas .btn{width:100%;justify-content:center;}
-  .hero-badge-row{gap:8px;}
-  .pill{font-size:0.74rem;padding:7px 12px;}
-  .hero-hand{font-size:1.25rem;}
-  .polaroid{width:min(280px,78vw);padding:14px 14px 48px;}
-  .polaroid-photo .monogram{font-size:4rem;}
-  .hero-sticker{font-size:0.72rem;padding:9px 12px;}
-  .sticker-1{left:2%;top:4%;}
-  .sticker-2{right:2%;bottom:0;}
-  .section-title{font-size:1.55rem;}
-  .section-sub{font-size:0.95rem;}
-  .solution-grid,.modalities-grid{grid-template-columns:1fr;}
-  .about-photo{aspect-ratio:1/1;border-radius:20px;}
-  .about-stats{grid-template-columns:1fr 1fr;gap:12px;}
-  .speakclub-feats{gap:14px;margin:36px 0;}
-  .final-cta{margin:0 16px;padding:48px 22px;border-radius:24px;}
-  .final-cta h2{font-size:1.7rem;}
-  .plan-card.featured{order:-1;}
-  .contact-grid{gap:32px;}
-  .form-card{padding:24px 20px;}
-  .footer-bottom{flex-direction:column;align-items:flex-start;gap:6px;}
-  .btn{width:auto;}
-  .btn-primary,.btn-outline,.btn-cream,.btn-light{padding:15px 24px;}
-}
-@media (max-width:400px){
-  .polaroid{width:82vw;}
-  .step-num{width:44px;height:44px;font-size:1.05rem;}
-  .plan-card,.mod-card,.solution-card{padding:22px 18px;}
-}
-@media (prefers-reduced-motion:reduce){
-  *{animation:none!important;transition:none!important;}
-}
+  /* ---------- GALLERY ---------- */
+  .gallery{
+    background:var(--bg);
+  }
+  .gallery-head{
+    margin-bottom:56px;
+  }
+  .gallery-head h2{
+    font-size:clamp(32px,4vw,48px);
+    font-weight:400;
+    margin-top:16px;
+  }
+  .gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(6, 1fr);
+    grid-auto-rows:130px;
+    gap:14px;
+  }
+  .g-item{
+    position:relative;
+    overflow:hidden;
+    border-radius:2px;
+    cursor:pointer;
+  }
+  .g-item img{
+    width:100%; height:100%; object-fit:cover;
+    transition:transform .9s var(--ease), filter .5s;
+    filter:saturate(0.96);
+  }
+  .g-item:hover img{ transform:scale(1.07); filter:saturate(1.1); }
+  .g-item::after{
+    content:'';
+    position:absolute; inset:0;
+    background:linear-gradient(180deg, transparent 60%, rgba(15,13,10,0.55));
+    opacity:0;
+    transition:opacity .4s;
+  }
+  .g-item:hover::after{opacity:1;}
+  .g-item span{
+    position:absolute; left:16px; bottom:14px;
+    font-size:12px; letter-spacing:0.06em;
+    color:var(--cream);
+    opacity:0;
+    transform:translateY(8px);
+    transition:all .4s var(--ease);
+    z-index:2;
+    font-weight:500;
+  }
+  .g-item:hover span{opacity:1; transform:translateY(0);}
+
+  .g1{grid-column:span 3; grid-row:span 3;}
+  .g2{grid-column:span 3; grid-row:span 2;}
+  .g3{grid-column:span 2; grid-row:span 2;}
+  .g4{grid-column:span 2; grid-row:span 3;}
+  .g5{grid-column:span 2; grid-row:span 2;}
+
+  @media(max-width:900px){
+    .gallery-grid{grid-template-columns:repeat(2,1fr); grid-auto-rows:180px;}
+    .g1,.g2,.g3,.g4,.g5{grid-column:span 1; grid-row:span 2;}
+  }
+
+  /* ---------- RESERVATIONS ---------- */
+  .reservations{
+    background:var(--bg-panel);
+    border-top:1px solid var(--line);
+    overflow:hidden;
+  }
+  .res-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:80px;
+    align-items:center;
+    position:relative;
+  }
+  .res-grid .aurora-glow{
+    width:600px; height:600px;
+    top:-140px; left:-40%;
+  }
+  .res-text{position:relative; z-index:1;}
+  .res-text h2{
+    font-size:clamp(32px,4.2vw,50px);
+    font-weight:400;
+    line-height:1.14;
+    margin:18px 0 20px;
+  }
+  .res-text p{
+    color:var(--cream-dim);
+    font-size:16px;
+    font-weight:300;
+    max-width:380px;
+    margin-bottom:34px;
+  }
+  .res-info{
+    display:flex; flex-direction:column; gap:14px;
+    font-size:14px; color:var(--cream-dim);
+  }
+  .res-info b{color:var(--cream); font-weight:500;}
+
+  .res-form{
+    position:relative; z-index:1;
+    background:var(--bg);
+    border:1px solid var(--line);
+    padding:44px;
+  }
+  .form-row{display:grid; grid-template-columns:1fr 1fr; gap:22px;}
+  .field{margin-bottom:26px;}
+  .field label{
+    display:block;
+    font-size:11.5px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--cream-faint);
+    margin-bottom:10px;
+  }
+  .field input, .field select{
+    width:100%;
+    background:transparent;
+    border:none;
+    border-bottom:1px solid var(--line-bright);
+    color:var(--cream);
+    font-family:'Sora', sans-serif;
+    font-size:15px;
+    padding:8px 2px;
+    transition:border-color .3s;
+  }
+  .field select option{background:var(--bg);}
+  .field input:focus, .field select:focus{
+    outline:none;
+    border-color:var(--terracotta-bright);
+  }
+  .field input::placeholder{color:var(--cream-faint);}
+  .form-note{
+    font-size:12px;
+    color:var(--cream-faint);
+    margin-top:16px;
+    text-align:center;
+  }
+  .form-success{
+    display:none;
+    text-align:center;
+    padding:20px 0 4px;
+  }
+  .form-success.show{display:block;}
+  .form-success .check{
+    width:44px; height:44px;
+    border:1px solid var(--terracotta-bright);
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    margin:0 auto 18px;
+    color:var(--terracotta-bright);
+    font-family:'Fraunces', serif;
+  }
+  .form-success h4{font-size:20px; margin-bottom:8px; font-weight:400;}
+  .form-success p{color:var(--cream-faint); font-size:13.5px; font-weight:300;}
+
+  @media(max-width:900px){
+    .res-grid{grid-template-columns:1fr; gap:48px;}
+    .res-form{padding:30px;}
+    .form-row{grid-template-columns:1fr;}
+  }
+
+  /* ---------- CONTACT STRIP ---------- */
+  .contact{
+    background:var(--bg);
+    padding:100px 0;
+  }
+  .contact-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:50px;
+    border-top:1px solid var(--line);
+    padding-top:56px;
+  }
+  .contact-block h4{
+    font-size:12px;
+    letter-spacing:0.15em;
+    text-transform:uppercase;
+    color:var(--terracotta-bright);
+    font-weight:600;
+    margin-bottom:16px;
+  }
+  .contact-block p, .contact-block a{
+    color:var(--cream-dim);
+    font-size:15px;
+    font-weight:300;
+    line-height:1.7;
+  }
+  .contact-block .social{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    margin-top:6px;
+    color:var(--cream);
+    font-weight:500;
+    border-bottom:1px solid var(--line-bright);
+    padding-bottom:3px;
+    transition:border-color .3s, color .3s;
+  }
+  .contact-block .social:hover{color:var(--terracotta-bright); border-color:var(--terracotta-bright);}
+  .contact-block .wa-btn{
+    margin-top:10px;
+  }
+
+  @media(max-width:860px){
+    .contact-grid{grid-template-columns:1fr; gap:36px;}
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background:#100D0A;
+    border-top:1px solid var(--line);
+    padding:64px 0 32px;
+    text-align:center;
+  }
+  footer .logo{
+    justify-content:center;
+    font-size:26px;
+    display:block;
+    margin-bottom:14px;
+  }
+  footer .tagline{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    color:var(--cream-dim);
+    font-size:16px;
+    font-weight:400;
+    margin-bottom:36px;
+  }
+  .footer-links{
+    display:flex; justify-content:center; gap:30px;
+    margin-bottom:40px;
+    flex-wrap:wrap;
+  }
+  .footer-links a{
+    font-size:13px;
+    color:var(--cream-faint);
+    transition:color .3s;
+  }
+  .footer-links a:hover{color:var(--terracotta-bright);}
+  .footer-bottom{
+    font-size:12px;
+    color:var(--cream-faint);
+    border-top:1px solid var(--line);
+    padding-top:26px;
+  }
+
+  /* whatsapp float */
+  .wa-float{
+    position:fixed;
+    bottom:26px; right:26px;
+    z-index:80;
+    width:56px; height:56px;
+    border-radius:50%;
+    background:var(--terracotta);
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 10px 30px -8px rgba(0,0,0,0.6);
+    transition:transform .35s var(--ease), background .35s;
+  }
+  .wa-float:hover{ transform:scale(1.08); background:var(--terracotta-bright); }
+
+  @media(max-width:860px){
+    nav.main-nav, .header-actions .btn-primary{display:none;}
+    .burger{display:block;}
+    .about-grid{grid-template-columns:1fr; gap:48px;}
+    .about-frame{display:none;}
+  }
 </style>
 </head>
 <body>
 
-<!-- ===================== HEADER ===================== -->
-<header id="header">
-  <div class="container header-inner">
-    <div class="logo">
-      <span class="logo-name">Camila Lima</span>
-      <span class="logo-tag">English Teacher</span>
-    </div>
-    <nav class="nav-desktop">
-      <a href="#hero">Início</a>
-      <a href="#sobre">Sobre</a>
-      <a href="#aulas">Aulas</a>
-      <a href="#speak-club">Let's Speak Club</a>
-      <a href="#depoimentos">Depoimentos</a>
+<!-- HEADER -->
+<header id="siteHeader">
+  <div class="wrap">
+    <a href="#top" class="logo">CASA <span>Aurora</span></a>
+    <nav class="main-nav">
+      <a href="#top">Início</a>
+      <a href="#menu">Menu</a>
+      <a href="#sobre">Sobre Nós</a>
+      <a href="#galeria">Galeria</a>
       <a href="#contato">Contato</a>
     </nav>
-    <div class="nav-cta">
-      <a href="https://wa.me/5511999999999?text=Oi%20Camila!%20Quero%20come%C3%A7ar%20a%20aprender%20ingl%C3%AAs%20com%20voc%C3%AA." class="btn btn-primary" target="_blank" rel="noopener">Quero aprender inglês</a>
+    <div class="header-actions">
+      <a href="#reservas" class="btn btn-primary">Reservar mesa</a>
+      <div class="burger" id="burger"><span></span><span></span><span></span></div>
     </div>
-    <button class="burger" id="burgerBtn" aria-label="Abrir menu">
-      <span></span><span></span><span></span>
-    </button>
   </div>
 </header>
 
-<div class="overlay" id="overlay"></div>
-<nav class="mobile-menu" id="mobileMenu">
-  <span class="menu-close" id="menuClose">&times;</span>
-  <a href="#hero">Início</a>
-  <a href="#sobre">Sobre</a>
-  <a href="#aulas">Aulas</a>
-  <a href="#speak-club">Let's Speak Club</a>
-  <a href="#depoimentos">Depoimentos</a>
+<div class="mobile-nav" id="mobileNav">
+  <a href="#top">Início</a>
+  <a href="#menu">Menu</a>
+  <a href="#sobre">Sobre Nós</a>
+  <a href="#galeria">Galeria</a>
   <a href="#contato">Contato</a>
-  <a href="https://wa.me/5511999999999?text=Oi%20Camila!%20Quero%20come%C3%A7ar%20a%20aprender%20ingl%C3%AAs%20com%20voc%C3%AA." class="btn btn-light" target="_blank" rel="noopener">Quero aprender inglês</a>
-</nav>
+  <a href="#reservas" class="btn btn-primary">Reservar mesa</a>
+</div>
 
-<!-- ===================== HERO ===================== -->
-<section class="hero" id="hero">
-  <svg class="star" style="top:12%;left:6%;width:34px" viewBox="0 0 24 24" fill="none"><path d="M12 0L14 10L24 12L14 14L12 24L10 14L0 12L10 10L12 0Z" fill="currentColor"/></svg>
-  <svg class="star" style="bottom:10%;left:14%;width:20px" viewBox="0 0 24 24" fill="none"><path d="M12 0L14 10L24 12L14 14L12 24L10 14L0 12L10 10L12 0Z" fill="currentColor"/></svg>
-  <div class="container hero-grid">
-    <div>
-      <span class="eyebrow">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 0L14 10L24 12L14 14L12 24L10 14L0 12L10 10L12 0Z" fill="currentColor"/></svg>
-        aulas online de inglês
-      </span>
-      <h1>Falar inglês não precisa ser <em>complicado.</em></h1>
-      <p class="hero-sub">Aulas online, práticas e personalizadas para você ganhar confiança e finalmente usar o inglês na vida real.</p>
-      <div class="hero-ctas">
-        <a href="#contato" class="btn btn-primary">Agendar uma aula</a>
-        <a href="#speak-club" class="btn btn-outline">Conhecer o Let's Speak Club</a>
-      </div>
-      <div class="hero-badge-row">
-        <span class="pill"><span class="dot"></span>Aulas online</span>
-        <span class="pill"><span class="dot"></span>Metodologia prática</span>
-        <span class="pill"><span class="dot"></span>Todos os níveis</span>
-        <span class="pill"><span class="dot"></span>Horários flexíveis</span>
-      </div>
-      <div class="hero-hand">✎ Let's make English part of your life.</div>
-    </div>
-    <div class="hero-photo-wrap">
-      <div class="hero-sticker sticker-1">💬 +200 alunos</div>
-      <div class="polaroid">
-        <div class="tape"></div>
-        <div class="polaroid-photo photo-slot" id="heroPhotoSlot">
-          <img src="ela imagem.png" alt="Camila Lima" onload="this.classList.add('loaded')" onerror="this.remove()">
-          <span class="monogram">CL</span>
-          <span class="upload-hint">📷 coloque aqui a foto "foto-camila-hero.jpg"</span>
-        </div>
-        <div class="polaroid-cap">hi, it's Camila!</div>
-      </div>
-      <div class="hero-sticker sticker-2">⭐ @hi_camilalima</div>
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="hero-scrim"></div>
+  <div class="aurora-glow"></div>
+  <div class="wrap hero-content">
+    <span class="hero-eyebrow">Vila Madalena · São Paulo</span>
+    <h1>Sabores do Brasil,<br><span class="italic">à mesa.</span></h1>
+    <p>Uma experiência brasileira contemporânea, feita para compartilhar.</p>
+    <div class="hero-actions">
+      <a href="#menu" class="btn btn-ghost">Ver nosso menu</a>
+      <a href="#reservas" class="btn btn-primary">Reservar mesa</a>
     </div>
   </div>
+  <div class="scroll-cue"><span>ROLAR</span><div class="line"></div></div>
 </section>
 
-<div class="torn to-white"><svg viewBox="0 0 1200 36" preserveAspectRatio="none"><path d="M0 36 L0 12 Q20 0 40 12 T80 12 T120 12 T160 12 T200 12 T240 12 T280 12 T320 12 T360 12 T400 12 T440 12 T480 12 T520 12 T560 12 T600 12 T640 12 T680 12 T720 12 T760 12 T800 12 T840 12 T880 12 T920 12 T960 12 T1000 12 T1040 12 T1080 12 T1120 12 T1160 12 T1200 12 L1200 36 Z" fill="#ffffff"/></svg></div>
-
-<!-- ===================== PROBLEMA ===================== -->
-<section class="section problem reveal" id="problema">
-  <div class="container">
-    <span class="eyebrow">✎ isso soa familiar?</span>
-    <h2 class="section-title">Você estuda inglês, mas ainda trava na hora de falar?</h2>
-    <div class="problem-list">
-      <div class="problem-item">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M12 8v5M12 16h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-        <p>Entende algumas palavras, mas não consegue responder</p>
-      </div>
-      <div class="problem-item">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M12 8v5M12 16h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-        <p>Tem medo de cometer erros</p>
-      </div>
-      <div class="problem-item">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M12 8v5M12 16h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-        <p>Já estudou gramática, mas não consegue conversar</p>
-      </div>
-      <div class="problem-item">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M12 8v5M12 16h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-        <p>Fica inseguro ao falar com outras pessoas</p>
-      </div>
-      <div class="problem-item">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M12 8v5M12 16h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-        <p>Não consegue manter uma rotina de estudos</p>
-      </div>
+<!-- ABOUT -->
+<section class="about" id="sobre">
+  <div class="wrap about-grid">
+    <div class="about-media reveal">
+      <div class="about-frame"></div>
+      <img src="https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=1200&q=80" alt="Prato autoral servido na Casa Aurora">
     </div>
-    <p class="problem-note">O problema nem sempre é falta de conhecimento. <strong>Muitas vezes, falta prática, direção e confiança.</strong></p>
-  </div>
-</section>
-
-<!-- ===================== SOLUÇÃO ===================== -->
-<section class="section solution reveal">
-  <div class="container">
-    <span class="eyebrow">✎ como eu ensino</span>
-    <h2 class="section-title">Aqui, você aprende inglês de forma leve, organizada e prática.</h2>
-    <div class="solution-grid">
-      <div class="solution-card">
-        <div class="solution-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="currentColor" stroke-width="2"/></svg></div>
-        <h3>Conversação desde o início</h3>
-        <p>Você começa a falar inglês desde a primeira aula, no seu ritmo.</p>
-      </div>
-      <div class="solution-card">
-        <div class="solution-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" stroke="currentColor" stroke-width="2"/></svg></div>
-        <h3>Aulas adaptadas ao seu nível</h3>
-        <p>Nada de conteúdo genérico: o plano é construído para onde você está agora.</p>
-      </div>
-      <div class="solution-card">
-        <div class="solution-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 20l9-5-9-5-9 5 9 5z" stroke="currentColor" stroke-width="2"/><path d="M3 15v4M21 15v4" stroke="currentColor" stroke-width="2"/></svg></div>
-        <h3>Material personalizado</h3>
-        <p>Vocabulário e temas escolhidos de acordo com o seu objetivo real.</p>
-      </div>
-      <div class="solution-card">
-        <div class="solution-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M20 21a8 8 0 1 0-16 0" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2"/></svg></div>
-        <h3>Acompanhamento próximo</h3>
-        <p>Feedback constante para você ver sua evolução acontecendo.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== SOBRE ===================== -->
-<section class="section about reveal" id="sobre">
-  <div class="container about-grid">
-    <div class="about-photo photo-slot" id="aboutPhotoSlot">
-      <img src="quemelae.jpg" alt="Camila Lima" onload="this.classList.add('loaded')" onerror="this.remove()">
-      <span class="monogram">CL</span>
-      <span class="upload-hint">📷 coloque aqui a foto "foto-camila-sobre.jpg"</span>
-      <div class="about-badge"><b>+200</b><span>alunos ensinados</span></div>
-    </div>
-    <div class="about-text">
-      <span class="eyebrow">✎ hi, eu sou a Camila!</span>
-      <h2 class="section-title" style="margin-bottom:18px;">Hi, eu sou a Camila!</h2>
-      <p>Sou professora de inglês e acredito que aprender um novo idioma pode ser uma experiência leve, criativa e transformadora. As minhas aulas são preparadas de acordo com os objetivos, dificuldades e rotina de cada aluno.</p>
-      <p>Formação em Letras — Inglês, certificações internacionais em ensino de idiomas e anos de experiência ajudando jovens e adultos a perderem o medo de falar.</p>
+    <div class="about-text reveal">
+      <span class="eyebrow">Sobre nós</span>
+      <h2>Uma experiência que começa no <span class="italic">primeiro sabor.</span></h2>
+      <p>A Casa Aurora nasce do encontro entre ingredientes brasileiros, técnica contemporânea e a generosidade de uma mesa farta. Cada prato carrega uma raiz — e um gesto novo.</p>
+      <p>Aqui, cozinha e afeto seguem a mesma receita: pratos feitos para o meio da mesa, servidos com calma, numa sala pensada para durar a noite inteira.</p>
       <div class="about-stats">
-        <div class="stat"><b>+200</b><span>alunos</span></div>
-        <div class="stat"><b>+3.000</b><span>aulas realizadas</span></div>
-        <div class="stat"><b>5+</b><span>anos de experiência</span></div>
-        <div class="stat"><b>4.9★</b><span>avaliação média</span></div>
+        <div><b>2019</b><span>Desde</span></div>
+        <div><b>100%</b><span>Ingred. nacionais</span></div>
+        <div><b>6</b><span>Dias por semana</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<div class="torn"><svg viewBox="0 0 1200 36" preserveAspectRatio="none"><path d="M0 0 L0 24 Q20 36 40 24 T80 24 T120 24 T160 24 T200 24 T240 24 T280 24 T320 24 T360 24 T400 24 T440 24 T480 24 T520 24 T560 24 T600 24 T640 24 T680 24 T720 24 T760 24 T800 24 T840 24 T880 24 T920 24 T960 24 T1000 24 T1040 24 T1080 24 T1120 24 T1160 24 T1200 24 L1200 0 Z" fill="#F8F2E7"/></svg></div>
+<!-- MENU -->
+<section class="menu-section" id="menu">
+  <div class="wrap">
+    <div class="menu-head reveal">
+      <div>
+        <span class="eyebrow">Cardápio</span>
+        <h2>Nosso menu</h2>
+      </div>
+      <p>Uma seleção enxuta, trocada com as estações — pensada para ser dividida.</p>
+    </div>
 
-<!-- ===================== MODALIDADES ===================== -->
-<section class="section modalities reveal" id="aulas">
-  <div class="container">
-    <span class="eyebrow">✎ modalidades</span>
-    <h2 class="section-title">Escolha o formato que combina com o seu momento</h2>
-    <div class="modalities-grid">
-      <div class="mod-card">
-        <span class="mod-tag">para você</span>
-        <h3>Aulas individuais</h3>
-        <ul>
-          <li>Plano personalizado</li>
-          <li>Foco nas dificuldades do aluno</li>
-          <li>Horários combinados</li>
-          <li>Acompanhamento individual</li>
-        </ul>
-        <a class="btn btn-outline" target="_blank" rel="noopener" href="https://wa.me/5511999999999?text=Oi%20Camila!%20Quero%20saber%20mais%20sobre%20as%20aulas%20individuais.">Quero saber mais</a>
+    <div class="menu-grid">
+      <div class="dish reveal">
+        <div class="dish-media"><img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80" alt="Picanha grelhada"></div>
+        <div class="dish-title-row"><h3>Picanha grelhada</h3><span class="dish-leader"></span><span class="dish-price">R$ 129</span></div>
+        <p class="dish-desc">Maturada 21 dias, farofa crocante e vinagrete de cebola roxa.</p>
       </div>
-      <div class="mod-card">
-        <span class="mod-tag">para falar</span>
-        <h3>Conversação</h3>
-        <ul>
-          <li>Prática de situações reais</li>
-          <li>Desenvolvimento da confiança</li>
-          <li>Correção e orientação</li>
-          <li>Vocabulário útil</li>
-        </ul>
-        <a class="btn btn-outline" target="_blank" rel="noopener" href="https://wa.me/5511999999999?text=Oi%20Camila!%20Quero%20saber%20mais%20sobre%20as%20aulas%20de%20conversa%C3%A7%C3%A3o.">Quero saber mais</a>
+      <div class="dish reveal">
+        <div class="dish-media"><img src="https://images.unsplash.com/photo-1543007630-9710e4a00a20?auto=format&fit=crop&w=800&q=80" alt="Moqueca de camarão"></div>
+        <div class="dish-title-row"><h3>Moqueca de camarão</h3><span class="dish-leader"></span><span class="dish-price">R$ 138</span></div>
+        <p class="dish-desc">Camarões frescos, leite de coco, dendê e arroz de coentro.</p>
       </div>
-      <div class="mod-card">
-        <span class="mod-tag">para viajar</span>
-        <h3>Inglês para viagens</h3>
-        <ul>
-          <li>Aeroporto</li>
-          <li>Hotel</li>
-          <li>Restaurantes</li>
-          <li>Situações do dia a dia</li>
-        </ul>
-        <a class="btn btn-outline" target="_blank" rel="noopener" href="https://wa.me/5511999999999?text=Oi%20Camila!%20Quero%20saber%20mais%20sobre%20o%20ingl%C3%AAs%20para%20viagens.">Quero saber mais</a>
+      <div class="dish reveal">
+        <div class="dish-media"><img src="https://images.unsplash.com/photo-1476124369491-e7addf5db371?auto=format&fit=crop&w=800&q=80" alt="Risoto de queijo coalho"></div>
+        <div class="dish-title-row"><h3>Risoto de coalho</h3><span class="dish-leader"></span><span class="dish-price">R$ 98</span></div>
+        <p class="dish-desc">Arbóreo cremoso, queijo coalho grelhado e mel de engenho.</p>
       </div>
-      <div class="mod-card">
-        <span class="mod-tag">para começar</span>
-        <h3>Inglês para iniciantes</h3>
-        <ul>
-          <li>Base estruturada</li>
-          <li>Vocabulário essencial</li>
-          <li>Explicações simples</li>
-          <li>Evolução gradual</li>
-        </ul>
-        <a class="btn btn-outline" target="_blank" rel="noopener" href="https://wa.me/5511999999999?text=Oi%20Camila!%20Quero%20saber%20mais%20sobre%20o%20ingl%C3%AAs%20para%20iniciantes.">Quero saber mais</a>
+      <div class="dish reveal">
+        <div class="dish-media"><img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=800&q=80" alt="Pudim de leite"></div>
+        <div class="dish-title-row"><h3>Pudim de leite</h3><span class="dish-leader"></span><span class="dish-price">R$ 34</span></div>
+        <p class="dish-desc">Receita de família, calda de caramelo e flor de sal.</p>
+      </div>
+      <div class="dish reveal">
+        <div class="dish-media"><img src="https://images.unsplash.com/photo-1551538827-9c037cb4f32a?auto=format&fit=crop&w=800&q=80" alt="Caipirinha artesanal"></div>
+        <div class="dish-title-row"><h3>Caipirinha artesanal</h3><span class="dish-leader"></span><span class="dish-price">R$ 32</span></div>
+        <p class="dish-desc">Cachaça de alambique, limão siciliano e açúcar demerara.</p>
+      </div>
+      <div class="dish reveal">
+        <div class="dish-media"><img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80" alt="Prato do dia"></div>
+        <div class="dish-title-row"><h3>Peixe do dia</h3><span class="dish-leader"></span><span class="dish-price">R$ 112</span></div>
+        <p class="dish-desc">Pesca do dia, purê de mandioquinha e manteiga de ervas.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===================== LET'S SPEAK CLUB ===================== -->
-<section class="section speakclub reveal" id="speak-club">
-  <div class="container speakclub-inner">
-    <span class="eyebrow">✎ o espaço favorito dos alunos</span>
-    <h2>Let's Speak Club</h2>
-    <p class="speakclub-sub">Um espaço para praticar inglês, conversar e ganhar confiança sem medo de errar.</p>
-    <div class="speakclub-feats">
-      <div class="feat-card">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="18" rx="2" stroke="currentColor" stroke-width="2"/><path d="M16 2v4M8 2v4M3 10h18" stroke="currentColor" stroke-width="2"/></svg>
-        <p>Dois encontros por semana</p>
+<!-- EXPERIENCE -->
+<section class="experience">
+  <div class="wrap">
+    <div class="exp-grid reveal">
+      <div class="exp-media">
+        <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1200&q=80" alt="Ambiente da Casa Aurora">
       </div>
-      <div class="feat-card">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M12 6v6l4 2" stroke="currentColor" stroke-width="2"/></svg>
-        <p>Aulas de 30 minutos</p>
-      </div>
-      <div class="feat-card">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" stroke-width="2"/></svg>
-        <p>Conversação em grupo reduzido</p>
-      </div>
-    </div>
-    <p class="speakclub-highlight">Mais prática. Menos medo. Mais confiança.</p>
-    <p style="color:rgba(248,242,231,0.75);max-width:520px;margin:0 auto 32px;font-size:0.95rem;">Ambiente leve e acolhedor, indicado para quem já possui uma base de inglês.</p>
-    <a href="https://wa.me/5511999999999?text=Oi%20Camila!%20Quero%20participar%20do%20Let's%20Speak%20Club." target="_blank" rel="noopener" class="btn btn-cream">Quero participar do clube</a>
-  </div>
-</section>
+      <div class="exp-panel">
+        <span class="eyebrow">A experiência</span>
+        <h2>Do preparo à mesa, <span class="italic">tudo tem raiz.</span></h2>
 
-<div class="torn to-white"><svg viewBox="0 0 1200 36" preserveAspectRatio="none"><path d="M0 36 L0 12 Q20 0 40 12 T80 12 T120 12 T160 12 T200 12 T240 12 T280 12 T320 12 T360 12 T400 12 T440 12 T480 12 T520 12 T560 12 T600 12 T640 12 T680 12 T720 12 T760 12 T800 12 T840 12 T880 12 T920 12 T960 12 T1000 12 T1040 12 T1080 12 T1120 12 T1160 12 T1200 12 L1200 36 Z" fill="#ffffff"/></svg></div>
-
-<!-- ===================== COMO FUNCIONA ===================== -->
-<section class="section how reveal" style="background:var(--white);">
-  <div class="container">
-    <span class="eyebrow">✎ o caminho até a fluência</span>
-    <h2 class="section-title">Como funciona</h2>
-    <div class="steps">
-      <div class="steps-line"></div>
-      <div class="steps-grid">
-        <div class="step">
-          <div class="step-num">1</div>
-          <h4>Você conta os seus objetivos</h4>
-          <p>Uma conversa inicial para entender o que você quer alcançar com o inglês.</p>
+        <div class="exp-item">
+          <span class="num">Aa</span>
+          <h4>Ingredientes brasileiros</h4>
+          <p>Produtores parceiros de norte a sul, direto para a cozinha.</p>
         </div>
-        <div class="step">
-          <div class="step-num">2</div>
-          <h4>Identificação do seu nível</h4>
-          <p>A Camila avalia seu ponto de partida sem julgamentos.</p>
+        <div class="exp-item">
+          <span class="num">Aa</span>
+          <h4>Cozinha contemporânea</h4>
+          <p>Técnica apurada a serviço do sabor — nunca do espetáculo.</p>
         </div>
-        <div class="step">
-          <div class="step-num">3</div>
-          <h4>Plano personalizado</h4>
-          <p>É criado um plano de estudo feito sob medida para você.</p>
-        </div>
-        <div class="step">
-          <div class="step-num">4</div>
-          <h4>Aulas com acompanhamento</h4>
-          <p>As aulas começam com acompanhamento contínuo da sua evolução.</p>
+        <div class="exp-item">
+          <span class="num">Aa</span>
+          <h4>Ambiente acolhedor</h4>
+          <p>Luz baixa, mesas próximas e tempo para ficar.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===================== DEPOIMENTOS ===================== -->
-<section class="section testimonials reveal" id="depoimentos">
-  <div class="container">
-    <span class="demo-flag">⚠ conteúdo demonstrativo — substituir por depoimentos reais</span>
-    <h2 class="section-title">O que os meus alunos dizem</h2>
-    <div class="test-grid">
-      <div class="test-card">
-        <p class="test-quote">"Eu tinha muito medo de errar. Hoje já converso em inglês sem travar tanto — sinto que evoluí muito rápido."</p>
-        <div class="test-person">
-          <div class="test-avatar">J</div>
-          <div>
-            <div class="test-name">Juliana R.</div>
-            <div class="test-meta">Objetivo: viagens • 6 meses de aulas</div>
+<!-- GALLERY -->
+<section class="gallery" id="galeria">
+  <div class="wrap">
+    <div class="gallery-head reveal">
+      <span class="eyebrow">Galeria</span>
+      <h2>Um retrato da casa</h2>
+    </div>
+    <div class="gallery-grid reveal">
+      <div class="g-item g1"><img src="https://images.unsplash.com/photo-1424847651672-bf20a4b0982b?auto=format&fit=crop&w=1000&q=80" alt="Interior do restaurante"><span>Salão</span></div>
+      <div class="g-item g2"><img src="https://images.unsplash.com/photo-1544148103-0773bf10d330?auto=format&fit=crop&w=1000&q=80" alt="Prato assinatura"><span>Prato assinatura</span></div>
+      <div class="g-item g3"><img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&w=800&q=80" alt="Chef preparando prato"><span>Na cozinha</span></div>
+      <div class="g-item g4"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=900&q=80" alt="Experiência à mesa"><span>À mesa</span></div>
+      <div class="g-item g5"><img src="https://images.unsplash.com/photo-1470337458703-46ad1756a187?auto=format&fit=crop&w=900&q=80" alt="Coquetel autoral"><span>Coquetel</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- RESERVATIONS -->
+<section class="reservations" id="reservas">
+  <div class="aurora-glow"></div>
+  <div class="wrap res-grid">
+    <div class="res-text reveal">
+      <span class="eyebrow">Reservas</span>
+      <h2>Seu próximo jantar <span class="italic">começa aqui.</span></h2>
+      <p>Preencha os dados abaixo — nossa equipe confirma sua mesa em instantes.</p>
+      <div class="res-info">
+        <div><b>Terça a domingo</b> · 12h–16h e 19h–00h</div>
+        <div>Grupos acima de 8 pessoas, fale com a gente pelo WhatsApp.</div>
+      </div>
+    </div>
+
+    <form class="res-form reveal" id="resForm">
+      <div id="formFields">
+        <div class="form-row">
+          <div class="field">
+            <label for="rName">Nome</label>
+            <input type="text" id="rName" placeholder="Seu nome completo" required>
+          </div>
+          <div class="field">
+            <label for="rPeople">Nº de pessoas</label>
+            <select id="rPeople" required>
+              <option value="">Selecione</option>
+              <option>1 pessoa</option>
+              <option>2 pessoas</option>
+              <option>3 pessoas</option>
+              <option>4 pessoas</option>
+              <option>5 pessoas</option>
+              <option>6+ pessoas</option>
+            </select>
           </div>
         </div>
-      </div>
-      <div class="test-card">
-        <p class="test-quote">"As aulas são leves e organizadas ao mesmo tempo. Consigo ver meu progresso de verdade a cada semana."</p>
-        <div class="test-person">
-          <div class="test-avatar">M</div>
-          <div>
-            <div class="test-name">Marcelo T.</div>
-            <div class="test-meta">Objetivo: trabalho • 1 ano de aulas</div>
+        <div class="form-row">
+          <div class="field">
+            <label for="rDate">Data</label>
+            <input type="date" id="rDate" required>
+          </div>
+          <div class="field">
+            <label for="rTime">Horário</label>
+            <input type="time" id="rTime" required>
           </div>
         </div>
+        <button type="submit" class="btn btn-primary btn-block">Solicitar reserva</button>
+        <p class="form-note">Você receberá a confirmação por WhatsApp ou telefone.</p>
       </div>
-      <div class="test-card">
-        <p class="test-quote">"O Let's Speak Club mudou minha confiança. Hoje eu falo sem medo de errar na frente dos outros."</p>
-        <div class="test-person">
-          <div class="test-avatar">B</div>
-          <div>
-            <div class="test-name">Beatriz L.</div>
-            <div class="test-meta">Objetivo: conversação • 8 meses de aulas</div>
-          </div>
-        </div>
+
+      <div class="form-success" id="formSuccess">
+        <div class="check">✓</div>
+        <h4>Reserva solicitada</h4>
+        <p>Obrigado! Em breve entraremos em contato para confirmar sua mesa.</p>
       </div>
-    </div>
+    </form>
   </div>
 </section>
 
-<!-- ===================== PLANOS ===================== -->
-<section class="section plans reveal" style="background:var(--white);">
-  <div class="container">
-    <span class="eyebrow">✎ planos demonstrativos</span>
-    <h2 class="section-title">Escolha a forma de aprender que combina com você</h2>
-    <div class="plans-grid">
-      <div class="plan-card">
-        <h3>Aula avulsa</h3>
-        <p class="plan-price">Consulte valores e disponibilidade</p>
-        <ul>
-          <li>Ideal para experimentar</li>
-          <li>Flexibilidade total</li>
-          <li>Sem compromisso mensal</li>
-        </ul>
-        <a href="https://wa.me/5511999999999?text=Oi%20Camila!%20Quero%20saber%20mais%20sobre%20a%20aula%20avulsa." target="_blank" rel="noopener" class="btn btn-outline">Quero saber mais</a>
-      </div>
-      <div class="plan-card featured">
-        <span class="plan-badge">MAIS RECOMENDADO</span>
-        <h3>Plano individual</h3>
-        <p class="plan-price">Consulte valores e disponibilidade</p>
-        <ul>
-          <li>Plano de estudo personalizado</li>
-          <li>Acompanhamento contínuo</li>
-          <li>Material sob medida</li>
-          <li>Horários flexíveis</li>
-        </ul>
-        <a href="https://wa.me/5511999999999?text=Oi%20Camila!%20Quero%20saber%20mais%20sobre%20o%20plano%20individual." target="_blank" rel="noopener" class="btn btn-cream">Quero saber mais</a>
-      </div>
-      <div class="plan-card">
-        <h3>Let's Speak Club</h3>
-        <p class="plan-price">Consulte valores e disponibilidade</p>
-        <ul>
-          <li>2 encontros por semana</li>
-          <li>Conversação em grupo reduzido</li>
-          <li>Ambiente leve e acolhedor</li>
-        </ul>
-        <a href="https://wa.me/5511999999999?text=Oi%20Camila!%20Quero%20saber%20mais%20sobre%20o%20Let's%20Speak%20Club." target="_blank" rel="noopener" class="btn btn-outline">Quero saber mais</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== FAQ ===================== -->
-<section class="section faq reveal">
-  <div class="container">
-    <span class="eyebrow">✎ perguntas frequentes</span>
-    <h2 class="section-title">Ainda com dúvidas?</h2>
-    <div class="faq-list" id="faqList">
-      <div class="faq-item">
-        <button class="faq-q">As aulas são online?<svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
-        <div class="faq-a"><div class="faq-a-inner">Sim! Todas as aulas acontecem online, de forma prática e flexível, direto de onde você estiver.</div></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">Preciso saber inglês antes de começar?<svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
-        <div class="faq-a"><div class="faq-a-inner">Não. As aulas são adaptadas para todos os níveis, incluindo quem está começando do zero.</div></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">Como funciona a aula experimental?<svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
-        <div class="faq-a"><div class="faq-a-inner">Você conversa com a Camila sobre seus objetivos e nível, e a partir disso é montado um plano de estudo personalizado.</div></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">As aulas são individuais ou em grupo?<svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
-        <div class="faq-a"><div class="faq-a-inner">As aulas particulares são individuais. O Let's Speak Club acontece em grupo reduzido, focado em conversação.</div></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">O material está incluído?<svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
-        <div class="faq-a"><div class="faq-a-inner">Sim, o material é preparado especialmente para o seu plano de estudo, sem custo adicional.</div></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">Posso escolher os horários?<svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
-        <div class="faq-a"><div class="faq-a-inner">Sim, os horários são combinados de acordo com a sua disponibilidade e a da Camila.</div></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">Como funciona o Let's Speak Club?<svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
-        <div class="faq-a"><div class="faq-a-inner">São dois encontros semanais de 30 minutos, em grupo reduzido, focados em conversação para quem já tem uma base de inglês.</div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== CTA FINAL ===================== -->
-<section class="section" style="padding-top:0;">
-  <div class="container">
-    <div class="final-cta reveal">
-      <svg class="star" style="top:14%;left:6%;width:26px;color:rgba(255,255,255,0.6)" viewBox="0 0 24 24" fill="none"><path d="M12 0L14 10L24 12L14 14L12 24L10 14L0 12L10 10L12 0Z" fill="currentColor"/></svg>
-      <h2>Seu inglês pode sair do papel e fazer parte da sua vida.</h2>
-      <p>Comece com uma aula personalizada e descubra uma forma mais leve e prática de aprender.</p>
-      <a href="https://wa.me/5511999999999?text=Oi%20Camila!%20Quero%20come%C3%A7ar%20agora%20as%20minhas%20aulas%20de%20ingl%C3%AAs." target="_blank" rel="noopener" class="btn btn-cream">Quero começar agora</a>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== CONTATO ===================== -->
-<section class="section contact reveal" id="contato">
-  <div class="container">
-    <span class="eyebrow">✎ vamos conversar?</span>
-    <h2 class="section-title">Fale com a Camila</h2>
+<!-- CONTACT -->
+<section class="contact" id="contato">
+  <div class="wrap">
+    <span class="eyebrow">Contato</span>
     <div class="contact-grid">
-      <div class="contact-info">
-        <a class="contact-link" href="https://wa.me/5511999999999" target="_blank" rel="noopener">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="currentColor" stroke-width="2"/></svg>
-          <div>WhatsApp<span>Resposta rápida</span></div>
-        </a>
-        <a class="contact-link" href="https://instagram.com/hi_camilalima" target="_blank" rel="noopener">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/></svg>
-          <div>@hi_camilalima<span>Instagram</span></div>
-        </a>
-        <a class="contact-link" href="mailto:contato@camilalima.com.br">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="2" y="4" width="20" height="16" rx="2" stroke="currentColor" stroke-width="2"/><path d="M2 6l10 7 10-7" stroke="currentColor" stroke-width="2"/></svg>
-          <div>contato@camilalima.com.br<span>E-mail</span></div>
-        </a>
+      <div class="contact-block">
+        <h4>Endereço</h4>
+        <p>Rua Harmonia, 214 — Vila Madalena<br>São Paulo – SP, 05435-000</p>
       </div>
-      <div class="form-card">
-        <div class="form-success" id="formSuccess">✓ Mensagem enviada! A Camila vai te responder em breve.</div>
-        <form id="contactForm" novalidate>
-          <div class="form-row">
-            <div class="field" data-field="nome">
-              <label for="nome">Nome</label>
-              <input type="text" id="nome" name="nome" placeholder="Seu nome completo">
-              <span class="error-msg">Por favor, preencha seu nome.</span>
-            </div>
-            <div class="field" data-field="telefone">
-              <label for="telefone">Telefone</label>
-              <input type="tel" id="telefone" name="telefone" placeholder="(11) 99999-9999">
-              <span class="error-msg">Informe um telefone válido.</span>
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="field" data-field="nivel">
-              <label for="nivel">Nível de inglês</label>
-              <select id="nivel" name="nivel">
-                <option value="">Selecione</option>
-                <option>Iniciante</option>
-                <option>Básico</option>
-                <option>Intermediário</option>
-                <option>Avançado</option>
-              </select>
-              <span class="error-msg">Selecione seu nível.</span>
-            </div>
-            <div class="field" data-field="modalidade">
-              <label for="modalidade">Modalidade de interesse</label>
-              <select id="modalidade" name="modalidade">
-                <option value="">Selecione</option>
-                <option>Aulas individuais</option>
-                <option>Conversação</option>
-                <option>Inglês para viagens</option>
-                <option>Inglês para iniciantes</option>
-                <option>Let's Speak Club</option>
-              </select>
-              <span class="error-msg">Selecione uma modalidade.</span>
-            </div>
-          </div>
-          <div class="field" data-field="objetivo">
-            <label for="objetivo">Objetivo</label>
-            <input type="text" id="objetivo" name="objetivo" placeholder="Ex: viagem, trabalho, conversação...">
-            <span class="error-msg">Conte qual é o seu objetivo.</span>
-          </div>
-          <div class="field" data-field="disponibilidade">
-            <label for="disponibilidade">Disponibilidade</label>
-            <input type="text" id="disponibilidade" name="disponibilidade" placeholder="Ex: noites, fins de semana...">
-            <span class="error-msg">Informe sua disponibilidade.</span>
-          </div>
-          <div class="field" data-field="mensagem">
-            <label for="mensagem">Mensagem</label>
-            <textarea id="mensagem" name="mensagem" rows="3" placeholder="Conte um pouco mais sobre o que você precisa"></textarea>
-            <span class="error-msg">Escreva uma mensagem.</span>
-          </div>
-          <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Enviar mensagem</button>
-        </form>
+      <div class="contact-block">
+        <h4>Horário</h4>
+        <p>Terça a sexta · 12h–16h / 19h–00h<br>Sábado e domingo · 12h–00h<br>Segunda · Fechado</p>
+      </div>
+      <div class="contact-block">
+        <h4>Fale conosco</h4>
+        <a class="social" href="https://wa.me/558388341499" target="_blank" rel="noopener">WhatsApp — 11 8834-1499</a><br>
+        <a class="social" href="https://instagram.com/casaaurora" target="_blank" rel="noopener">@casaaurora</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===================== FOOTER ===================== -->
+<!-- FOOTER -->
 <footer>
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <span class="logo-name">Camila Lima</span>
-        <p>English Teacher — aulas de inglês online, práticas e personalizadas para jovens e adultos que querem falar com confiança.</p>
-      </div>
-      <div class="footer-col">
-        <h5>Links rápidos</h5>
-        <a href="#sobre">Sobre</a>
-        <a href="#aulas">Aulas</a>
-        <a href="#speak-club">Let's Speak Club</a>
-        <a href="#depoimentos">Depoimentos</a>
-        <a href="#contato">Contato</a>
-      </div>
-      <div class="footer-col">
-        <h5>Contato</h5>
-        <a href="https://instagram.com/hi_camilalima" target="_blank" rel="noopener">Instagram · @hi_camilalima</a>
-        <a href="https://wa.me/5511999999999" target="_blank" rel="noopener">WhatsApp</a>
-        <a href="mailto:contato@camilalima.com.br">E-mail</a>
-      </div>
+  <div class="wrap">
+    <a href="#top" class="logo">CASA <span>Aurora</span></a>
+    <p class="tagline">"Sabores que ficam na memória."</p>
+    <div class="footer-links">
+      <a href="#top">Início</a>
+      <a href="#menu">Menu</a>
+      <a href="#sobre">Sobre Nós</a>
+      <a href="#galeria">Galeria</a>
+      <a href="#contato">Contato</a>
     </div>
-    <div class="footer-bottom">
-      <span>© 2026 Camila Lima. Todos os direitos reservados.</span>
-      <span>Desenvolvido por TechSpace</span>
-    </div>
+    <div class="footer-bottom">© 2026 Casa Aurora. Todos os direitos reservados.</div>
   </div>
 </footer>
 
-<div class="mobile-cta-bar">
-  <a class="cta-whats" href="https://wa.me/5511999999999?text=Oi%20Camila!%20Quero%20come%C3%A7ar%20a%20aprender%20ingl%C3%AAs%20com%20voc%C3%AA." target="_blank" rel="noopener">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="currentColor" stroke-width="2"/></svg>
-    WhatsApp
-  </a>
-  <a class="cta-agendar" href="#contato">Agendar aula</a>
-</div>
+<a class="wa-float" href="https://wa.me/558388341499" target="_blank" rel="noopener" aria-label="Fale conosco pelo WhatsApp">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+    <path d="M12 2C6.48 2 2 6.48 2 12c0 1.9.53 3.68 1.45 5.2L2 22l4.93-1.4A9.94 9.94 0 0012 22c5.52 0 10-4.48 10-10S17.52 2 12 2z" fill="#FBF3E7"/>
+    <path d="M12 2C6.48 2 2 6.48 2 12c0 1.9.53 3.68 1.45 5.2L2 22l4.93-1.4A9.94 9.94 0 0012 22c5.52 0 10-4.48 10-10S17.52 2 12 2z" stroke="none"/>
+  </svg>
+</a>
 
 <script>
-// ---------- Header scroll state ----------
-const header = document.getElementById('header');
-window.addEventListener('scroll', () => {
-  header.classList.toggle('scrolled', window.scrollY > 40);
-});
+  // header scroll state
+  const header = document.getElementById('siteHeader');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 40);
+  }, {passive:true});
 
-// ---------- Mobile menu ----------
-const burgerBtn = document.getElementById('burgerBtn');
-const mobileMenu = document.getElementById('mobileMenu');
-const overlay = document.getElementById('overlay');
-const menuClose = document.getElementById('menuClose');
-
-function openMenu(){ mobileMenu.classList.add('open'); overlay.classList.add('open'); }
-function closeMenu(){ mobileMenu.classList.remove('open'); overlay.classList.remove('open'); }
-
-burgerBtn.addEventListener('click', openMenu);
-menuClose.addEventListener('click', closeMenu);
-overlay.addEventListener('click', closeMenu);
-mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
-
-// ---------- Scroll reveal ----------
-const revealEls = document.querySelectorAll('.reveal');
-const io = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('in');
-      io.unobserve(entry.target);
-    }
+  // mobile nav
+  const burger = document.getElementById('burger');
+  const mobileNav = document.getElementById('mobileNav');
+  burger.addEventListener('click', () => {
+    burger.classList.toggle('open');
+    mobileNav.classList.toggle('open');
+    document.body.style.overflow = mobileNav.classList.contains('open') ? 'hidden' : '';
   });
-}, { threshold: 0.12 });
-revealEls.forEach(el => io.observe(el));
+  mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    burger.classList.remove('open');
+    mobileNav.classList.remove('open');
+    document.body.style.overflow = '';
+  }));
 
-// ---------- FAQ accordion ----------
-document.querySelectorAll('.faq-item').forEach(item => {
-  const q = item.querySelector('.faq-q');
-  const a = item.querySelector('.faq-a');
-  q.addEventListener('click', () => {
-    const isOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item').forEach(i => {
-      i.classList.remove('open');
-      i.querySelector('.faq-a').style.maxHeight = null;
+  // scroll reveal
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(e.isIntersecting){
+        e.target.classList.add('in-view');
+        io.unobserve(e.target);
+      }
     });
-    if (!isOpen) {
-      item.classList.add('open');
-      a.style.maxHeight = a.scrollHeight + 'px';
-    }
-  });
-});
+  }, {threshold:0.15});
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-// ---------- Contact form validation ----------
-const form = document.getElementById('contactForm');
-const formSuccess = document.getElementById('formSuccess');
-
-form.addEventListener('submit', function(e){
-  e.preventDefault();
-  let valid = true;
-  const fields = form.querySelectorAll('.field');
-  fields.forEach(field => {
-    const input = field.querySelector('input, select, textarea');
-    field.classList.remove('error');
-    if (!input.value || !input.value.trim()) {
-      field.classList.add('error');
-      valid = false;
-    }
+  // reservation form (front-end only)
+  const form = document.getElementById('resForm');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    document.getElementById('formFields').style.display = 'none';
+    document.getElementById('formSuccess').classList.add('show');
   });
 
-  const telefoneField = form.querySelector('[data-field="telefone"]');
-  const telefoneInput = telefoneField.querySelector('input');
-  if (telefoneInput.value && telefoneInput.value.replace(/\D/g,'').length < 8) {
-    telefoneField.classList.add('error');
-    valid = false;
+  // set min date to today
+  const dateInput = document.getElementById('rDate');
+  if(dateInput){
+    const today = new Date().toISOString().split('T')[0];
+    dateInput.setAttribute('min', today);
   }
-
-  if (valid) {
-    formSuccess.classList.add('show');
-    form.reset();
-    setTimeout(() => formSuccess.classList.remove('show'), 6000);
-  } else {
-    formSuccess.classList.remove('show');
-  }
-});
 </script>
+
 </body>
 </html>
