@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vértice Imóveis | João Pessoa</title>
+  <meta name="description" content="Imóveis selecionados em João Pessoa para você viver, investir e conquistar novos momentos." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.26.5/babel.min.js"></script>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+const { useState, useEffect } = React;
+const Icon = ({ className = "", size = 16, ...props }) => React.createElement("span", {
+  className: `inline-flex items-center justify-center ${className}`,
+  style: { width: size, height: size, lineHeight: 1 },
+  "aria-hidden": "true",
+  ...props,
+}, "•");
+const iconComponents = ["Menu", "X", "MessageCircle", "MapPin", "Bed", "Bath", "Car", "Search", "ChevronRight", "Instagram", "Facebook", "Mail", "Clock", "Phone", "Compass", "Users", "ShieldCheck", "Sparkles", "HandCoins"];
+const icons = Object.fromEntries(iconComponents.map((name) => [name, Icon]));
+const {
+  Menu, X, MessageCircle, MapPin, Bed, Bath, Car, Search,
+  ChevronRight, Instagram, Facebook, Mail, Clock, Phone,
+  Compass, Users, ShieldCheck, Sparkles, HandCoins,
+} = icons;
+
+/* ---------------------------------------------------------
+   DATA
+--------------------------------------------------------- */
+
+const NAV_LINKS = [
+  { label: "Início", href: "#inicio" },
+  { label: "Imóveis", href: "#imoveis" },
+  { label: "Lançamentos", href: "#lancamentos" },
+  { label: "Sobre nós", href: "#sobre" },
+  { label: "Contato", href: "#contato" },
+];
+
+const LOCATIONS = ["Tambaú", "Cabo Branco", "Manaíra", "Bessa", "Altiplano", "Jardim Oceania", "Bancários", "Portal do Sol"];
+
+const PROPERTIES = [
+  {
+    name: "Vista Mansões Altiplano",
+    neighborhood: "Cabo Branco, João Pessoa - PB",
+    type: "Apartamento",
+    beds: 3, suites: 2, parking: 2,
+    price: "R$ 1.250.000",
+    img: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Vista_Mans%C3%B5es_Wellington_Barreto.jpg/960px-Vista_Mans%C3%B5es_Wellington_Barreto.jpg",
+  },
+  {
+    name: "Residência Jardim Oceania",
+    neighborhood: "Jardim Oceania, João Pessoa - PB",
+    type: "Casa",
+    beds: 4, suites: 3, parking: 3,
+    price: "R$ 1.980.000",
+    img: "https://upload.wikimedia.org/wikipedia/commons/3/33/AD%27OR_Fachada.jpg",
+  },
+  {
+    name: "Torre Altiplano",
+    neighborhood: "Altiplano, João Pessoa - PB",
+    type: "Apartamento",
+    beds: 3, suites: 2, parking: 2,
+    price: "R$ 950.000",
+    img: "https://upload.wikimedia.org/wikipedia/commons/f/fd/TorreAToursMontBlanc.jpg",
+  },
+  {
+    name: "Horizonte Manaíra",
+    neighborhood: "Manaíra, João Pessoa - PB",
+    type: "Apartamento",
+    beds: 2, suites: 1, parking: 1,
+    price: "R$ 720.000",
+    img: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Jo%C3%A3o_Pessoa_S_Skyscrapers_%28101895145%29.jpeg/960px-Jo%C3%A3o_Pessoa_S_Skyscrapers_%28101895145%29.jpeg",
+  },
+];
+
+const NEIGHBORHOODS = [
+  { name: "Cabo Branco", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Praia_de_Cabo_Branco_-_Jo%C3%A3o_Pessoa_PB.jpg/960px-Praia_de_Cabo_Branco_-_Jo%C3%A3o_Pessoa_PB.jpg" },
+  { name: "Tambaú", img: "https://upload.wikimedia.org/wikipedia/commons/2/2e/Jo%C3%A3o_Pessoa_Tamba%C3%BA_beach.jpg" },
+  { name: "Manaíra", img: "https://images.unsplash.com/photo-1602002418082-a4443e081dd1?auto=format&fit=crop&w=700&q=80" },
+  { name: "Bessa", img: "https://images.unsplash.com/photo-1473116763249-2faaef81ccda?auto=format&fit=crop&w=700&q=80" },
+  { name: "Altiplano", img: "https://images.unsplash.com/photo-1493558103817-58b2924bce98?auto=format&fit=crop&w=700&q=80" },
+];
+
+const DEVELOPMENTS = [
+  { name: "Casa Maré", area: "Cabo Branco", price: "A partir de R$ 890.000", img: "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=800&q=80" },
+  { name: "Vista Oceano", area: "Altiplano", price: "A partir de R$ 1.150.000", img: "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?auto=format&fit=crop&w=800&q=80" },
+  { name: "Jardins do Bessa", area: "Bessa", price: "A partir de R$ 640.000", img: "https://images.unsplash.com/photo-1571939228382-b2f2b585ce15?auto=format&fit=crop&w=800&q=80" },
+];
+
+const TRUST_ITEMS = [
+  { icon: Sparkles, title: "Imóveis selecionados", text: "Curadoria para encontrar oportunidades que realmente fazem sentido para você." },
+  { icon: Users, title: "Atendimento personalizado", text: "Atendimento próximo em todas as etapas." },
+  { icon: ShieldCheck, title: "Negociação segura", text: "Mais segurança para comprar ou investir." },
+  { icon: Compass, title: "Conhecimento local", text: "Conhecemos João Pessoa e seus melhores bairros." },
+];
+
+const WHY_ITEMS = [
+  { icon: Compass, title: "Conhecimento local", text: "Anos de bairro em bairro, sabendo onde cada perfil de cliente se encaixa melhor." },
+  { icon: Users, title: "Atendimento próximo", text: "Um especialista acompanha você do primeiro contato à assinatura." },
+  { icon: HandCoins, title: "Negociação transparente", text: "Condições claras, sem letras miúdas, do início ao fim." },
+];
+
+/* ---------------------------------------------------------
+   SMALL UI PRIMITIVES
+--------------------------------------------------------- */
+
+function HorizonRule({ className = "" }) {
+  return (
+    <div className={`h-px w-full bg-gradient-to-r from-transparent via-[#C9A24B]/60 to-transparent ${className}`} />
+  );
+}
+
+function Eyebrow({ children, dark = false }) {
+  return (
+    <div className="flex items-center gap-3 mb-4">
+      <span className="h-px w-8 bg-[#C9A24B]" />
+      <span className={`text-[11px] tracking-[0.24em] uppercase font-semibold ${dark ? "text-[#C9A24B]" : "text-[#8A6D2E]"}`}>
+        {children}
+      </span>
+    </div>
+  );
+}
+
+function VerticeMark({ className = "" }) {
+  // Two lines meeting at a single point — the "vértice": part rooftop, part horizon apex.
+  return (
+    <svg viewBox="0 0 40 24" className={className} fill="none">
+      <path d="M2 22 L20 3 L38 22" stroke="#C9A24B" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+      <circle cx="20" cy="3" r="1.6" fill="#C9A24B" />
+    </svg>
+  );
+}
+
+function PropertyCard({ p }) {
+  return (
+    <div className="group bg-white rounded-2xl overflow-hidden shadow-[0_2px_20px_-6px_rgba(11,30,51,0.15)] hover:shadow-[0_18px_40px_-12px_rgba(11,30,51,0.28)] transition-shadow duration-500">
+      <div className="relative aspect-[4/3] overflow-hidden">
+        <img src={p.img} alt={p.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" />
+        <span className="absolute top-4 left-4 bg-[#0B1E33] text-[#F6EFE2] text-[11px] tracking-wide font-semibold px-3 py-1.5 rounded-full">
+          À venda
+        </span>
+      </div>
+      <div className="p-6">
+        <div className="flex items-center gap-1.5 text-[#8A7E6A] text-[13px] mb-2">
+          <MapPin size={13} className="text-[#C9A24B]" />
+          {p.neighborhood}
+        </div>
+        <h3 className="font-serif text-[19px] text-[#0B1E33] mb-3">{p.name}</h3>
+        <div className="flex items-center gap-4 text-[#5B6572] text-[13px] mb-5">
+          <span className="flex items-center gap-1.5"><Bed size={14} />{p.beds}</span>
+          <span className="flex items-center gap-1.5"><Bath size={14} />{p.suites}</span>
+          <span className="flex items-center gap-1.5"><Car size={14} />{p.parking}</span>
+        </div>
+        <div className="flex items-center justify-between pt-4 border-t border-[#EDE6D6]">
+          <span className="font-serif text-[18px] text-[#0B1E33]">{p.price}</span>
+          <button className="text-[13px] font-semibold text-[#0B1E33] flex items-center gap-1 hover:text-[#C9A24B] transition-colors">
+            Ver imóvel <ChevronRight size={14} />
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function NeighborhoodCard({ n }) {
+  return (
+    <div className="group relative rounded-2xl overflow-hidden aspect-[3/4] cursor-pointer">
+      <img src={n.img} alt={n.name} className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#0B1E33]/85 via-[#0B1E33]/10 to-transparent" />
+      <div className="absolute inset-x-0 bottom-0 p-5">
+        <h4 className="font-serif text-white text-[19px] mb-2">{n.name}</h4>
+        <span className="text-[12px] text-[#C9A24B] font-semibold flex items-center gap-1 opacity-0 group-hover:opacity-100 translate-y-1 group-hover:translate-y-0 transition-all duration-300">
+          Ver imóveis <ChevronRight size={12} />
+        </span>
+      </div>
+    </div>
+  );
+}
+
+function DevelopmentCard({ d }) {
+  return (
+    <div className="rounded-2xl overflow-hidden bg-white shadow-[0_2px_20px_-8px_rgba(11,30,51,0.15)]">
+      <div className="relative aspect-[16/10] overflow-hidden">
+        <img src={d.img} alt={d.name} className="w-full h-full object-cover" />
+        <span className="absolute top-4 left-4 bg-[#C9A24B] text-[#0B1E33] text-[11px] font-bold tracking-wide px-3 py-1.5 rounded-full">
+          Lançamento
+        </span>
+      </div>
+      <div className="p-6">
+        <p className="text-[12px] text-[#8A7E6A] tracking-wide mb-1">{d.area}</p>
+        <h3 className="font-serif text-[20px] text-[#0B1E33] mb-3">{d.name}</h3>
+        <p className="text-[14px] text-[#5B6572] mb-5">{d.price}</p>
+        <button className="text-[13px] font-semibold text-[#0B1E33] flex items-center gap-1 hover:text-[#C9A24B] transition-colors">
+          Conhecer empreendimento <ChevronRight size={14} />
+        </button>
+      </div>
+    </div>
+  );
+}
+
+/* ---------------------------------------------------------
+   MAIN COMPONENT
+--------------------------------------------------------- */
+
+function VerticeImoveis() {
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [tab, setTab] = useState("Comprar");
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 30);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  return (
+    <div className="min-h-screen bg-[#FBF8F1] text-[#0B1E33]" style={{ fontFamily: "'Manrope', sans-serif" }}>
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Manrope:wght@400;500;600;700;800&display=swap');
+        .font-serif { font-family: 'Fraunces', serif; }
+      `}</style>
+
+      {/* HEADER */}
+      <header className={`fixed top-0 inset-x-0 z-50 transition-all duration-400 ${scrolled ? "bg-[#0B1E33]/95 backdrop-blur-md py-3 shadow-lg" : "bg-transparent py-6"}`}>
+        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+          <a href="#inicio" className="flex items-center gap-3">
+            <VerticeMark className="w-7 h-5" />
+            <div className="leading-[1.05]">
+              <div className="font-serif text-white text-[15px] tracking-[0.08em]">VÉRTICE</div>
+              <div className="text-[10px] tracking-[0.32em] text-[#C9A24B] font-semibold">IMÓVEIS</div>
+            </div>
+          </a>
+
+          <nav className="hidden lg:flex items-center gap-9">
+            {NAV_LINKS.map((l) => (
+              <a key={l.label} href={l.href} className="text-[13.5px] text-[#EDE6D6] hover:text-[#C9A24B] transition-colors">
+                {l.label}
+              </a>
+            ))}
+          </nav>
+
+          <div className="hidden lg:flex items-center gap-4">
+            <a href="https://wa.me/5583999999999" target="_blank" rel="noopener noreferrer"
+              className="flex items-center gap-2 bg-[#C9A24B] text-[#0B1E33] text-[13px] font-bold px-5 py-2.5 rounded-full hover:bg-[#DDB65E] transition-colors">
+              <MessageCircle size={15} /> Fale conosco
+            </a>
+          </div>
+
+          <button className="lg:hidden text-white" onClick={() => setMenuOpen(true)} aria-label="Abrir menu">
+            <Menu size={26} />
+          </button>
+        </div>
+      </header>
+
+      {/* MOBILE MENU */}
+      <div className={`fixed inset-0 z-[60] bg-[#0B1E33] transition-transform duration-500 ${menuOpen ? "translate-x-0" : "translate-x-full"} lg:hidden`}>
+        <div className="flex justify-between items-center px-6 py-6">
+          <VerticeMark className="w-7 h-5" />
+          <button onClick={() => setMenuOpen(false)} className="text-white" aria-label="Fechar menu"><X size={26} /></button>
+        </div>
+        <nav className="flex flex-col gap-7 px-8 mt-8">
+          {NAV_LINKS.map((l) => (
+            <a key={l.label} href={l.href} onClick={() => setMenuOpen(false)} className="font-serif text-white text-[28px]">
+              {l.label}
+            </a>
+          ))}
+          <a href="https://wa.me/5583999999999" className="mt-4 flex items-center justify-center gap-2 bg-[#C9A24B] text-[#0B1E33] text-[14px] font-bold px-5 py-3.5 rounded-full">
+            <MessageCircle size={16} /> Fale conosco
+          </a>
+        </nav>
+      </div>
+
+      {/* HERO */}
+      <section id="inicio" className="relative min-h-[92vh] flex items-end">
+        <div className="absolute inset-0">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Jo%C3%A3o_Pessoa_S_Skyscrapers_%28101895145%29.jpeg/960px-Jo%C3%A3o_Pessoa_S_Skyscrapers_%28101895145%29.jpeg" alt="Edifícios do bairro Altiplano, João Pessoa" className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0B1E33]/90 via-[#0B1E33]/25 to-[#0B1E33]/40" />
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-6 pb-40 pt-40 w-full">
+          <div className="flex items-center gap-2 text-[#C9A24B] text-[12.5px] font-semibold tracking-[0.18em] uppercase mb-6">
+            <MapPin size={14} /> João Pessoa • Paraíba
+          </div>
+          <h1 className="font-serif text-white text-[40px] sm:text-[54px] lg:text-[68px] leading-[1.06] max-w-3xl mb-6">
+            O lugar certo para o seu novo começo.
+          </h1>
+          <p className="text-[#EDE6D6] text-[16px] sm:text-[18px] max-w-xl mb-10 font-light">
+            Imóveis selecionados em João Pessoa para você viver, investir e conquistar novos momentos.
+          </p>
+          <div className="flex flex-wrap gap-4">
+            <a href="#buscar" className="bg-[#C9A24B] text-[#0B1E33] font-bold text-[14px] px-7 py-4 rounded-full hover:bg-[#DDB65E] transition-colors">
+              Encontrar meu imóvel
+            </a>
+            <a href="#imoveis" className="border border-white/40 text-white font-semibold text-[14px] px-7 py-4 rounded-full hover:bg-white/10 transition-colors">
+              Ver imóveis
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* SEARCH BOX (overlaps hero) */}
+      <section id="buscar" className="relative z-20 max-w-5xl mx-auto px-6 -mt-24">
+        <div className="bg-white rounded-2xl shadow-[0_30px_60px_-20px_rgba(11,30,51,0.35)] p-6 sm:p-8">
+          <h2 className="font-serif text-[20px] text-[#0B1E33] mb-6">Encontre seu próximo imóvel</h2>
+
+          <div className="flex gap-2 mb-7 border-b border-[#EDE6D6]">
+            {["Comprar", "Alugar", "Lançamentos"].map((t) => (
+              <button
+                key={t}
+                onClick={() => setTab(t)}
+                className={`px-4 py-2.5 text-[13.5px] font-semibold -mb-px border-b-2 transition-colors ${
+                  tab === t ? "border-[#C9A24B] text-[#0B1E33]" : "border-transparent text-[#9AA0A8] hover:text-[#5B6572]"
+                }`}
+              >
+                {t}
+              </button>
+            ))}
+          </div>
+
+          <div className="grid sm:grid-cols-3 gap-5">
+            <div>
+              <label className="block text-[11px] tracking-wide uppercase text-[#8A7E6A] font-semibold mb-2">Tipo de imóvel</label>
+              <select className="w-full border border-[#EDE6D6] rounded-xl px-3.5 py-3 text-[14px] text-[#0B1E33] bg-[#FBF8F1] focus:outline-none focus:border-[#C9A24B]">
+                <option>Apartamento</option>
+                <option>Casa</option>
+                <option>Cobertura</option>
+                <option>Terreno</option>
+              </select>
+            </div>
+            <div>
+              <label className="block text-[11px] tracking-wide uppercase text-[#8A7E6A] font-semibold mb-2">Localização</label>
+              <select className="w-full border border-[#EDE6D6] rounded-xl px-3.5 py-3 text-[14px] text-[#0B1E33] bg-[#FBF8F1] focus:outline-none focus:border-[#C9A24B]">
+                {LOCATIONS.map((l) => <option key={l}>{l}</option>)}
+              </select>
+            </div>
+            <div>
+              <label className="block text-[11px] tracking-wide uppercase text-[#8A7E6A] font-semibold mb-2">Faixa de preço</label>
+              <select className="w-full border border-[#EDE6D6] rounded-xl px-3.5 py-3 text-[14px] text-[#0B1E33] bg-[#FBF8F1] focus:outline-none focus:border-[#C9A24B]">
+                <option>Até R$ 500.000</option>
+                <option>R$ 500.000 – R$ 1.000.000</option>
+                <option>R$ 1.000.000 – R$ 2.000.000</option>
+                <option>Acima de R$ 2.000.000</option>
+              </select>
+            </div>
+          </div>
+
+          <button className="mt-7 w-full sm:w-auto flex items-center justify-center gap-2 bg-[#0B1E33] text-white font-semibold text-[14px] px-8 py-3.5 rounded-xl hover:bg-[#0F2A44] transition-colors">
+            <Search size={16} /> Buscar imóveis
+          </button>
+        </div>
+      </section>
+
+      {/* TRUST / VALUE PROP */}
+      <section className="max-w-7xl mx-auto px-6 pt-28 pb-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
+          {TRUST_ITEMS.map((item) => (
+            <div key={item.title}>
+              <item.icon size={22} className="text-[#C9A24B] mb-4" strokeWidth={1.6} />
+              <h3 className="font-serif text-[17px] text-[#0B1E33] mb-2">{item.title}</h3>
+              <p className="text-[13.5px] text-[#5B6572] leading-relaxed">{item.text}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* FEATURED PROPERTIES */}
+      <section id="imoveis" className="max-w-7xl mx-auto px-6 py-24">
+        <div className="flex flex-wrap items-end justify-between gap-6 mb-12">
+          <div>
+            <Eyebrow>Portfólio</Eyebrow>
+            <h2 className="font-serif text-[32px] sm:text-[40px] text-[#0B1E33]">Encontre o imóvel ideal</h2>
+            <p className="text-[#5B6572] text-[15px] mt-3 max-w-md">Selecionamos oportunidades em algumas das regiões mais desejadas de João Pessoa.</p>
+          </div>
+          <a href="#" className="hidden sm:flex items-center gap-1 text-[13.5px] font-semibold text-[#0B1E33] hover:text-[#C9A24B] transition-colors">
+            Ver todos os imóveis <ChevronRight size={15} />
+          </a>
+        </div>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-7">
+          {PROPERTIES.map((p) => <PropertyCard key={p.name} p={p} />)}
+        </div>
+      </section>
+
+      {/* JOÃO PESSOA SECTION */}
+      <section className="relative">
+        <div className="grid lg:grid-cols-2">
+          <div className="relative aspect-[4/3] lg:aspect-auto">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/0c/Praia_da_Ponta_do_Seixas_e_Esta%C3%A7%C3%A3o_Cabo_Branco%2C_Jo%C3%A3o_Pessoa.jpg" alt="Praia da Ponta do Seixas e Estação Cabo Branco" className="w-full h-full object-cover" />
+          </div>
+          <div className="bg-[#0B1E33] flex items-center">
+            <div className="px-8 sm:px-14 py-16 lg:py-0">
+              <Eyebrow dark>Sobre a cidade</Eyebrow>
+              <h2 className="font-serif text-white text-[30px] sm:text-[38px] leading-[1.15] mb-6 max-w-md">
+                Viver em João Pessoa é escolher qualidade de vida.
+              </h2>
+              <p className="text-[#C7CDD6] text-[15px] leading-relaxed max-w-md mb-8 font-light">
+                Praias, tranquilidade, natureza e uma cidade que continua crescendo. João Pessoa combina o melhor da vida à beira-mar com novas oportunidades para morar e investir.
+              </p>
+              <div className="flex flex-wrap gap-x-6 gap-y-3 mb-9">
+                {["Tambaú", "Cabo Branco", "Manaíra", "Bessa", "Altiplano"].map((n) => (
+                  <span key={n} className="text-[13px] text-[#C9A24B] flex items-center gap-1.5">
+                    <span className="w-1 h-1 rounded-full bg-[#C9A24B]" /> {n}
+                  </span>
+                ))}
+              </div>
+              <a href="#imoveis" className="inline-flex items-center gap-2 bg-[#C9A24B] text-[#0B1E33] font-bold text-[14px] px-7 py-3.5 rounded-full hover:bg-[#DDB65E] transition-colors">
+                Conheça nossos imóveis <ChevronRight size={15} />
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* NEIGHBOURHOODS */}
+      <section className="max-w-7xl mx-auto px-6 py-24">
+        <Eyebrow>Regiões</Eyebrow>
+        <h2 className="font-serif text-[32px] sm:text-[40px] text-[#0B1E33] mb-12">Explore João Pessoa</h2>
+        <div className="grid grid-cols-2 lg:grid-cols-5 gap-5">
+          {NEIGHBORHOODS.map((n) => <NeighborhoodCard key={n.name} n={n} />)}
+        </div>
+      </section>
+
+      {/* NEW DEVELOPMENTS */}
+      <section id="lancamentos" className="bg-[#F3EBDA] py-24">
+        <div className="max-w-7xl mx-auto px-6">
+          <Eyebrow>Em breve</Eyebrow>
+          <h2 className="font-serif text-[32px] sm:text-[40px] text-[#0B1E33] mb-12">Novos empreendimentos</h2>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-7">
+            {DEVELOPMENTS.map((d) => <DevelopmentCard key={d.name} d={d} />)}
+          </div>
+        </div>
+      </section>
+
+      {/* ABOUT */}
+      <section id="sobre" className="bg-[#0B1E33] py-28 relative overflow-hidden">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <VerticeMark className="w-9 h-6 mx-auto mb-8" />
+          <h2 className="font-serif text-white text-[28px] sm:text-[38px] leading-[1.2] mb-6">
+            Mais do que encontrar imóveis, ajudamos você a encontrar o lugar certo.
+          </h2>
+          <p className="text-[#C7CDD6] text-[15.5px] max-w-xl mx-auto mb-16 font-light leading-relaxed">
+            A Vértice Imóveis nasceu para tornar a compra, venda e locação de imóveis em João Pessoa mais simples, segura e transparente.
+          </p>
+          <HorizonRule className="mb-16" />
+          <div className="grid grid-cols-3 gap-6">
+            {[["+500", "Imóveis anunciados"], ["+300", "Clientes atendidos"], ["10+", "Anos de experiência"]].map(([n, l]) => (
+              <div key={l}>
+                <div className="font-serif text-[#C9A24B] text-[34px] sm:text-[44px]">{n}</div>
+                <div className="text-[12px] sm:text-[13px] text-[#9AA6B5] tracking-wide mt-1">{l}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* WHY VÉRTICE */}
+      <section className="max-w-7xl mx-auto px-6 py-24">
+        <Eyebrow>Diferenciais</Eyebrow>
+        <h2 className="font-serif text-[32px] sm:text-[40px] text-[#0B1E33] mb-14">Por que escolher a Vértice?</h2>
+        <div className="grid sm:grid-cols-3 gap-10">
+          {WHY_ITEMS.map((item) => (
+            <div key={item.title} className="pt-7 border-t-2 border-[#0B1E33]">
+              <item.icon size={22} className="text-[#C9A24B] mb-5" strokeWidth={1.6} />
+              <h3 className="font-serif text-[19px] text-[#0B1E33] mb-3">{item.title}</h3>
+              <p className="text-[14px] text-[#5B6572] leading-relaxed">{item.text}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* WHATSAPP CTA */}
+      <section className="relative py-32">
+        <div className="absolute inset-0">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/PB_-_Jo%C3%A3o_Pessoa_-_Nascer_do_Sol_-_Ponta_do_Seixas_3.jpg" alt="Nascer do sol na Ponta do Seixas, João Pessoa" className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-[#0B1E33]/70" />
+        </div>
+        <div className="relative z-10 max-w-2xl mx-auto px-6 text-center">
+          <h2 className="font-serif text-white text-[28px] sm:text-[36px] mb-4">Encontrou o imóvel que procura?</h2>
+          <p className="text-[#EDE6D6] text-[15.5px] mb-9 font-light">Fale com um especialista e receba atendimento personalizado.</p>
+          <a href="https://wa.me/5583999999999" target="_blank" rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 bg-[#25D366] text-white font-bold text-[14.5px] px-8 py-4 rounded-full hover:brightness-95 transition-all">
+            <MessageCircle size={17} /> Falar no WhatsApp
+          </a>
+        </div>
+      </section>
+
+      {/* CONTACT */}
+      <section id="contato" className="max-w-7xl mx-auto px-6 py-24">
+        <div className="grid lg:grid-cols-2 gap-16">
+          <div>
+            <Eyebrow>Contato</Eyebrow>
+            <h2 className="font-serif text-[30px] sm:text-[36px] text-[#0B1E33] mb-8 max-w-sm">Vamos encontrar seu próximo endereço.</h2>
+            <div className="space-y-5 text-[14.5px] text-[#3B4552]">
+              <div className="flex items-center gap-3"><MapPin size={17} className="text-[#C9A24B]" /> João Pessoa - PB</div>
+              <div className="flex items-center gap-3"><Phone size={17} className="text-[#C9A24B]" /> (83) 99999-9999</div>
+              <div className="flex items-center gap-3"><Mail size={17} className="text-[#C9A24B]" /> contato@verticeimoveis.com.br</div>
+              <div className="flex items-start gap-3">
+                <Clock size={17} className="text-[#C9A24B] mt-0.5" />
+                <div>
+                  Segunda a sexta: 8h às 18h<br />Sábado: 8h às 13h
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <form className="bg-white rounded-2xl p-7 sm:p-9 shadow-[0_2px_20px_-8px_rgba(11,30,51,0.15)] space-y-5" onSubmit={(e) => e.preventDefault()}>
+            <div className="grid sm:grid-cols-2 gap-5">
+              <div>
+                <label className="block text-[11px] tracking-wide uppercase text-[#8A7E6A] font-semibold mb-2">Nome</label>
+                <input type="text" className="w-full border border-[#EDE6D6] rounded-xl px-3.5 py-3 text-[14px] bg-[#FBF8F1] focus:outline-none focus:border-[#C9A24B]" placeholder="Seu nome" />
+              </div>
+              <div>
+                <label className="block text-[11px] tracking-wide uppercase text-[#8A7E6A] font-semibold mb-2">Telefone</label>
+                <input type="tel" className="w-full border border-[#EDE6D6] rounded-xl px-3.5 py-3 text-[14px] bg-[#FBF8F1] focus:outline-none focus:border-[#C9A24B]" placeholder="(83) 00000-0000" />
+              </div>
+            </div>
+            <div>
+              <label className="block text-[11px] tracking-wide uppercase text-[#8A7E6A] font-semibold mb-2">E-mail</label>
+              <input type="email" className="w-full border border-[#EDE6D6] rounded-xl px-3.5 py-3 text-[14px] bg-[#FBF8F1] focus:outline-none focus:border-[#C9A24B]" placeholder="seu@email.com" />
+            </div>
+            <div>
+              <label className="block text-[11px] tracking-wide uppercase text-[#8A7E6A] font-semibold mb-2">Estou interessado em</label>
+              <select className="w-full border border-[#EDE6D6] rounded-xl px-3.5 py-3 text-[14px] bg-[#FBF8F1] focus:outline-none focus:border-[#C9A24B]">
+                <option>Comprar</option>
+                <option>Alugar</option>
+                <option>Investir</option>
+              </select>
+            </div>
+            <div>
+              <label className="block text-[11px] tracking-wide uppercase text-[#8A7E6A] font-semibold mb-2">Mensagem</label>
+              <textarea rows={3} className="w-full border border-[#EDE6D6] rounded-xl px-3.5 py-3 text-[14px] bg-[#FBF8F1] focus:outline-none focus:border-[#C9A24B] resize-none" placeholder="Conte um pouco sobre o que procura" />
+            </div>
+            <button className="w-full bg-[#0B1E33] text-white font-semibold text-[14px] py-3.5 rounded-xl hover:bg-[#0F2A44] transition-colors">
+              Enviar mensagem
+            </button>
+          </form>
+        </div>
+      </section>
+
+      {/* FOOTER */}
+      <footer className="bg-[#081729] pt-20 pb-8">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+            <div>
+              <div className="flex items-center gap-3 mb-4">
+                <VerticeMark className="w-7 h-5" />
+                <div className="leading-[1.05]">
+                  <div className="font-serif text-white text-[15px] tracking-[0.08em]">VÉRTICE</div>
+                  <div className="text-[10px] tracking-[0.32em] text-[#C9A24B] font-semibold">IMÓVEIS</div>
+                </div>
+              </div>
+              <p className="font-serif italic text-[#8592A3] text-[14.5px]">"Seu próximo endereço começa aqui."</p>
+            </div>
+            <div>
+              <h4 className="text-[12px] tracking-widest uppercase text-[#8592A3] font-semibold mb-5">Navegação</h4>
+              <ul className="space-y-3 text-[14px] text-[#C7CDD6]">
+                <li><a href="#imoveis" className="hover:text-[#C9A24B] transition-colors">Imóveis</a></li>
+                <li><a href="#lancamentos" className="hover:text-[#C9A24B] transition-colors">Lançamentos</a></li>
+                <li><a href="#buscar" className="hover:text-[#C9A24B] transition-colors">Comprar</a></li>
+                <li><a href="#buscar" className="hover:text-[#C9A24B] transition-colors">Alugar</a></li>
+                <li><a href="#sobre" className="hover:text-[#C9A24B] transition-colors">Sobre nós</a></li>
+                <li><a href="#contato" className="hover:text-[#C9A24B] transition-colors">Contato</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="text-[12px] tracking-widest uppercase text-[#8592A3] font-semibold mb-5">Redes sociais</h4>
+              <ul className="space-y-3 text-[14px] text-[#C7CDD6]">
+                <li><a href="#" className="hover:text-[#C9A24B] transition-colors flex items-center gap-2"><Instagram size={15} /> Instagram</a></li>
+                <li><a href="#" className="hover:text-[#C9A24B] transition-colors flex items-center gap-2"><Facebook size={15} /> Facebook</a></li>
+                <li><a href="https://wa.me/5583999999999" className="hover:text-[#C9A24B] transition-colors flex items-center gap-2"><MessageCircle size={15} /> WhatsApp</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="text-[12px] tracking-widest uppercase text-[#8592A3] font-semibold mb-5">Localização</h4>
+              <p className="text-[14px] text-[#C7CDD6] flex items-center gap-2"><MapPin size={15} className="text-[#C9A24B]" /> João Pessoa - Paraíba</p>
+            </div>
+          </div>
+          <HorizonRule className="mb-8" />
+          <p className="text-center text-[12.5px] text-[#5C6B80]">© 2026 Vértice Imóveis. Todos os direitos reservados.</p>
+          <p className="text-center text-[11px] text-[#5C6B80] mt-2">Fotos locais: Wikimedia Commons, Manoel Amaro, Jefferson Clelio, AD&apos;OR e Breno Fredrich, sob as licenças indicadas nas páginas das imagens.</p>
+        </div>
+      </footer>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<VerticeImoveis />);
+  </script>
+</body>
+</html>
