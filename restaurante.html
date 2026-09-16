@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Casa Aurora — Restaurante Brasileiro Contemporâneo | São Paulo</title>
+<meta name="description" content="Casa Aurora — cozinha brasileira contemporânea, coquetéis autorais e uma mesa feita para compartilhar. Vila Madalena, São Paulo.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #15120E;
+    --bg-panel: #1C1712;
+    --bg-panel-2: #211B14;
+    --cream: #F4ECDC;
+    --cream-dim: #C9BEA9;
+    --cream-faint: #8C8474;
+    --terracotta: #C1613B;
+    --terracotta-bright: #D97C52;
+    --gold: #CD9A50;
+    --line: rgba(244,236,220,0.12);
+    --line-bright: rgba(244,236,220,0.22);
+    --shadow: 0 30px 60px -30px rgba(0,0,0,0.6);
+    --ease: cubic-bezier(.22,.61,.36,1);
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--cream);
+    font-family:'Sora', sans-serif;
+    font-weight:400;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{display:block;max-width:100%;}
+  a{color:inherit;text-decoration:none;}
+  ul{list-style:none;}
+  button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit;}
+
+  h1,h2,h3,h4{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    letter-spacing:-0.01em;
+    color:var(--cream);
+  }
+  .italic{font-style:italic;font-weight:400;color:var(--terracotta-bright);}
+
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    font-size:12.5px;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    color:var(--terracotta-bright);
+    font-weight:600;
+  }
+  .eyebrow::before{
+    content:'';
+    width:22px;height:1px;
+    background:var(--terracotta-bright);
+    display:inline-block;
+  }
+
+  .wrap{
+    max-width:1240px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  ::selection{background:var(--terracotta); color:#fff;}
+
+  /* subtle scroll reveal */
+  .reveal{
+    opacity:0;
+    transform:translateY(28px);
+    transition:opacity 0.9s var(--ease), transform 0.9s var(--ease);
+  }
+  .reveal.in-view{opacity:1; transform:translateY(0);}
+
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1; transform:none; transition:none;}
+    *{animation:none !important;}
+  }
+
+  /* ---------- AURORA GLOW SIGNATURE ---------- */
+  .aurora-glow{
+    position:absolute;
+    pointer-events:none;
+    z-index:0;
+    filter:blur(60px);
+    opacity:0.55;
+    background:
+      radial-gradient(closest-side, rgba(201,154,80,0.55), transparent 70%),
+      radial-gradient(closest-side, rgba(193,97,59,0.5), transparent 72%);
+    animation: aurora-breathe 12s ease-in-out infinite;
+    mix-blend-mode:screen;
+  }
+  @keyframes aurora-breathe{
+    0%,100%{ transform:scale(1) translateY(0); opacity:0.45; }
+    50%{ transform:scale(1.15) translateY(-14px); opacity:0.68; }
+  }
+
+  /* ---------- HEADER ---------- */
+  header{
+    position:fixed; top:0; left:0; right:0;
+    z-index:100;
+    padding:26px 0;
+    transition:padding 0.4s var(--ease), background 0.4s var(--ease), border-color .4s var(--ease);
+    border-bottom:1px solid transparent;
+  }
+  header.scrolled{
+    padding:16px 0;
+    background:rgba(21,18,14,0.86);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--line);
+  }
+  header .wrap{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .logo{
+    font-family:'Fraunces', serif;
+    font-size:20px;
+    letter-spacing:0.14em;
+    font-weight:500;
+    color:var(--cream);
+  }
+  .logo span{color:var(--terracotta-bright); font-style:italic; font-weight:400;}
+
+  nav.main-nav{display:flex; gap:40px;}
+  nav.main-nav a{
+    font-size:13.5px;
+    letter-spacing:0.04em;
+    color:var(--cream-dim);
+    position:relative;
+    padding:4px 0;
+    transition:color .3s;
+  }
+  nav.main-nav a::after{
+    content:'';
+    position:absolute; left:0; bottom:0;
+    width:0%; height:1px;
+    background:var(--terracotta-bright);
+    transition:width .35s var(--ease);
+  }
+  nav.main-nav a:hover{color:var(--cream);}
+  nav.main-nav a:hover::after{width:100%;}
+
+  .header-actions{display:flex; align-items:center; gap:24px;}
+
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    padding:13px 26px;
+    font-size:13px;
+    letter-spacing:0.05em;
+    font-weight:600;
+    border-radius:2px;
+    transition:transform .35s var(--ease), background .35s var(--ease), border-color .35s var(--ease), color .35s var(--ease);
+  }
+  .btn-primary{
+    background:var(--terracotta);
+    color:#FBF3E7;
+  }
+  .btn-primary:hover{ background:var(--terracotta-bright); transform:translateY(-2px); }
+  .btn-ghost{
+    border:1px solid var(--line-bright);
+    color:var(--cream);
+    background:transparent;
+  }
+  .btn-ghost:hover{ border-color:var(--terracotta-bright); color:var(--terracotta-bright); transform:translateY(-2px);}
+  .btn-block{width:100%;}
+
+  .burger{
+    display:none;
+    width:26px; height:18px;
+    position:relative;
+    z-index:110;
+  }
+  .burger span{
+    position:absolute; left:0; right:0; height:1px;
+    background:var(--cream);
+    transition:transform .35s var(--ease), opacity .3s;
+  }
+  .burger span:nth-child(1){top:0;}
+  .burger span:nth-child(2){top:8px;}
+  .burger span:nth-child(3){top:16px;}
+  .burger.open span:nth-child(1){ transform:translateY(8px) rotate(45deg); }
+  .burger.open span:nth-child(2){ opacity:0; }
+  .burger.open span:nth-child(3){ transform:translateY(-8px) rotate(-45deg); }
+
+  .mobile-nav{
+    position:fixed; inset:0;
+    background:var(--bg);
+    z-index:99;
+    display:flex; flex-direction:column;
+    align-items:flex-start;
+    justify-content:center;
+    gap:28px;
+    padding:0 40px;
+    transform:translateY(-100%);
+    transition:transform .5s var(--ease);
+  }
+  .mobile-nav.open{transform:translateY(0);}
+  .mobile-nav a{
+    font-family:'Fraunces', serif;
+    font-size:34px;
+    font-weight:400;
+    color:var(--cream);
+  }
+  .mobile-nav .btn{margin-top:12px;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex;
+    align-items:flex-end;
+    overflow:hidden;
+    background:#0f0d0a;
+  }
+  .hero-bg{
+    position:absolute; inset:0;
+    background-image:url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=2000&q=80');
+    background-size:cover;
+    background-position:center 30%;
+    transform:scale(1.08);
+    animation: hero-zoom 22s ease-in-out infinite alternate;
+  }
+  @keyframes hero-zoom{
+    from{ transform:scale(1.08); }
+    to{ transform:scale(1.16); }
+  }
+  .hero-scrim{
+    position:absolute; inset:0;
+    background:
+      linear-gradient(180deg, rgba(15,13,10,0.35) 0%, rgba(15,13,10,0.35) 40%, rgba(15,13,10,0.94) 92%),
+      linear-gradient(90deg, rgba(15,13,10,0.75) 0%, rgba(15,13,10,0.15) 55%);
+  }
+  .hero .aurora-glow{
+    width:900px; height:900px;
+    top:-260px; left:-260px;
+  }
+  .hero-content{
+    position:relative; z-index:2;
+    padding-bottom:110px;
+    max-width:720px;
+  }
+  .hero-eyebrow{
+    color:var(--gold);
+    font-size:12.5px;
+    letter-spacing:0.3em;
+    text-transform:uppercase;
+    font-weight:600;
+    margin-bottom:22px;
+    display:block;
+  }
+  .hero h1{
+    font-size:clamp(42px, 7vw, 78px);
+    line-height:1.04;
+    font-weight:400;
+    margin-bottom:22px;
+  }
+  .hero p{
+    font-size:18px;
+    color:var(--cream-dim);
+    max-width:480px;
+    margin-bottom:40px;
+    font-weight:300;
+  }
+  .hero-actions{display:flex; gap:16px; flex-wrap:wrap;}
+
+  .scroll-cue{
+    position:absolute;
+    right:32px; bottom:36px;
+    z-index:2;
+    display:flex; flex-direction:column; align-items:center;
+    gap:10px;
+    color:var(--cream-faint);
+    font-size:11px;
+    letter-spacing:0.2em;
+  }
+  .scroll-cue .line{
+    width:1px; height:46px;
+    background:linear-gradient(180deg, var(--terracotta-bright), transparent);
+    animation:scroll-line 2.2s ease-in-out infinite;
+  }
+  @keyframes scroll-line{
+    0%{transform:scaleY(0); transform-origin:top;}
+    50%{transform:scaleY(1); transform-origin:top;}
+    50.01%{transform-origin:bottom;}
+    100%{transform:scaleY(0); transform-origin:bottom;}
+  }
+
+  /* ---------- SECTION GENERIC ---------- */
+  section{
+    position:relative;
+    padding:140px 0;
+  }
+  @media(max-width:860px){
+    section{padding:96px 0;}
+  }
+
+  /* ---------- ABOUT ---------- */
+  .about{
+    background:var(--bg);
+  }
+  .about-grid{
+    display:grid;
+    grid-template-columns:0.85fr 1fr;
+    gap:80px;
+    align-items:center;
+  }
+  .about-media{
+    position:relative;
+    aspect-ratio:4/5;
+    overflow:hidden;
+    border-radius:2px;
+  }
+  .about-media img{
+    width:100%; height:100%; object-fit:cover;
+    filter:saturate(1.05);
+  }
+  .about-media::after{
+    content:'';
+    position:absolute; inset:0;
+    box-shadow: inset 0 0 0 1px var(--line);
+  }
+  .about-frame{
+    position:absolute;
+    bottom:-24px; left:-24px;
+    width:60%; aspect-ratio:1/1;
+    border:1px solid var(--terracotta);
+    z-index:-1;
+    display:none;
+  }
+  .about-text h2{
+    font-size:clamp(32px, 4vw, 46px);
+    line-height:1.18;
+    margin:18px 0 26px;
+    font-weight:400;
+  }
+  .about-text p{
+    color:var(--cream-dim);
+    font-size:16.5px;
+    max-width:460px;
+    font-weight:300;
+    margin-bottom:18px;
+  }
+  .about-stats{
+    display:flex;
+    gap:40px;
+    margin-top:38px;
+    padding-top:32px;
+    border-top:1px solid var(--line);
+  }
+  .about-stats div b{
+    display:block;
+    font-family:'Fraunces', serif;
+    font-size:30px;
+    color:var(--terracotta-bright);
+    font-weight:500;
+  }
+  .about-stats div span{
+    font-size:12px;
+    color:var(--cream-faint);
+    letter-spacing:0.05em;
+  }
+
+  /* ---------- MENU ---------- */
+  .menu-section{
+    background:var(--bg-panel);
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+  }
+  .menu-head{
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+    margin-bottom:64px;
+    gap:24px;
+    flex-wrap:wrap;
+  }
+  .menu-head h2{
+    font-size:clamp(32px,4vw,48px);
+    font-weight:400;
+    margin-top:16px;
+  }
+  .menu-head p{
+    color:var(--cream-dim);
+    max-width:320px;
+    font-size:15px;
+    font-weight:300;
+  }
+  .menu-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  .dish{
+    background:var(--bg-panel);
+    padding:34px 30px 32px;
+    transition:background .4s var(--ease);
+  }
+  .dish:hover{ background:var(--bg-panel-2); }
+  .dish-media{
+    aspect-ratio:5/4;
+    overflow:hidden;
+    margin-bottom:26px;
+    position:relative;
+  }
+  .dish-media img{
+    width:100%; height:100%; object-fit:cover;
+    transition:transform .8s var(--ease);
+  }
+  .dish:hover .dish-media img{ transform:scale(1.06); }
+  .dish-title-row{
+    display:flex;
+    align-items:baseline;
+    gap:8px;
+    margin-bottom:10px;
+  }
+  .dish-title-row h3{
+    font-size:19px;
+    font-weight:500;
+    white-space:nowrap;
+  }
+  .dish-leader{
+    flex:1;
+    border-bottom:1px dotted var(--line-bright);
+    height:1px;
+    transform:translateY(-4px);
+  }
+  .dish-price{
+    font-family:'Fraunces', serif;
+    font-size:17px;
+    color:var(--terracotta-bright);
+    white-space:nowrap;
+  }
+  .dish-desc{
+    color:var(--cream-faint);
+    font-size:14px;
+    font-weight:300;
+    line-height:1.55;
+  }
+
+  @media(max-width:900px){
+    .menu-grid{grid-template-columns:1fr;}
+  }
+
+  /* ---------- EXPERIENCE ---------- */
+  .experience{
+    background:var(--bg);
+  }
+  .exp-grid{
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:0;
+    align-items:stretch;
+    border:1px solid var(--line);
+  }
+  .exp-media{
+    position:relative;
+    min-height:520px;
+    overflow:hidden;
+  }
+  .exp-media img{
+    width:100%; height:100%; object-fit:cover;
+    position:absolute; inset:0;
+  }
+  .exp-panel{
+    background:var(--bg-panel);
+    padding:64px 56px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    gap:0;
+  }
+  .exp-panel h2{
+    font-size:clamp(28px,3.4vw,38px);
+    font-weight:400;
+    margin:16px 0 40px;
+    max-width:380px;
+  }
+  .exp-item{
+    padding:26px 0;
+    border-top:1px solid var(--line);
+  }
+  .exp-item:last-child{border-bottom:1px solid var(--line);}
+  .exp-item .num{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    color:var(--terracotta-bright);
+    font-size:14px;
+    display:block;
+    margin-bottom:8px;
+  }
+  .exp-item h4{
+    font-size:19px;
+    font-weight:500;
+    margin-bottom:8px;
+  }
+  .exp-item p{
+    color:var(--cream-faint);
+    font-size:14px;
+    font-weight:300;
+    max-width:340px;
+  }
+
+  @media(max-width:900px){
+    .exp-grid{grid-template-columns:1fr;}
+    .exp-media{min-height:340px;}
+    .exp-panel{padding:48px 28px;}
+  }
+
+  /* ---------- GALLERY ---------- */
+  .gallery{
+    background:var(--bg);
+  }
+  .gallery-head{
+    margin-bottom:56px;
+  }
+  .gallery-head h2{
+    font-size:clamp(32px,4vw,48px);
+    font-weight:400;
+    margin-top:16px;
+  }
+  .gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(6, 1fr);
+    grid-auto-rows:130px;
+    gap:14px;
+  }
+  .g-item{
+    position:relative;
+    overflow:hidden;
+    border-radius:2px;
+    cursor:pointer;
+  }
+  .g-item img{
+    width:100%; height:100%; object-fit:cover;
+    transition:transform .9s var(--ease), filter .5s;
+    filter:saturate(0.96);
+  }
+  .g-item:hover img{ transform:scale(1.07); filter:saturate(1.1); }
+  .g-item::after{
+    content:'';
+    position:absolute; inset:0;
+    background:linear-gradient(180deg, transparent 60%, rgba(15,13,10,0.55));
+    opacity:0;
+    transition:opacity .4s;
+  }
+  .g-item:hover::after{opacity:1;}
+  .g-item span{
+    position:absolute; left:16px; bottom:14px;
+    font-size:12px; letter-spacing:0.06em;
+    color:var(--cream);
+    opacity:0;
+    transform:translateY(8px);
+    transition:all .4s var(--ease);
+    z-index:2;
+    font-weight:500;
+  }
+  .g-item:hover span{opacity:1; transform:translateY(0);}
+
+  .g1{grid-column:span 3; grid-row:span 3;}
+  .g2{grid-column:span 3; grid-row:span 2;}
+  .g3{grid-column:span 2; grid-row:span 2;}
+  .g4{grid-column:span 2; grid-row:span 3;}
+  .g5{grid-column:span 2; grid-row:span 2;}
+
+  @media(max-width:900px){
+    .gallery-grid{grid-template-columns:repeat(2,1fr); grid-auto-rows:180px;}
+    .g1,.g2,.g3,.g4,.g5{grid-column:span 1; grid-row:span 2;}
+  }
+
+  /* ---------- RESERVATIONS ---------- */
+  .reservations{
+    background:var(--bg-panel);
+    border-top:1px solid var(--line);
+    overflow:hidden;
+  }
+  .res-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:80px;
+    align-items:center;
+    position:relative;
+  }
+  .res-grid .aurora-glow{
+    width:600px; height:600px;
+    top:-140px; left:-40%;
+  }
+  .res-text{position:relative; z-index:1;}
+  .res-text h2{
+    font-size:clamp(32px,4.2vw,50px);
+    font-weight:400;
+    line-height:1.14;
+    margin:18px 0 20px;
+  }
+  .res-text p{
+    color:var(--cream-dim);
+    font-size:16px;
+    font-weight:300;
+    max-width:380px;
+    margin-bottom:34px;
+  }
+  .res-info{
+    display:flex; flex-direction:column; gap:14px;
+    font-size:14px; color:var(--cream-dim);
+  }
+  .res-info b{color:var(--cream); font-weight:500;}
+
+  .res-form{
+    position:relative; z-index:1;
+    background:var(--bg);
+    border:1px solid var(--line);
+    padding:44px;
+  }
+  .form-row{display:grid; grid-template-columns:1fr 1fr; gap:22px;}
+  .field{margin-bottom:26px;}
+  .field label{
+    display:block;
+    font-size:11.5px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--cream-faint);
+    margin-bottom:10px;
+  }
+  .field input, .field select{
+    width:100%;
+    background:transparent;
+    border:none;
+    border-bottom:1px solid var(--line-bright);
+    color:var(--cream);
+    font-family:'Sora', sans-serif;
+    font-size:15px;
+    padding:8px 2px;
+    transition:border-color .3s;
+  }
+  .field select option{background:var(--bg);}
+  .field input:focus, .field select:focus{
+    outline:none;
+    border-color:var(--terracotta-bright);
+  }
+  .field input::placeholder{color:var(--cream-faint);}
+  .form-note{
+    font-size:12px;
+    color:var(--cream-faint);
+    margin-top:16px;
+    text-align:center;
+  }
+  .form-success{
+    display:none;
+    text-align:center;
+    padding:20px 0 4px;
+  }
+  .form-success.show{display:block;}
+  .form-success .check{
+    width:44px; height:44px;
+    border:1px solid var(--terracotta-bright);
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    margin:0 auto 18px;
+    color:var(--terracotta-bright);
+    font-family:'Fraunces', serif;
+  }
+  .form-success h4{font-size:20px; margin-bottom:8px; font-weight:400;}
+  .form-success p{color:var(--cream-faint); font-size:13.5px; font-weight:300;}
+
+  @media(max-width:900px){
+    .res-grid{grid-template-columns:1fr; gap:48px;}
+    .res-form{padding:30px;}
+    .form-row{grid-template-columns:1fr;}
+  }
+
+  /* ---------- CONTACT STRIP ---------- */
+  .contact{
+    background:var(--bg);
+    padding:100px 0;
+  }
+  .contact-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:50px;
+    border-top:1px solid var(--line);
+    padding-top:56px;
+  }
+  .contact-block h4{
+    font-size:12px;
+    letter-spacing:0.15em;
+    text-transform:uppercase;
+    color:var(--terracotta-bright);
+    font-weight:600;
+    margin-bottom:16px;
+  }
+  .contact-block p, .contact-block a{
+    color:var(--cream-dim);
+    font-size:15px;
+    font-weight:300;
+    line-height:1.7;
+  }
+  .contact-block .social{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    margin-top:6px;
+    color:var(--cream);
+    font-weight:500;
+    border-bottom:1px solid var(--line-bright);
+    padding-bottom:3px;
+    transition:border-color .3s, color .3s;
+  }
+  .contact-block .social:hover{color:var(--terracotta-bright); border-color:var(--terracotta-bright);}
+  .contact-block .wa-btn{
+    margin-top:10px;
+  }
+
+  @media(max-width:860px){
+    .contact-grid{grid-template-columns:1fr; gap:36px;}
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background:#100D0A;
+    border-top:1px solid var(--line);
+    padding:64px 0 32px;
+    text-align:center;
+  }
+  footer .logo{
+    justify-content:center;
+    font-size:26px;
+    display:block;
+    margin-bottom:14px;
+  }
+  footer .tagline{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    color:var(--cream-dim);
+    font-size:16px;
+    font-weight:400;
+    margin-bottom:36px;
+  }
+  .footer-links{
+    display:flex; justify-content:center; gap:30px;
+    margin-bottom:40px;
+    flex-wrap:wrap;
+  }
+  .footer-links a{
+    font-size:13px;
+    color:var(--cream-faint);
+    transition:color .3s;
+  }
+  .footer-links a:hover{color:var(--terracotta-bright);}
+  .footer-bottom{
+    font-size:12px;
+    color:var(--cream-faint);
+    border-top:1px solid var(--line);
+    padding-top:26px;
+  }
+
+  /* whatsapp float */
+  .wa-float{
+    position:fixed;
+    bottom:26px; right:26px;
+    z-index:80;
+    width:56px; height:56px;
+    border-radius:50%;
+    background:var(--terracotta);
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 10px 30px -8px rgba(0,0,0,0.6);
+    transition:transform .35s var(--ease), background .35s;
+  }
+  .wa-float:hover{ transform:scale(1.08); background:var(--terracotta-bright); }
+
+  @media(max-width:860px){
+    nav.main-nav, .header-actions .btn-primary{display:none;}
+    .burger{display:block;}
+    .about-grid{grid-template-columns:1fr; gap:48px;}
+    .about-frame{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="siteHeader">
+  <div class="wrap">
+    <a href="#top" class="logo">CASA <span>Aurora</span></a>
+    <nav class="main-nav">
+      <a href="#top">Início</a>
+      <a href="#menu">Menu</a>
+      <a href="#sobre">Sobre Nós</a>
+      <a href="#galeria">Galeria</a>
+      <a href="#contato">Contato</a>
+    </nav>
+    <div class="header-actions">
+      <a href="#reservas" class="btn btn-primary">Reservar mesa</a>
+      <div class="burger" id="burger"><span></span><span></span><span></span></div>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-nav" id="mobileNav">
+  <a href="#top">Início</a>
+  <a href="#menu">Menu</a>
+  <a href="#sobre">Sobre Nós</a>
+  <a href="#galeria">Galeria</a>
+  <a href="#contato">Contato</a>
+  <a href="#reservas" class="btn btn-primary">Reservar mesa</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="hero-scrim"></div>
+  <div class="aurora-glow"></div>
+  <div class="wrap hero-content">
+    <span class="hero-eyebrow">Vila Madalena · São Paulo</span>
+    <h1>Sabores do Brasil,<br><span class="italic">à mesa.</span></h1>
+    <p>Uma experiência brasileira contemporânea, feita para compartilhar.</p>
+    <div class="hero-actions">
+      <a href="#menu" class="btn btn-ghost">Ver nosso menu</a>
+      <a href="#reservas" class="btn btn-primary">Reservar mesa</a>
+    </div>
+  </div>
+  <div class="scroll-cue"><span>ROLAR</span><div class="line"></div></div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="sobre">
+  <div class="wrap about-grid">
+    <div class="about-media reveal">
+      <div class="about-frame"></div>
+      <img src="https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=1200&q=80" alt="Prato autoral servido na Casa Aurora">
+    </div>
+    <div class="about-text reveal">
+      <span class="eyebrow">Sobre nós</span>
+      <h2>Uma experiência que começa no <span class="italic">primeiro sabor.</span></h2>
+      <p>A Casa Aurora nasce do encontro entre ingredientes brasileiros, técnica contemporânea e a generosidade de uma mesa farta. Cada prato carrega uma raiz — e um gesto novo.</p>
+      <p>Aqui, cozinha e afeto seguem a mesma receita: pratos feitos para o meio da mesa, servidos com calma, numa sala pensada para durar a noite inteira.</p>
+      <div class="about-stats">
+        <div><b>2019</b><span>Desde</span></div>
+        <div><b>100%</b><span>Ingred. nacionais</span></div>
+        <div><b>6</b><span>Dias por semana</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="menu-section" id="menu">
+  <div class="wrap">
+    <div class="menu-head reveal">
+      <div>
+        <span class="eyebrow">Cardápio</span>
+        <h2>Nosso menu</h2>
+      </div>
+      <p>Uma seleção enxuta, trocada com as estações — pensada para ser dividida.</p>
+    </div>
+
+    <div class="menu-grid">
+      <div class="dish reveal">
+        <div class="dish-media"><img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80" alt="Picanha grelhada"></div>
+        <div class="dish-title-row"><h3>Picanha grelhada</h3><span class="dish-leader"></span><span class="dish-price">R$ 129</span></div>
+        <p class="dish-desc">Maturada 21 dias, farofa crocante e vinagrete de cebola roxa.</p>
+      </div>
+      <div class="dish reveal">
+        <div class="dish-media"><img src="https://images.unsplash.com/photo-1543007630-9710e4a00a20?auto=format&fit=crop&w=800&q=80" alt="Moqueca de camarão"></div>
+        <div class="dish-title-row"><h3>Moqueca de camarão</h3><span class="dish-leader"></span><span class="dish-price">R$ 138</span></div>
+        <p class="dish-desc">Camarões frescos, leite de coco, dendê e arroz de coentro.</p>
+      </div>
+      <div class="dish reveal">
+        <div class="dish-media"><img src="https://images.unsplash.com/photo-1476124369491-e7addf5db371?auto=format&fit=crop&w=800&q=80" alt="Risoto de queijo coalho"></div>
+        <div class="dish-title-row"><h3>Risoto de coalho</h3><span class="dish-leader"></span><span class="dish-price">R$ 98</span></div>
+        <p class="dish-desc">Arbóreo cremoso, queijo coalho grelhado e mel de engenho.</p>
+      </div>
+      <div class="dish reveal">
+        <div class="dish-media"><img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=800&q=80" alt="Pudim de leite"></div>
+        <div class="dish-title-row"><h3>Pudim de leite</h3><span class="dish-leader"></span><span class="dish-price">R$ 34</span></div>
+        <p class="dish-desc">Receita de família, calda de caramelo e flor de sal.</p>
+      </div>
+      <div class="dish reveal">
+        <div class="dish-media"><img src="https://images.unsplash.com/photo-1551538827-9c037cb4f32a?auto=format&fit=crop&w=800&q=80" alt="Caipirinha artesanal"></div>
+        <div class="dish-title-row"><h3>Caipirinha artesanal</h3><span class="dish-leader"></span><span class="dish-price">R$ 32</span></div>
+        <p class="dish-desc">Cachaça de alambique, limão siciliano e açúcar demerara.</p>
+      </div>
+      <div class="dish reveal">
+        <div class="dish-media"><img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80" alt="Prato do dia"></div>
+        <div class="dish-title-row"><h3>Peixe do dia</h3><span class="dish-leader"></span><span class="dish-price">R$ 112</span></div>
+        <p class="dish-desc">Pesca do dia, purê de mandioquinha e manteiga de ervas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="experience">
+  <div class="wrap">
+    <div class="exp-grid reveal">
+      <div class="exp-media">
+        <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1200&q=80" alt="Ambiente da Casa Aurora">
+      </div>
+      <div class="exp-panel">
+        <span class="eyebrow">A experiência</span>
+        <h2>Do preparo à mesa, <span class="italic">tudo tem raiz.</span></h2>
+
+        <div class="exp-item">
+          <span class="num">Aa</span>
+          <h4>Ingredientes brasileiros</h4>
+          <p>Produtores parceiros de norte a sul, direto para a cozinha.</p>
+        </div>
+        <div class="exp-item">
+          <span class="num">Aa</span>
+          <h4>Cozinha contemporânea</h4>
+          <p>Técnica apurada a serviço do sabor — nunca do espetáculo.</p>
+        </div>
+        <div class="exp-item">
+          <span class="num">Aa</span>
+          <h4>Ambiente acolhedor</h4>
+          <p>Luz baixa, mesas próximas e tempo para ficar.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="galeria">
+  <div class="wrap">
+    <div class="gallery-head reveal">
+      <span class="eyebrow">Galeria</span>
+      <h2>Um retrato da casa</h2>
+    </div>
+    <div class="gallery-grid reveal">
+      <div class="g-item g1"><img src="https://images.unsplash.com/photo-1424847651672-bf20a4b0982b?auto=format&fit=crop&w=1000&q=80" alt="Interior do restaurante"><span>Salão</span></div>
+      <div class="g-item g2"><img src="https://images.unsplash.com/photo-1544148103-0773bf10d330?auto=format&fit=crop&w=1000&q=80" alt="Prato assinatura"><span>Prato assinatura</span></div>
+      <div class="g-item g3"><img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&w=800&q=80" alt="Chef preparando prato"><span>Na cozinha</span></div>
+      <div class="g-item g4"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=900&q=80" alt="Experiência à mesa"><span>À mesa</span></div>
+      <div class="g-item g5"><img src="https://images.unsplash.com/photo-1470337458703-46ad1756a187?auto=format&fit=crop&w=900&q=80" alt="Coquetel autoral"><span>Coquetel</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- RESERVATIONS -->
+<section class="reservations" id="reservas">
+  <div class="aurora-glow"></div>
+  <div class="wrap res-grid">
+    <div class="res-text reveal">
+      <span class="eyebrow">Reservas</span>
+      <h2>Seu próximo jantar <span class="italic">começa aqui.</span></h2>
+      <p>Preencha os dados abaixo — nossa equipe confirma sua mesa em instantes.</p>
+      <div class="res-info">
+        <div><b>Terça a domingo</b> · 12h–16h e 19h–00h</div>
+        <div>Grupos acima de 8 pessoas, fale com a gente pelo WhatsApp.</div>
+      </div>
+    </div>
+
+    <form class="res-form reveal" id="resForm">
+      <div id="formFields">
+        <div class="form-row">
+          <div class="field">
+            <label for="rName">Nome</label>
+            <input type="text" id="rName" placeholder="Seu nome completo" required>
+          </div>
+          <div class="field">
+            <label for="rPeople">Nº de pessoas</label>
+            <select id="rPeople" required>
+              <option value="">Selecione</option>
+              <option>1 pessoa</option>
+              <option>2 pessoas</option>
+              <option>3 pessoas</option>
+              <option>4 pessoas</option>
+              <option>5 pessoas</option>
+              <option>6+ pessoas</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label for="rDate">Data</label>
+            <input type="date" id="rDate" required>
+          </div>
+          <div class="field">
+            <label for="rTime">Horário</label>
+            <input type="time" id="rTime" required>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Solicitar reserva</button>
+        <p class="form-note">Você receberá a confirmação por WhatsApp ou telefone.</p>
+      </div>
+
+      <div class="form-success" id="formSuccess">
+        <div class="check">✓</div>
+        <h4>Reserva solicitada</h4>
+        <p>Obrigado! Em breve entraremos em contato para confirmar sua mesa.</p>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contato">
+  <div class="wrap">
+    <span class="eyebrow">Contato</span>
+    <div class="contact-grid">
+      <div class="contact-block">
+        <h4>Endereço</h4>
+        <p>Rua Harmonia, 214 — Vila Madalena<br>São Paulo – SP, 05435-000</p>
+      </div>
+      <div class="contact-block">
+        <h4>Horário</h4>
+        <p>Terça a sexta · 12h–16h / 19h–00h<br>Sábado e domingo · 12h–00h<br>Segunda · Fechado</p>
+      </div>
+      <div class="contact-block">
+        <h4>Fale conosco</h4>
+        <a class="social" href="https://wa.me/558388341499" target="_blank" rel="noopener">WhatsApp — 11 8834-1499</a><br>
+        <a class="social" href="https://instagram.com/casaaurora" target="_blank" rel="noopener">@casaaurora</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <a href="#top" class="logo">CASA <span>Aurora</span></a>
+    <p class="tagline">"Sabores que ficam na memória."</p>
+    <div class="footer-links">
+      <a href="#top">Início</a>
+      <a href="#menu">Menu</a>
+      <a href="#sobre">Sobre Nós</a>
+      <a href="#galeria">Galeria</a>
+      <a href="#contato">Contato</a>
+    </div>
+    <div class="footer-bottom">© 2026 Casa Aurora. Todos os direitos reservados.</div>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/558388341499" target="_blank" rel="noopener" aria-label="Fale conosco pelo WhatsApp">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+    <path d="M12 2C6.48 2 2 6.48 2 12c0 1.9.53 3.68 1.45 5.2L2 22l4.93-1.4A9.94 9.94 0 0012 22c5.52 0 10-4.48 10-10S17.52 2 12 2z" fill="#FBF3E7"/>
+    <path d="M12 2C6.48 2 2 6.48 2 12c0 1.9.53 3.68 1.45 5.2L2 22l4.93-1.4A9.94 9.94 0 0012 22c5.52 0 10-4.48 10-10S17.52 2 12 2z" stroke="none"/>
+  </svg>
+</a>
+
+<script>
+  // header scroll state
+  const header = document.getElementById('siteHeader');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 40);
+  }, {passive:true});
+
+  // mobile nav
+  const burger = document.getElementById('burger');
+  const mobileNav = document.getElementById('mobileNav');
+  burger.addEventListener('click', () => {
+    burger.classList.toggle('open');
+    mobileNav.classList.toggle('open');
+    document.body.style.overflow = mobileNav.classList.contains('open') ? 'hidden' : '';
+  });
+  mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    burger.classList.remove('open');
+    mobileNav.classList.remove('open');
+    document.body.style.overflow = '';
+  }));
+
+  // scroll reveal
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(e.isIntersecting){
+        e.target.classList.add('in-view');
+        io.unobserve(e.target);
+      }
+    });
+  }, {threshold:0.15});
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // reservation form (front-end only)
+  const form = document.getElementById('resForm');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    document.getElementById('formFields').style.display = 'none';
+    document.getElementById('formSuccess').classList.add('show');
+  });
+
+  // set min date to today
+  const dateInput = document.getElementById('rDate');
+  if(dateInput){
+    const today = new Date().toISOString().split('T')[0];
+    dateInput.setAttribute('min', today);
+  }
+</script>
+
+</body>
+</html>
